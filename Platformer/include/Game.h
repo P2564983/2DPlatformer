@@ -10,6 +10,7 @@
 #include "StaticBlock.h"
 #include "DynamicBlock.h"
 #include "DynamicCircle.h"
+#include "Player.h"
 
 #include "SFMLDebugDraw.h"
 #include "TextureManager.h"
@@ -35,6 +36,7 @@ private:
 
 	// Objects within the world
 	sf::RectangleShape m_background; //!< Background of the world
+	Player* m_player; //!< The controllable actor in the world
 	vector<StaticBlock> m_staticBlocks; //!< A collection of fixed blocks. 
 	vector<DynamicBlock> m_dynamicBlocks; //!< A collection of moving blocks. 
 	vector<DynamicCircle> m_balls; //!< A collection of moving balls. 

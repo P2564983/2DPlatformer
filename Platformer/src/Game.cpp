@@ -12,6 +12,9 @@ Game::Game()
 	// Create a Box2D world
 	m_pWorld = new b2World(mk_gravity);
 
+	// Playable controller
+	m_player = new Player(m_pWorld, Vector2f(-2.5f, -3.f));
+
 	// Debug Draw
 	m_debugDraw.setWorld(m_pWorld);
 
@@ -44,11 +47,11 @@ Game::Game()
 	m_dynamicBlocks.push_back(DynamicBlock(m_pWorld, sf::Vector2f(-2.5f, -3.f), sf::Vector2f(0.1f, 0.5f), 0.f));*/
 
 	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(0.f, 2.5f), sf::Vector2f(8.f, 1.f), 0.f, PhysicalThing::CollisionFilter::ONE));
+	//m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(-2.5f, -1.5f), 0.15f, 0.f, PhysicalThing::CollisionFilter::ONE));
 	m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(-1.5f, -3.f), 0.15f, 0.f, PhysicalThing::CollisionFilter::ONE));
 	m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(0.0f, -2.f), 0.15f, 0.f, PhysicalThing::CollisionFilter::SIXTEEN));	// Middle
-	m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(-2.5f, -1.5f), 0.15f, 0.f, PhysicalThing::CollisionFilter::ONE));
-	m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(2.5f, -2.5f), 0.15f, 0.f, PhysicalThing::CollisionFilter::ONE));
 	m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(1.5f, -3.f), 0.15f, 0.f, PhysicalThing::CollisionFilter::ONE));
+	m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(2.5f, -2.5f), 0.15f, 0.f, PhysicalThing::CollisionFilter::ONE));
 }
 
 Game::~Game()
@@ -66,6 +69,7 @@ void Game::update(float timestep)
 	// Update each dyanmic element - effectively update render information
 	for (DynamicBlock& block : m_dynamicBlocks) block.update();
 	for (DynamicCircle& ball : m_balls) ball.update();
+	m_player->update();
 
 	// Delete debug shapes
 	if (m_debug) m_debugDraw.clear();
@@ -81,6 +85,7 @@ void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	for (StaticBlock block : m_staticBlocks) target.draw(block);
 	for (DynamicBlock block : m_dynamicBlocks) target.draw(block);
 	for (DynamicCircle ball : m_balls) target.draw(ball);
+	target.draw(*m_player);
 
 	// Debug Draw
 	if (m_debug) target.draw(m_debugDraw);

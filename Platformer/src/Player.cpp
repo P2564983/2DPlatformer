@@ -1,6 +1,7 @@
 #include "..\include\Player.h"
 
-Player::Player(b2World* world, const sf::Vector2f& position, DynamicBlock dB) : m_playerBlock(dB)
+Player::Player(b2World* world, const sf::Vector2f& position)
+	: DynamicBlock(world, position, sf::Vector2f(1.f, 1.f), 0, PhysicalThing::CollisionFilter::ONE)
 {
-	//m_playerBlock = new DynamicBlock(world, position, sf::Vector2f(1.0f, 1.0f), 0.0f, PhysicalThing::CollisionFilter::SIXTEEN);
+	setFillColor(Color::Black);
 }
