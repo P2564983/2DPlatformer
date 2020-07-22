@@ -107,5 +107,11 @@ void Game::processKeyboardInput(sf::Keyboard::Key key)
 	case sf::Keyboard::Left:	m_view.move(-camOffset.x, 0.0f);	break;
 	case sf::Keyboard::Up:		m_view.move(0.0f, -camOffset.y);	break;
 	case sf::Keyboard::Down:	m_view.move(0.0f, camOffset.y);		break;
+
+		// Player Movement
+	case sf::Keyboard::W:	m_player->move(b2Vec2(0.f, -1.f));		break;
+	case sf::Keyboard::S:	m_player->move(b2Vec2(0.f, 1.f));		break;
+	case sf::Keyboard::A:	m_player->move(b2Vec2(-1.f, 0.f));		break;
+	case sf::Keyboard::D:	m_player->move(b2Vec2(1.f, 0.f));		break;
 	}
 }

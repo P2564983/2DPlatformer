@@ -5,3 +5,9 @@ Player::Player(b2World* world, const sf::Vector2f& position)
 {
 	setFillColor(Color::Black);
 }
+
+void Player::move(const b2Vec2& offset) const
+{
+	m_body->ApplyLinearImpulseToCenter(offset, false);
+}
+

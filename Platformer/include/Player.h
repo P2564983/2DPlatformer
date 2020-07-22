@@ -19,4 +19,7 @@ class Player : public DynamicBlock
 {
 public:
 	Player(b2World* world, const sf::Vector2f& position);
+	
+	// Player movement
+	void move(const b2Vec2& offset) const;
 };
