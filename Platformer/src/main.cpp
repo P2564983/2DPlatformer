@@ -5,10 +5,12 @@
 /*! \mainpage Entry point to 2D Platformer game
 */
 
+#include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Game.h"
 #include "Scene.h"
 
+using namespace std;
 using namespace sf;
 
 void main() /** Entry point for the application */
@@ -34,13 +36,9 @@ void main() /** Entry point for the application */
 			if (event.type == sf::Event::Closed)
 				window.close();
 
+			// Keyboard input
 			if (event.type == sf::Event::KeyPressed)
-			{
-				if (event.key.code == sf::Keyboard::Tab)
-				{
-					game.toggleDebug();
-				}
-			}
+				game.processKeyboardInput(event.key.code);
 		}
 
 		// Find out how much time has elapsed

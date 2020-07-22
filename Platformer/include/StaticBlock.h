@@ -20,6 +20,7 @@ public:
 		b2World * world, 
 		const sf::Vector2f& position, 
 		const sf::Vector2f& size, 
-		const float& orientation
+		const float& orientation,
+		CollisionFilter type
 	); //!< Complete contructor
 };

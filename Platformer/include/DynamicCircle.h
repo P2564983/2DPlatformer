@@ -17,7 +17,7 @@ class DynamicCircle : public sf::CircleShape, public PhysicalThing
 {
 private:
 public:
-	DynamicCircle(b2World * world, const sf::Vector2f& position, const float radius, const float orientation); //!< Complete contructor
+	DynamicCircle(b2World * world, const sf::Vector2f& position, const float radius, const float orientation, CollisionFilter type); //!< Complete contructor
 	void update(); //!< Update rendering infomation 
 	void draw(sf::RenderTarget &target, sf::RenderStates states) const; //!< Overridden drawing method to include line to allow users to see oreintation of the ball
 };

@@ -35,7 +35,6 @@ private:
 
 	// Objects within the world
 	sf::RectangleShape m_background; //!< Background of the world
-	sf::Texture m_background_texture;
 	vector<StaticBlock> m_staticBlocks; //!< A collection of fixed blocks. 
 	vector<DynamicBlock> m_dynamicBlocks; //!< A collection of moving blocks. 
 	vector<DynamicCircle> m_balls; //!< A collection of moving balls. 
@@ -52,4 +51,6 @@ public:
 	void update(float timestep); //!< Update the game with given timestep
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const; //!< Draw the game to the render context
 	void toggleDebug() { m_debug = !m_debug; } //!< Toggle for debug drawing
+
+	void processKeyboardInput(sf::Keyboard::Key key);
 };
