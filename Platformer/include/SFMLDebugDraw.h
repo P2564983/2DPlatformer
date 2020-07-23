@@ -1,5 +1,9 @@
 #pragma once
 
+// debugging to console
+#include <iostream> 
+using namespace std;
+
 #include <Box2D/Box2D.h>
 #include <SFML/Graphics.hpp>
 

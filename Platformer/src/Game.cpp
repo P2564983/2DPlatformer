@@ -45,8 +45,14 @@ Game::Game()
 	m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(-0.85f, 1.6f), 0.1f, 0.f));
 
 	m_dynamicBlocks.push_back(DynamicBlock(m_pWorld, sf::Vector2f(-2.5f, -3.f), sf::Vector2f(0.1f, 0.5f), 0.f));*/
-
+	
+	// border around scene and ground
 	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(0.f, 2.5f), sf::Vector2f(8.f, 1.f), 0.f, PhysicalThing::CollisionFilter::ONE));
+	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(-4.f, 0.f), sf::Vector2f(0.5f, 6.f), 0.f, PhysicalThing::CollisionFilter::ONE)); // left wall
+	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(4.f, 0.f), sf::Vector2f(0.5f, 6.f), 0.f, PhysicalThing::CollisionFilter::ONE)); // right wall
+	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(0.f, -3.f), sf::Vector2f(8.f, 0.5f), 0.f, PhysicalThing::CollisionFilter::ONE)); // top wall
+	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(0.f, 3.f), sf::Vector2f(8.f, 0.5f), 0.f, PhysicalThing::CollisionFilter::ONE)); // bottom wall
+
 	//m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(-2.5f, -1.5f), 0.15f, 0.f, PhysicalThing::CollisionFilter::ONE));
 	m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(-1.5f, -3.f), 0.15f, 0.f, PhysicalThing::CollisionFilter::ONE));
 	m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(0.0f, -2.f), 0.15f, 0.f, PhysicalThing::CollisionFilter::SIXTEEN));	// Middle
@@ -63,6 +69,8 @@ Game::~Game()
 
 void Game::update(float timestep)
 {
+	deltaTime = timestep;
+
 	// Update the world
 	m_pWorld->Step(timestep, mk_iVelIterations, mk_iVelIterations);
 
@@ -109,9 +117,14 @@ void Game::processKeyboardInput(sf::Keyboard::Key key)
 	case sf::Keyboard::Down:	m_view.move(0.0f, camOffset.y);		break;
 
 		// Player Movement
-	case sf::Keyboard::W:	m_player->move(b2Vec2(0.f, -1.f));		break;
-	case sf::Keyboard::S:	m_player->move(b2Vec2(0.f, 1.f));		break;
-	case sf::Keyboard::A:	m_player->move(b2Vec2(-1.f, 0.f));		break;
-	case sf::Keyboard::D:	m_player->move(b2Vec2(1.f, 0.f));		break;
+	case sf::Keyboard::W:	m_player->move(B2UP);		break;
+	case sf::Keyboard::S:	m_player->move(B2DOWN);		break;
+	case sf::Keyboard::A:	m_player->move(B2LEFT);		break;
+	case sf::Keyboard::D:	m_player->move(B2RIGHT);	break;
+
+		// Player Speed
+	case sf::Keyboard::Q:	m_player->increaseSpeed(0.1f);		break;
+	case sf::Keyboard::E:	m_player->increaseSpeed(-0.1f);		break;
+		
 	}
 }

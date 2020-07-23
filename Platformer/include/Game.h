@@ -11,6 +11,7 @@
 #include "DynamicBlock.h"
 #include "DynamicCircle.h"
 #include "Player.h"
+#include "World.h"
 
 #include "SFMLDebugDraw.h"
 #include "TextureManager.h"
@@ -27,6 +28,7 @@ class Game : public Drawable
 private:
 	Vector2f m_worldSize = Vector2f(8.0f, 6.0f); //!< Size of the physical world in meters (8x6)
 	View m_view; //!< The view used for rendering (maps physical co-ordinates ^ to rendering (SFML) co-ordinates)
+	float deltaTime;
 
 	// Box2D:
 	b2World* m_pWorld = nullptr; //!< Pointer to the Box2D world. Using pointers as BOX2D has it's own memory management.

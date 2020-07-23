@@ -21,7 +21,7 @@ void main() /** Entry point for the application */
 	Game game;
 
 	// Glorious 60 FPS
-	float fFrameTime = 1.f / 60.f;
+	float fFrameTime = 1.f / 60.f;	// 0.01666...
 
 	// Start a clock to provide time for the physics
 	sf::Clock clock;

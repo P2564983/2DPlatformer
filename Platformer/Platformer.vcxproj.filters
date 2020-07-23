@@ -37,6 +37,7 @@
     <ClInclude Include="include\StaticSensor.h" />
     <ClInclude Include="include\SensorContactListener.h" />
     <ClInclude Include="include\Player.h" />
+    <ClInclude Include="include\World.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\DynamicBlock.cpp">
@@ -67,6 +68,7 @@
     <ClCompile Include="src\StaticSensor.cpp" />
     <ClCompile Include="src\SensorContactListener.cpp" />
     <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="SizeGuide.png" />

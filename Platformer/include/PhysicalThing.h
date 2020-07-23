@@ -1,7 +1,7 @@
 #pragma once
 
 /*!
-\file physicalThing.h
+\file PhysicalThing.h
 */
 
 #include <Box2D/Box2D.h>
@@ -10,7 +10,7 @@
 #define RAD2DEG 57.29577f
 
 /*!
-\class PhysicsThing
+\class PhysicalThing
 \brief A simple class with common attributes and a few const values used in a few places. 
 */
 class PhysicalThing 
