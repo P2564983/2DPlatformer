@@ -102,24 +102,22 @@ void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 void Game::processKeyboardInput(sf::Keyboard::Key key)
 {
-	Vector2f camOffset = m_worldSize / 10.f;
-
 	switch (key)
 	{
 		// Toggle Debug Mode
 	case sf::Keyboard::Tab:	toggleDebug();	break;
 
-		// Camera Movement
-	case sf::Keyboard::Right:	m_view.move(camOffset.x, 0.0f);		break;
+		// Camera Movement - Don't need this as camera follows player
+	/*case sf::Keyboard::Right:	m_view.move(camOffset.x, 0.0f);		break;
 	case sf::Keyboard::Left:	m_view.move(-camOffset.x, 0.0f);	break;
 	case sf::Keyboard::Up:		m_view.move(0.0f, -camOffset.y);	break;
-	case sf::Keyboard::Down:	m_view.move(0.0f, camOffset.y);		break;
+	case sf::Keyboard::Down:	m_view.move(0.0f, camOffset.y);		break;*/
 
 		// Player Movement
-	case sf::Keyboard::W:	m_player->move(B2UP);		break;
-	case sf::Keyboard::S:	m_player->move(B2DOWN);		break;
-	case sf::Keyboard::A:	m_player->move(B2LEFT);		break;
-	case sf::Keyboard::D:	m_player->move(B2RIGHT);	break;
+	case Keyboard::W:	case Keyboard::Up:		m_player->move(B2UP);		break;
+	case Keyboard::S:	case Keyboard::Down:	m_player->move(B2DOWN);		break;
+	case Keyboard::A:	case Keyboard::Left:	m_player->move(B2LEFT);		break;
+	case Keyboard::D:	case Keyboard::Right:	m_player->move(B2RIGHT);	break;
 
 		// Player Speed
 	case sf::Keyboard::Q:	m_player->increaseSpeed(0.1f);		break;
@@ -130,14 +128,10 @@ void Game::processKeyboardInput(sf::Keyboard::Key key)
 
 void Game::processMouseScroll(Event::MouseWheelScrollEvent scrollEvent)
 {
-	cout << "PRE:\t View Size: " << m_view.getSize().x << "x" << m_view.getSize().y << endl; 
-
 	// Zoom in
 	if (scrollEvent.delta > 0)
 		m_view.zoom(zoomInFactor);
 	// Zoom out
 	else
 		m_view.zoom(zoomOutFactor);
-
-	cout << "POST:\t View Size: " << m_view.getSize().x << "x" << m_view.getSize().y << endl;
 }
