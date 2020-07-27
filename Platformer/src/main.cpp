@@ -39,6 +39,9 @@ void main() /** Entry point for the application */
 			// Keyboard input
 			if (event.type == sf::Event::KeyPressed)
 				game.processKeyboardInput(event.key.code);
+
+			if(event.type == Event::MouseWheelScrolled)
+				game.processMouseScroll(event.mouseWheelScroll);
 		}
 
 		// Find out how much time has elapsed

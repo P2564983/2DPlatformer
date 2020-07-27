@@ -10,3 +10,6 @@
 #define B2DOWN	b2Vec2(0.f, 1.f)
 #define B2LEFT	b2Vec2(-1.f, 0.f)
 #define B2RIGHT	b2Vec2(1.f, 0.f)
+
+const static float zoomInFactor = 0.9f;
+const static float zoomOutFactor = 1.f / zoomInFactor;

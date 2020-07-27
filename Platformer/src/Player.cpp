@@ -18,5 +18,6 @@ void Player::increaseSpeed(const float amount)
 {
 	m_speed = b2Clamp(m_speed + amount, 0.1f, 5.f);	// Clamp speed between 0.1 and 5
 	std::cout << "Player Speed = " << m_speed << endl;
+	b2Vec2 b2 = m_body->GetPosition();
 }
 

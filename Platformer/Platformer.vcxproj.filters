@@ -38,6 +38,7 @@
     <ClInclude Include="include\SensorContactListener.h" />
     <ClInclude Include="include\Player.h" />
     <ClInclude Include="include\World.h" />
+    <ClInclude Include="src\main.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\DynamicBlock.cpp">

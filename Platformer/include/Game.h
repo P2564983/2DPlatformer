@@ -56,5 +56,6 @@ public:
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const; //!< Draw the game to the render context
 	void toggleDebug() { m_debug = !m_debug; } //!< Toggle for debug drawing
 
-	void processKeyboardInput(sf::Keyboard::Key key);
+	void processKeyboardInput(Keyboard::Key key);
+	void processMouseScroll(Event::MouseWheelScrollEvent scrollEvent);
 };

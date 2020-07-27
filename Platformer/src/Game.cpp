@@ -53,10 +53,10 @@ Game::Game()
 	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(0.f, -3.f), sf::Vector2f(8.f, 0.5f), 0.f, PhysicalThing::CollisionFilter::ONE)); // top wall
 	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(0.f, 3.f), sf::Vector2f(8.f, 0.5f), 0.f, PhysicalThing::CollisionFilter::ONE)); // bottom wall
 
-	//m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(-2.5f, -1.5f), 0.15f, 0.f, PhysicalThing::CollisionFilter::ONE));
-	m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(-1.5f, -3.f), 0.15f, 0.f, PhysicalThing::CollisionFilter::ONE));
+	// Balls
+	m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(-1.5f, -2.5f), 0.15f, 0.f, PhysicalThing::CollisionFilter::ONE));
 	m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(0.0f, -2.f), 0.15f, 0.f, PhysicalThing::CollisionFilter::SIXTEEN));	// Middle
-	m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(1.5f, -3.f), 0.15f, 0.f, PhysicalThing::CollisionFilter::ONE));
+	m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(1.5f, -1.5f), 0.15f, 0.f, PhysicalThing::CollisionFilter::ONE));
 	m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(2.5f, -2.5f), 0.15f, 0.f, PhysicalThing::CollisionFilter::ONE));
 }
 
@@ -106,9 +106,7 @@ void Game::processKeyboardInput(sf::Keyboard::Key key)
 	switch (key)
 	{
 		// Toggle Debug Mode
-	case sf::Keyboard::Tab:
-		toggleDebug();
-		break;
+	case sf::Keyboard::Tab:	toggleDebug();	break;
 
 		// Camera Movement
 	case sf::Keyboard::Right:	m_view.move(camOffset.x, 0.0f);		break;
@@ -127,4 +125,18 @@ void Game::processKeyboardInput(sf::Keyboard::Key key)
 	case sf::Keyboard::E:	m_player->increaseSpeed(-0.1f);		break;
 		
 	}
+}
+
+void Game::processMouseScroll(Event::MouseWheelScrollEvent scrollEvent)
+{
+	cout << "PRE:\t View Size: " << m_view.getSize().x << "x" << m_view.getSize().y << endl; 
+
+	// Zoom in
+	if (scrollEvent.delta > 0)
+		m_view.zoom(zoomInFactor);
+	// Zoom out
+	else
+		m_view.zoom(zoomOutFactor);
+
+	cout << "POST:\t View Size: " << m_view.getSize().x << "x" << m_view.getSize().y << endl;
 }
