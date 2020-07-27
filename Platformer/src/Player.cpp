@@ -21,3 +21,9 @@ void Player::increaseSpeed(const float amount)
 	b2Vec2 b2 = m_body->GetPosition();
 }
 
+const Vector2f Player::getPosition() const
+{
+	b2Vec2 pos = m_body->GetPosition();
+	return Vector2f(pos.x, pos.y);
+}
+

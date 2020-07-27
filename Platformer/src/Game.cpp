@@ -47,11 +47,11 @@ Game::Game()
 	m_dynamicBlocks.push_back(DynamicBlock(m_pWorld, sf::Vector2f(-2.5f, -3.f), sf::Vector2f(0.1f, 0.5f), 0.f));*/
 	
 	// border around scene and ground
-	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(0.f, 2.5f), sf::Vector2f(8.f, 1.f), 0.f, PhysicalThing::CollisionFilter::ONE));
-	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(-4.f, 0.f), sf::Vector2f(0.5f, 6.f), 0.f, PhysicalThing::CollisionFilter::ONE)); // left wall
-	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(4.f, 0.f), sf::Vector2f(0.5f, 6.f), 0.f, PhysicalThing::CollisionFilter::ONE)); // right wall
-	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(0.f, -3.f), sf::Vector2f(8.f, 0.5f), 0.f, PhysicalThing::CollisionFilter::ONE)); // top wall
-	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(0.f, 3.f), sf::Vector2f(8.f, 0.5f), 0.f, PhysicalThing::CollisionFilter::ONE)); // bottom wall
+	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(0.f, 2.5f), sf::Vector2f(8.f, 1.f), 0.f, PhysicalThing::CollisionFilter::ONE));	// ground
+	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(-8.f, 0.f), sf::Vector2f(0.5f, 12.f), 0.f, PhysicalThing::CollisionFilter::ONE)); // left wall
+	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(8.f, 0.f), sf::Vector2f(0.5f, 12.f), 0.f, PhysicalThing::CollisionFilter::ONE)); // right wall
+	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(0.f, -6.f), sf::Vector2f(16.f, 0.5f), 0.f, PhysicalThing::CollisionFilter::ONE)); // top wall
+	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(0.f, 6.f), sf::Vector2f(16.f, 0.5f), 0.f, PhysicalThing::CollisionFilter::ONE)); // bottom wall
 
 	// Balls
 	m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(-1.5f, -2.5f), 0.15f, 0.f, PhysicalThing::CollisionFilter::ONE));
@@ -69,7 +69,8 @@ Game::~Game()
 
 void Game::update(float timestep)
 {
-	deltaTime = timestep;
+	// Make camera follow player
+	m_view.setCenter(m_player->getPosition());
 
 	// Update the world
 	m_pWorld->Step(timestep, mk_iVelIterations, mk_iVelIterations);

@@ -28,4 +28,6 @@ public:
 	// Player movement
 	void move(const b2Vec2& direction);
 	void increaseSpeed(const float amount);
+
+	const Vector2f getPosition() const;
 };
