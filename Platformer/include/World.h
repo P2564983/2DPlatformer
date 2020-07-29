@@ -6,6 +6,10 @@
 
 #include <Box2D/Box2D.h>
 
+#define DEGTORAD	0.0174532925199432957f
+#define RADTODEG	57.295779513082320876f
+#define PI			3.141592654
+
 #define B2UP	b2Vec2(0.f, -1.f)
 #define B2DOWN	b2Vec2(0.f, 1.f)
 #define B2LEFT	b2Vec2(-1.f, 0.f)

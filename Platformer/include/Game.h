@@ -48,6 +48,9 @@ private:
 	bool m_debug = false; //!< Toggle for debug drawing
 	SFMLDebugDraw m_debugDraw; //!< Box2D debug drawing
 
+	// Misc
+	RectangleShape clickedPointRect;
+
 public:
 	Game(); //!< Constructor which sets up the game
 	~Game(); //!< Destructor which cleans all the pointer memory up
@@ -57,4 +60,5 @@ public:
 
 	void processKeyboardInput(Keyboard::Key key);
 	void processMouseScroll(Event::MouseWheelScrollEvent scrollEvent);
+	void processMousePress(Event::MouseButtonEvent mouseButtonEvent, Vector2f& viewPos);
 };

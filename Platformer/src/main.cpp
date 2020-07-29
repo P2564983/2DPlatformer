@@ -40,8 +40,16 @@ void main() /** Entry point for the application */
 			if (event.type == sf::Event::KeyPressed)
 				game.processKeyboardInput(event.key.code);
 
+			// Mouse Wheel Scroll
 			if(event.type == Event::MouseWheelScrolled)
 				game.processMouseScroll(event.mouseWheelScroll);
+
+			// Mouse Click
+			if (event.type == Event::MouseButtonPressed)
+			{
+				Vector2f mousePosView = window.mapPixelToCoords(Vector2i(event.mouseButton.x, event.mouseButton.y));
+				game.processMousePress(event.mouseButton, mousePosView);
+			}
 		}
 
 		// Find out how much time has elapsed
