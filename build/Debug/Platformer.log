@@ -1,2 +1,7 @@
-﻿  Player.cpp
+﻿  Coin.cpp
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\Coin.cpp(79,56): warning C4390: ';': empty controlled statement found; is this the intent?
+  CoinPlayerContactListener.cpp
+  Game.cpp
+  main.cpp
+  Generating Code...
   Platformer.vcxproj -> D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\..\bin\Platformer.exe

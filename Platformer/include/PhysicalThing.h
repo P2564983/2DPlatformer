@@ -31,5 +31,5 @@ public:
 		SIXTEEN = 16
 	}; //!< Enums for collision filtering
 
-	void setUserData(void* data) { m_body->SetUserData(data); }; //!< Set the userdata of the body
+	void setUserData(void* data); //!< Set the userdata of the body
 };

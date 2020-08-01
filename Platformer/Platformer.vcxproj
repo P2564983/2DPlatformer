@@ -96,6 +96,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\BlockCircleContactListener.h" />
+    <ClInclude Include="include\Coin.h" />
+    <ClInclude Include="include\CoinPlayerContactListener.h" />
     <ClInclude Include="include\DynamicBlock.h" />
     <ClInclude Include="include\DynamicCircle.h" />
     <ClInclude Include="include\Game.h" />
@@ -111,7 +113,10 @@
     <ClInclude Include="src\main.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="include\PhysicalThing.cpp" />
     <ClCompile Include="src\BlockCircleContactListener.cpp" />
+    <ClCompile Include="src\Coin.cpp" />
+    <ClCompile Include="src\CoinPlayerContactListener.cpp" />
     <ClCompile Include="src\DynamicBlock.cpp" />
     <ClCompile Include="src\DynamicCircle.cpp" />
     <ClCompile Include="src\Game.cpp" />

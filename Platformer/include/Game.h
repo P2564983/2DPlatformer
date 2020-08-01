@@ -6,12 +6,15 @@
 
 #include <Box2D/Box2D.h>
 #include <SFML/Graphics.hpp>
+#include <vector>
 
 #include "StaticBlock.h"
 #include "DynamicBlock.h"
 #include "DynamicCircle.h"
 #include "Player.h"
 #include "World.h"
+#include "Coin.h"
+#include "CoinPlayerContactListener.h"
 
 #include "SFMLDebugDraw.h"
 #include "TextureManager.h"
@@ -41,15 +44,21 @@ private:
 	vector<StaticBlock> m_staticBlocks; //!< A collection of fixed blocks. 
 	vector<DynamicBlock> m_dynamicBlocks; //!< A collection of moving blocks. 
 	vector<DynamicCircle> m_balls; //!< A collection of moving balls. 
+	//vector<Coin> m_coins; //!< A collection of collectible coins.
+	vector<Coin*> m_coins; //!< A collection of collectible coins.
 
-	// Tecture Manzager
+	// Texture Manager
 	TextureManager textures;		//!< Manages all textures
+
+	// Contact Listeners
+	CoinPlayerContactListener coinPlayerCL;
 
 	bool m_debug = false; //!< Toggle for debug drawing
 	SFMLDebugDraw m_debugDraw; //!< Box2D debug drawing
 
 	// Misc
 	RectangleShape clickedPointRect;
+	int remainingJumpSteps = 0;
 
 public:
 	Game(); //!< Constructor which sets up the game

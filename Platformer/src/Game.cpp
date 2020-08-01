@@ -47,6 +47,7 @@ Game::Game()
 	m_dynamicBlocks.push_back(DynamicBlock(m_pWorld, sf::Vector2f(-2.5f, -3.f), sf::Vector2f(0.1f, 0.5f), 0.f));*/
 	
 	// border around scene and ground
+	m_staticBlocks.reserve(5);
 	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(0.f, 2.5f), sf::Vector2f(8.f, 1.f), 0.f, PhysicalThing::CollisionFilter::ONE));	// ground
 	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(-16.f, 0.f), sf::Vector2f(0.5f, 24.f), 0.f, PhysicalThing::CollisionFilter::ONE)); // left wall
 	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(16.f, 0.f), sf::Vector2f(0.5f, 24.f), 0.f, PhysicalThing::CollisionFilter::ONE)); // right wall
@@ -54,15 +55,30 @@ Game::Game()
 	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(0.f, 12.f), sf::Vector2f(32.f, 0.5f), 0.f, PhysicalThing::CollisionFilter::ONE)); // bottom wall
 
 	// Balls
-	m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(-1.5f, -2.5f), 0.15f, 0.f, PhysicalThing::CollisionFilter::ONE));
-	m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(0.0f, -2.f), 0.15f, 0.f, PhysicalThing::CollisionFilter::SIXTEEN));	// Middle
-	m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(1.5f, -1.5f), 0.15f, 0.f, PhysicalThing::CollisionFilter::ONE));
-	m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(2.5f, -2.5f), 0.15f, 0.f, PhysicalThing::CollisionFilter::ONE));
+	m_balls.reserve(5);
+	//m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(-1.5f, -2.5f), 0.15f, 0.f, PhysicalThing::CollisionFilter::ONE));
+	//m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(0.0f, -2.f), 0.15f, 0.f, PhysicalThing::CollisionFilter::SIXTEEN));	// Middle
+	//m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(1.5f, -1.5f), 0.15f, 0.f, PhysicalThing::CollisionFilter::ONE));
+	//m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(2.5f, -2.5f), 0.15f, 0.f, PhysicalThing::CollisionFilter::ONE));
+
+	// Collectibles
+	m_coins.reserve(1);
+	//m_coins.push_back(Coin(m_pWorld, Vector2f(0, 1.5f)));
+	m_coins.push_back(new Coin(m_pWorld, Vector2f(0, 1.5f))); // memory leak?
+	m_coins.push_back(new Coin(m_pWorld, Vector2f(1.0f, 1.5f))); // memory leak?
 
 	// misc - DELETE
 	clickedPointRect.setSize(Vector2f(0.1f, 0.1f));
 	clickedPointRect.setPosition(0, 0);
 	clickedPointRect.setFillColor(Color::Magenta);
+
+	// Update User Data
+	m_player->setUserData(new pair<string, void*>(typeid(decltype(m_player)).name(), &m_player));
+	//for (Coin& coin : m_coins) coin.setUserData();
+	for (Coin* coin : m_coins) coin->setUserData();
+
+	// Set Contact Listeners
+	m_pWorld->SetContactListener(&coinPlayerCL); // The Coin/Player Contact Listener
 }
 
 Game::~Game()
@@ -75,8 +91,14 @@ Game::~Game()
 void Game::update(float timestep)
 {
 	// Rotate player to clicked point
-	b2Vec2 rotTarget(clickedPointRect.getPosition().x, clickedPointRect.getPosition().y);
-	m_player->rotateTowards(rotTarget, 1 * DEG2RAD);
+	/*b2Vec2 rotTarget(clickedPointRect.getPosition().x, clickedPointRect.getPosition().y);
+	m_player->rotateTowards(rotTarget, 1 * DEG2RAD);*/
+
+	if (remainingJumpSteps)
+	{
+		m_player->jump();
+		remainingJumpSteps = max(0, remainingJumpSteps - 1);
+	}
 
 	// Make camera follow player
 	m_view.setCenter(m_player->getPosition());
@@ -84,6 +106,32 @@ void Game::update(float timestep)
 	// Update the world
 	m_pWorld->Step(timestep, mk_iVelIterations, mk_iVelIterations);
 
+	// Check if anything needs to be destroyed: (Consider making an abstract class called destoryable which can be inherited)
+	for (auto it = m_coins.begin(); it != m_coins.end(); )
+	{
+		// Object need not be destoryed, continue loop
+		if (!(*it)->destroy())
+		{
+			it++;
+			continue;
+		}
+
+		// Remove from vector list (destroy() method above already removes body from box2d physics world):
+		if (it == m_coins.begin())
+		{
+			m_coins.erase(it);
+			it = m_coins.begin();
+		}
+		else
+		{
+			vector<Coin*>::iterator prev = it - 1;
+			m_coins.erase(it);
+			it = prev + 1;
+		}
+
+
+	}
+	
 	// Update each dyanmic element - effectively update render information
 	for (DynamicBlock& block : m_dynamicBlocks) block.update();
 	for (DynamicCircle& ball : m_balls) ball.update();
@@ -103,6 +151,7 @@ void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	for (StaticBlock block : m_staticBlocks) target.draw(block);
 	for (DynamicBlock block : m_dynamicBlocks) target.draw(block);
 	for (DynamicCircle ball : m_balls) target.draw(ball);
+	for (Coin* coin : m_coins) target.draw(*coin);
 	target.draw(*m_player);
 	target.draw(clickedPointRect);	// REMOVE
 
@@ -124,6 +173,7 @@ void Game::processKeyboardInput(sf::Keyboard::Key key)
 	case Keyboard::D:	case Keyboard::Right:	m_player->move(B2RIGHT);	break;*/
 
 	// Linear Movement
+	case Keyboard::W:	m_player->jump();					break;
 	case Keyboard::A:	m_player->move(B2LEFT);				break;
 	case Keyboard::S:	m_player->move(b2Vec2(0, 0));		break;
 	case Keyboard::D:	m_player->move(B2RIGHT);			break;
@@ -132,6 +182,16 @@ void Game::processKeyboardInput(sf::Keyboard::Key key)
 		// Player Speed
 	case sf::Keyboard::Q:	m_player->increaseSpeed(0.1f);		break;
 	case sf::Keyboard::E:	m_player->increaseSpeed(-0.1f);		break;
+
+		// Angular Velocity Stuff
+	case sf::Keyboard::R:	m_player->rotateTowards(b2Vec2());				break;
+	case sf::Keyboard::T:	m_player->getBody()->SetAngularVelocity(0);		break;
+	case sf::Keyboard::Y:	cout << "Players Angular Velocity = " << m_player->getBody()->GetAngularVelocity() << endl;		break;
+
+		// Misc/Debug
+	case Keyboard::O: 
+
+		break;
 
 		
 	}
@@ -153,6 +213,6 @@ void Game::processMousePress(Event::MouseButtonEvent mouseButtonEvent, Vector2f&
 	if (mouseButtonEvent.button == Mouse::Button::Left)
 	{
 		clickedPointRect.setPosition(viewPos);
-		m_player->rotateTowards(b2Vec2(viewPos.x, viewPos.y));
+		//m_player->rotateTowards(b2Vec2(viewPos.x, viewPos.y));
 	}
 }

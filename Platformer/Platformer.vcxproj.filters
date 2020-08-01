@@ -39,6 +39,8 @@
     <ClInclude Include="include\Player.h" />
     <ClInclude Include="include\World.h" />
     <ClInclude Include="src\main.h" />
+    <ClInclude Include="include\Coin.h" />
+    <ClInclude Include="include\CoinPlayerContactListener.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\DynamicBlock.cpp">
@@ -70,6 +72,9 @@
     <ClCompile Include="src\SensorContactListener.cpp" />
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\World.cpp" />
+    <ClCompile Include="src\Coin.cpp" />
+    <ClCompile Include="src\CoinPlayerContactListener.cpp" />
+    <ClCompile Include="include\PhysicalThing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="SizeGuide.png" />

@@ -22,7 +22,7 @@ class Player : public PhysicalThing, public Drawable
 {
 private:
 	float m_speed;			// Player movement speed
-	CircleShape m_shape;	// The drawable object
+	RectangleShape m_shape;	// The drawable object
 
 	float m_density = 1.0f;			// density * area = mass
 	float m_friction = 0.4f;		// 0 = completely frictionless ; 1 = max friction
@@ -33,6 +33,7 @@ public:
 	
 	// Player movement
 	void move(const b2Vec2& direction);
+	void jump();
 	void rotateTowards(b2Vec2 target);
 	bool rotateTowards(b2Vec2 target, float changeRadians);
 	void increaseSpeed(const float amount);
