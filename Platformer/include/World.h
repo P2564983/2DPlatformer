@@ -20,3 +20,9 @@ using namespace std;
 
 const static float zoomInFactor = 0.9f;
 const static float zoomOutFactor = 1.f / zoomInFactor;
+
+enum class FixtureType
+{
+	Sensor = 1,
+	Ground
+};

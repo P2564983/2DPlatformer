@@ -38,7 +38,9 @@ void main() /** Entry point for the application */
 
 			// Keyboard input
 			if (event.type == sf::Event::KeyPressed)
-				game.processKeyboardInput(event.key.code);
+				game.processKeyboardInput(event.key.code, true);
+			if (event.type == sf::Event::KeyReleased)
+				game.processKeyboardInput(event.key.code, false);
 
 			// Mouse Wheel Scroll
 			if(event.type == Event::MouseWheelScrolled)

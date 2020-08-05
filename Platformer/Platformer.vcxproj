@@ -103,6 +103,8 @@
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\PhysicalThing.h" />
     <ClInclude Include="include\Player.h" />
+    <ClInclude Include="include\PlayerGroundContactListener.h" />
+    <ClInclude Include="include\RotatingPlatform.h" />
     <ClInclude Include="include\SensorContactListener.h" />
     <ClInclude Include="include\SFMLDebugDraw.h" />
     <ClInclude Include="include\Scene.h" />
@@ -110,7 +112,6 @@
     <ClInclude Include="include\StaticSensor.h" />
     <ClInclude Include="include\TextureManager.h" />
     <ClInclude Include="include\World.h" />
-    <ClInclude Include="src\main.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="include\PhysicalThing.cpp" />
@@ -121,6 +122,8 @@
     <ClCompile Include="src\DynamicCircle.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\PlayerGroundContactListener.cpp" />
+    <ClCompile Include="src\RotatingPlatform.cpp" />
     <ClCompile Include="src\SensorContactListener.cpp" />
     <ClCompile Include="src\SFMLDebugDraw.cpp" />
     <ClCompile Include="src\Scene.cpp" />

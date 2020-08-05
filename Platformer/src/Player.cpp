@@ -1,7 +1,6 @@
 #include "..\include\Player.h"
 
-Player::Player(b2World* world, const sf::Vector2f& position)
-	//: DynamicBlock(world, position, sf::Vector2f(0.5f, 0.5f), 0, PhysicalThing::CollisionFilter::ONE)
+Player::Player(b2World* world, const sf::Vector2f& position, Color colour)
 {
 	//set up a dynamic body
 	b2BodyDef bodyDef;
@@ -13,8 +12,11 @@ Player::Player(b2World* world, const sf::Vector2f& position)
 
 	//prepare a shape definition
 	b2PolygonShape shape;
-	shape.SetAsBox(0.25f, 0.25f);
+	//shape.SetAsBox(0.25f, 0.25f);
+	shape.SetAsBox(playerHalfSize.x, playerHalfSize.y);
 	shape.m_radius = 0;
+
+	// Main fixture attached to body represting player
 	b2FixtureDef fixtureDef;
 	fixtureDef.shape = &shape;
 	fixtureDef.density = m_density;		
@@ -22,16 +24,24 @@ Player::Player(b2World* world, const sf::Vector2f& position)
 	fixtureDef.restitution = m_restitution;	
 	m_body->CreateFixture(&fixtureDef);	//add a fixture to the body
 
+	// Smaller fixture attached to body base used to determine jump
+	shape.SetAsBox(sensorHalfSize.x, sensorHalfSize.y, b2Vec2(0, playerHalfSize.y), 0);
+	fixtureDef.isSensor = true;
+	fixtureDef.density = 0;
+	groundSensorFixture = m_body->CreateFixture(&fixtureDef);
+	groundSensorFixture->SetUserData((void *) (int)FixtureType::Sensor);
+
 	// SFML shape
-	m_shape.setPosition(position);
-	m_shape.setSize(Vector2f(0.5f, 0.5f));
-	m_shape.setOrigin(0.25f, 0.25f);
+	m_shape.setSize(Vector2f(playerHalfSize.x * 2, playerHalfSize.y * 2));
+	m_shape.setOrigin(playerHalfSize.x, playerHalfSize.y); // origin is now centre of shape (instead of top left)
+	m_shape.setPosition(position);	// position set after origin changed
 	m_shape.setRotation(0);
-	m_shape.setFillColor(Color::Black);
+	m_shape.setFillColor(colour);
 	m_shape.setOutlineThickness(0.f);
 
 	// Other properties
-	m_speed = 3.f;
+	m_speed = 3.0f;
+	jump(); // get the clock running
 }
 
 void Player::move(const b2Vec2& direction) 
@@ -51,6 +61,15 @@ void Player::move(const b2Vec2& direction)
 
 void Player::jump()
 {
+	static Clock clock;
+
+	// Determine if jump is possible
+	if (numOfGroundContacts <= 0) return; // player must be grounded
+
+	// Prevent jumps for x milliseconds
+	if (clock.getElapsedTime().asMilliseconds() < 1000) return;
+	clock.restart();
+
 	//// Setting velocity directly
 	//b2Vec2 vel = m_body->GetLinearVelocity();
 	//vel.y = -10;	// upwards - don't change x velocity (- is up; + is down)
@@ -61,7 +80,7 @@ void Player::jump()
 	//// ToDo: Add 'int remainingJumpSteps = 0;' to game.h and then keep calling jump() in game::update()
 
 	// Using An Impulse
-	float impulse = m_body->GetMass() * -m_speed;
+	float impulse = m_body->GetMass() * -(m_speed);
 	m_body->ApplyLinearImpulseToCenter(b2Vec2(0, impulse), true);
 
 }
@@ -124,6 +143,14 @@ const Vector2f Player::getPosition() const
 	return Vector2f(pos.x, pos.y);
 }
 
+void Player::registerGroundContact(const int change)
+{
+	if (change > 0)
+		numOfGroundContacts++;
+	else if (change < 0)
+		numOfGroundContacts--;
+}
+
 void Player::update()
 {
 	b2Vec2 pos = m_body->GetPosition();
@@ -131,11 +158,37 @@ void Player::update()
 
 	float angle = m_body->GetAngle() * RAD2DEG;
 	m_shape.setRotation(angle);
+
+	static bool runOnce = true;
+	static Color initialColour;
+	if (runOnce)
+	{
+		initialColour = m_shape.getFillColor();
+		runOnce = false;
+	}
+
+	if (numOfGroundContacts > 0)
+		m_shape.setFillColor(Color::Red);
+	else
+		m_shape.setFillColor(initialColour);
 }
 
 void Player::draw(RenderTarget& target, RenderStates states) const
 {
 	target.draw(m_shape); // Draw the Circle Shape
+
+	// Draw sensor fixture
+	return;
+	RectangleShape sensorShape;
+	sensorShape.setSize(Vector2f(sensorHalfSize.x * 2, sensorHalfSize.y * 2));
+	sensorShape.setOrigin(sensorHalfSize.x, sensorHalfSize.y); // origin at centre
+	sensorShape.setFillColor(Color::Yellow);
+	sensorShape.setRotation(0);
+	Vector2f playerPosition = m_shape.getPosition();
+	sensorShape.setPosition(playerPosition.x, playerPosition.y + playerHalfSize.y);
+	target.draw(sensorShape);
+	return;
+
 
 	// Add a line
 	RectangleShape line(Vector2f(0.25f, 0.01f));
@@ -143,6 +196,11 @@ void Player::draw(RenderTarget& target, RenderStates states) const
 	line.setOrigin(0.f, 0.005f);
 	line.rotate(m_shape.getRotation());
 	target.draw(line);
+}
+
+void Player::setUserData()
+{
+	m_body->SetUserData(new pair<string, void*>(typeid(Player).name(), this));
 }
 
 b2Body* Player::getBody() const

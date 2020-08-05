@@ -15,6 +15,8 @@
 #include "World.h"
 #include "Coin.h"
 #include "CoinPlayerContactListener.h"
+#include "PlayerGroundContactListener.h"
+#include "RotatingPlatform.h"
 
 #include "SFMLDebugDraw.h"
 #include "TextureManager.h"
@@ -44,21 +46,22 @@ private:
 	vector<StaticBlock> m_staticBlocks; //!< A collection of fixed blocks. 
 	vector<DynamicBlock> m_dynamicBlocks; //!< A collection of moving blocks. 
 	vector<DynamicCircle> m_balls; //!< A collection of moving balls. 
-	//vector<Coin> m_coins; //!< A collection of collectible coins.
 	vector<Coin*> m_coins; //!< A collection of collectible coins.
+	vector<RotatingPlatform*> m_rotPlatforms; //!< A collection of rotating platforms.
 
 	// Texture Manager
 	TextureManager textures;		//!< Manages all textures
 
 	// Contact Listeners
 	CoinPlayerContactListener coinPlayerCL;
+	PlayerGroundContactListener playerGroundCL;
 
 	bool m_debug = false; //!< Toggle for debug drawing
 	SFMLDebugDraw m_debugDraw; //!< Box2D debug drawing
 
 	// Misc
 	RectangleShape clickedPointRect;
-	int remainingJumpSteps = 0;
+	b2Vec2 playerMoveDirection;
 
 public:
 	Game(); //!< Constructor which sets up the game
@@ -67,7 +70,8 @@ public:
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const; //!< Draw the game to the render context
 	void toggleDebug() { m_debug = !m_debug; } //!< Toggle for debug drawing
 
-	void processKeyboardInput(Keyboard::Key key);
+	void processPlayerMovement();
+	void processKeyboardInput(Keyboard::Key key, bool pressed); // pressed = true when pressed; false when released
 	void processMouseScroll(Event::MouseWheelScrollEvent scrollEvent);
 	void processMousePress(Event::MouseButtonEvent mouseButtonEvent, Vector2f& viewPos);
 };

@@ -8,7 +8,6 @@ Coin::Coin(b2World* world, const sf::Vector2f& position)
 	l_bodyDef.position.Set(position.x, position.y);
 	l_bodyDef.angle = 0;
 	l_bodyDef.type = b2_staticBody;
-	l_bodyDef.type = b2_kinematicBody; // REMOVE
 	m_body = world->CreateBody(&l_bodyDef);
 
 	// Box2D Shape
@@ -19,7 +18,8 @@ Coin::Coin(b2World* world, const sf::Vector2f& position)
 	b2FixtureDef l_fixtureDef;
 	l_fixtureDef.density = mk_fDensity;
 	l_fixtureDef.friction = mk_fFriction;
-	l_fixtureDef.restitution = mk_fRestitution;
+	l_fixtureDef.restitution = mk_fRestitution; 
+	l_fixtureDef.isSensor = true; // Make it a sensor to become aware of collision
 	l_fixtureDef.shape = &l_shape;
 	m_body->CreateFixture(&l_fixtureDef);
 

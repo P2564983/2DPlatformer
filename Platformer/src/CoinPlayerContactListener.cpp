@@ -9,47 +9,36 @@ void CoinPlayerContactListener::BeginContact(b2Contact* contact)
 	// Get the User Data for the bodies involved in collision:
 	void* uDA = bodyA->GetUserData();
 	void* uDB = bodyB->GetUserData();
-	if (!uDA || !uDB) return;
+	if (!uDA || !uDB) return; // No user data was set, we cannot do anything.
 
 	// Attempt to cast user data so we can see what type of objects collided
 	pair<string, void*> userDataA = *((pair<string, void*>*) uDA);
 	pair<string, void*> userDataB = *((pair<string, void*>*) uDB);
 	// Note userDataX.first = string (name of type); userDataX.second = void* (pointer to object).
 
-	// For now we just want to know if anything is touching the coin (regardless of what it is)
+	// Determine what is what so onContact() is called on the coin object
 	string coinName = typeid(Coin).name();
-	Coin* coin = nullptr;
-	// Something has touched a coin
-	if (coinName == userDataA.first)	coin = static_cast<Coin*>(userDataA.second);
-	if (coinName == userDataB.first)	coin = static_cast<Coin*>(userDataB.second);
+	string playerName = typeid(Player).name();
 
-	if (coin != nullptr)
-	{
-		coin->onContact();
-	}
-	//if (coin != nullptr)	cout << "BeginContact:\tCoin was involved in collision" << endl;
-	return;
-
-
-
-	// ToDo: Finish this code
 	// Check if bodyA is the player:
-	if (typeid(Player).name() == userDataA.first)
+	if (userDataA.first == playerName)
 	{
 		// Check if player has collided with coin:
-		if (typeid(Coin).name() == userDataB.first)
+		if (userDataB.first == coinName)
 		{
 			Coin* coin = static_cast<Coin*>(userDataB.second);
+			if (coin) coin->onContact();
 		}
 	}
 
-	// Check if bodyB is the player:
-	if (typeid(Player).name() == userDataB.first)
+	// Otherwise check if bodyB is the player:
+	if (userDataB.first == playerName)
 	{
 		// Check if player has collided with coin:
-		if (typeid(Coin).name() == userDataA.first)
+		if (userDataA.first == coinName)
 		{
-
+			Coin* coin = static_cast<Coin*>(userDataA.second);
+			if (coin) coin->onContact();
 		}
 	}
 }
@@ -70,14 +59,29 @@ void CoinPlayerContactListener::EndContact(b2Contact* contact)
 	pair<string, void*> userDataB = *((pair<string, void*>*) uDB);
 	// Note userDataX.first = string (name of type); userDataX.second = void* (pointer to object).
 
-	// For now we just want to know if a coin was involved in collision
+	// Determine what is what so onSeperation() is called on the coin object
 	string coinName = typeid(Coin).name();
-	Coin* coin = nullptr;
-	// Something had touched a coin
-	if (coinName == userDataA.first)	coin = static_cast<Coin*>(userDataA.second);
-	if (coinName == userDataB.first)	coin = static_cast<Coin*>(userDataB.second);
+	string playerName = typeid(Player).name();
 
-	if (coin != nullptr)	coin->onSeperation();
-	//if (coin != nullptr)	cout << "EndContact:\tCoin was involved in collision" << endl;
-	return;
+	// Check if bodyA is the player:
+	if (userDataA.first == playerName)
+	{
+		// Check if player has collided with coin:
+		if (userDataB.first == coinName)
+		{
+			Coin* coin = static_cast<Coin*>(userDataB.second);
+			if (coin) coin->onContact();
+		}
+	}
+
+	// Otherwise check if bodyB is the player:
+	if (userDataB.first == playerName)
+	{
+		// Check if player has collided with coin:
+		if (userDataA.first == coinName)
+		{
+			Coin* coin = static_cast<Coin*>(userDataA.second);
+			if (coin) coin->onContact();
+		}
+	}
 }

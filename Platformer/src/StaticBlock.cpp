@@ -19,7 +19,8 @@ StaticBlock::StaticBlock(b2World* world, const sf::Vector2f& position, const sf:
 	b2FixtureDef l_fixtureDef;
 	l_fixtureDef.density = mk_fDensity;
 	l_fixtureDef.friction = mk_fFriction;
-	l_fixtureDef.restitution = mk_fRestitution;
+	//l_fixtureDef.restitution = mk_fRestitution;
+	l_fixtureDef.restitution = 0; // Static Blocks are not bouncy
 	l_fixtureDef.shape = &l_shape;
 	// Collision Filtering
 	l_fixtureDef.filter.categoryBits = type;
