@@ -32,4 +32,8 @@ public:
 	}; //!< Enums for collision filtering
 
 	void setUserData(void* data); //!< Set the userdata of the body
+
+	// Misc
+	b2Vec2 getPositionB2();
+	b2Body* getBody();
 };

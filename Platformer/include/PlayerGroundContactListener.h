@@ -8,6 +8,7 @@
 
 #include "Player.h"
 #include "World.h"
+#include"WorldGenerator.h"
 
 /*! \class PlayerGroundContactListener
 \brief A listener which listens for contacts between player and ground/anything below

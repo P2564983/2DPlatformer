@@ -13,7 +13,7 @@ Game::Game()
 	m_pWorld = new b2World(mk_gravity);
 
 	// Playable controller
-	m_player = new Player(m_pWorld, Vector2f(-13.0f, 9.3f), Color::Black);
+	m_player = new Player(m_pWorld, Vector2f(0.0f, -1.0f), Color::Black); // change y to -1
 
 	// Debug Draw
 	m_debugDraw.setWorld(m_pWorld);
@@ -27,36 +27,17 @@ Game::Game()
 	m_background.setPosition(0.0f, 0.0f);
 	m_background.setTexture(textures.getTexture("Background"));
 
-	// This could all be read in from a file, for now hard coded magic numbers
-	// Shouldn't really use push back, better to pre allocate and assign
-	// Infact to do this properly I should use the factory pattern with a level file parser
-	// Static Game Objects
-	/*m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(0.f, 2.5f), sf::Vector2f(5.f, 0.5f), 0.f));
-	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(-0.5f, -2.f), sf::Vector2f(4.f, 0.2f), 10.f));
-	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(1.f, -0.5f), sf::Vector2f(5.5f, 0.2f), -10.f));
-	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(3.8f, -1.6f), sf::Vector2f(0.2f, 1.f), -10.f));
-	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(-3.f, 1.f), sf::Vector2f(2.5f, 0.2f), 25.f));
-
-	m_dynamicBlocks.push_back(DynamicBlock(m_pWorld, sf::Vector2f(-1.f, 2.f), sf::Vector2f(0.1f, 0.5f), 0.f));
-	m_dynamicBlocks.push_back(DynamicBlock(m_pWorld, sf::Vector2f(-0.7f, 2.f), sf::Vector2f(0.1f, 0.5f), 0.f));
-	m_dynamicBlocks.push_back(DynamicBlock(m_pWorld, sf::Vector2f(-0.85f, 1.7f), sf::Vector2f(0.5f, 0.1f), 0.f));
-
-	m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(-1.5f, -3.f), 0.15f, 0.f));
-	m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(-0.85f, 1.6f), 0.1f, 0.f));
-
-	m_dynamicBlocks.push_back(DynamicBlock(m_pWorld, sf::Vector2f(-2.5f, -3.f), sf::Vector2f(0.1f, 0.5f), 0.f));*/
-	
 	// border around scene and ground
-	m_staticBlocks.reserve(5);
-	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(-16.f, 0.f), sf::Vector2f(0.5f, 24.f), 0.f, PhysicalThing::CollisionFilter::ONE)); // left wall
-	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(16.f, 0.f), sf::Vector2f(0.5f, 24.f), 0.f, PhysicalThing::CollisionFilter::ONE)); // right wall
-	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(0.f, -12.f), sf::Vector2f(32.f, 0.5f), 0.f, PhysicalThing::CollisionFilter::ONE)); // top wall
-	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(0.f, 12.f), sf::Vector2f(32.f, 0.5f), 0.f, PhysicalThing::CollisionFilter::ONE)); // bottom wall
+	//m_staticBlocks.reserve(5);
+	//m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(-16.f, 0.f), sf::Vector2f(0.5f, 24.f), 0.f, PhysicalThing::CollisionFilter::ONE)); // left wall
+	//m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(16.f, 0.f), sf::Vector2f(0.5f, 24.f), 0.f, PhysicalThing::CollisionFilter::ONE)); // right wall
+	//m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(0.f, -12.f), sf::Vector2f(32.f, 0.5f), 0.f, PhysicalThing::CollisionFilter::ONE)); // top wall
+	//m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(0.f, 12.f), sf::Vector2f(32.f, 0.5f), 0.f, PhysicalThing::CollisionFilter::ONE)); // bottom wall
 	// Some platforms:
-	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(-13, 10), sf::Vector2f(2, 0.4f), 0.f, PhysicalThing::CollisionFilter::ONE));
+	/*m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(-13, 10), sf::Vector2f(2, 0.4f), 0.f, PhysicalThing::CollisionFilter::ONE));
 	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(-10, 9), sf::Vector2f(2.f, 0.4f), 0.f, PhysicalThing::CollisionFilter::ONE));
 	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(-7, 8), sf::Vector2f(2.f, 0.4f), 0.f, PhysicalThing::CollisionFilter::ONE));
-	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(-4, 7), sf::Vector2f(2.f, 0.4f), 0.f, PhysicalThing::CollisionFilter::ONE));
+	m_staticBlocks.push_back(StaticBlock(m_pWorld, sf::Vector2f(-4, 7), sf::Vector2f(2.f, 0.4f), 0.f, PhysicalThing::CollisionFilter::ONE));*/
 
 
 	// Balls
@@ -68,13 +49,13 @@ Game::Game()
 	m_balls.push_back(DynamicCircle(m_pWorld, sf::Vector2f(-10.0f, 1.0f), 0.15f, 0.f, PhysicalThing::CollisionFilter::ONE));
 
 	// Collectibles
-	m_coins.reserve(2);
-	m_coins.push_back(new Coin(m_pWorld, Vector2f(-13, 11.5f))); // memory leak?
-	m_coins.push_back(new Coin(m_pWorld, Vector2f(-10, 11.5f))); // memory leak?
+	//m_coins.reserve(2);
+	//m_coins.push_back(new Coin(m_pWorld, Vector2f(-13, 11.5f))); // memory leak?
+	//m_coins.push_back(new Coin(m_pWorld, Vector2f(-10, 11.5f))); // memory leak?
 
 	// Rotating Platforms:
-	m_rotPlatforms.reserve(1);
-	m_rotPlatforms.push_back(new RotatingPlatform(m_pWorld, Vector2f(5, 6), Color::Blue));
+	/*m_rotPlatforms.reserve(1);
+	m_rotPlatforms.push_back(new RotatingPlatform(m_pWorld, Vector2f(5, 6), Color::Blue));*/
 
 	// misc - DELETE
 	clickedPointRect.setSize(Vector2f(0.1f, 0.1f));
@@ -82,9 +63,19 @@ Game::Game()
 	clickedPointRect.setFillColor(Color::Magenta);
 	playerMoveDirection = b2Vec2(0, 0);
 
+	// Test
+	m_platforms.insert(new Platform(m_pWorld, sf::Vector2f(0.0f, 0.5f), Vector2f(4, 0.4f)));
+	m_platforms.insert(new Platform(m_pWorld, sf::Vector2f(5.0f, 0.5f), Vector2f(4, 0.4f)));
+	m_platforms.insert(new Platform(m_pWorld, sf::Vector2f(10.0f, 0.5f), Vector2f(4, 0.4f)));
+	//m_platforms.push_back(new Platform(m_pWorld, sf::Vector2f(5.0f, 0.5f), Vector2f(4, 0.4f)));
+	m_debugGrid = new DebugGrid(m_view); // Remember to CLEAN UP with DELETE
+	m_worldGenerator = new WorldGenerator(m_pWorld, m_view);
+
 	// Update User Data
 	m_player->setUserData();
 	for (Coin* coin : m_coins) coin->setUserData();
+	for (Platform* platform : m_platforms) platform->setUserData();
+	m_worldGenerator->setUserData();
 
 	// Set Contact Listeners
 	// ToDo: You can only have one contact listener - merge all listeners into one
@@ -94,6 +85,8 @@ Game::Game()
 
 Game::~Game()
 {
+	delete m_debugGrid;
+
 	// Clean up all pointers
 	delete m_pWorld;
 	m_pWorld = nullptr;
@@ -107,8 +100,26 @@ void Game::update(float timestep)
 	if (playerMoveDirection.y < 0) m_player->jump(); // -value means jump
 	// ToDo: Implement jump down
 
+	// Move Blocks around: (TEST STUFF: REMOVE/DELETE)
+	/*b2Vec2 playerPos = m_player->getPositionB2();
+	b2Vec2 plat1Pos = m_platforms[0]->getPositionB2();
+	b2Vec2 plat2Pos = m_platforms[1]->getPositionB2();*/
+
+	// Make sure another platform is available
+	/*if (playerPos.x > plat1Pos.x)
+	{
+		plat2Pos = b2Vec2(plat1Pos.x + 5.0f, plat1Pos.y);
+		m_platforms[1]->getBody()->SetTransform(plat2Pos, 0);
+	}
+	if (playerPos.x > plat2Pos.x)
+	{
+		plat1Pos = b2Vec2(plat2Pos.x + 5.0f, plat2Pos.y);
+		m_platforms[0]->getBody()->SetTransform(plat1Pos, 0);
+	}*/
+
+
 	// Make camera follow player
-	m_view.setCenter(m_player->getPosition());
+	//m_view.setCenter(m_player->getPosition());
 
 	// Update the world
 	m_pWorld->Step(timestep, mk_iVelIterations, mk_iVelIterations);
@@ -135,15 +146,16 @@ void Game::update(float timestep)
 			m_coins.erase(it);
 			it = prev + 1;
 		}
-
-
 	}
-	
+
 	// Update each dyanmic element - effectively update render information
 	for (DynamicBlock& block : m_dynamicBlocks) block.update();
 	for (DynamicCircle& ball : m_balls) ball.update();
 	for (RotatingPlatform* plat : m_rotPlatforms) plat->update();
+	for (Platform* plat : m_platforms) plat->update();
 	m_player->update();
+	if (m_debugGridDraw) m_debugGrid->update(m_view);
+	m_worldGenerator->update(m_view);
 
 	// Delete debug shapes
 	if (m_debug) m_debugDraw.clear();
@@ -156,11 +168,12 @@ void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 	// Draw everything
 	target.draw(m_background);
-	for (StaticBlock block : m_staticBlocks) target.draw(block);
+	if (m_debugGridDraw) target.draw(*m_debugGrid);
 	for (DynamicBlock block : m_dynamicBlocks) target.draw(block);
 	for (DynamicCircle ball : m_balls) target.draw(ball);
 	for (Coin* coin : m_coins) target.draw(*coin);
 	for (RotatingPlatform* platform : m_rotPlatforms) target.draw(*platform);
+	for (Platform* platform : m_platforms) target.draw(*platform);
 	target.draw(*m_player);
 	target.draw(clickedPointRect);	// REMOVE
 
@@ -188,23 +201,40 @@ void Game::processPlayerMovement()
 
 void Game::processKeyboardInput(sf::Keyboard::Key key, bool pressed)
 {
+
+	b2MassData massData; // REMOVE TEST
+
 	// Actions to take when a button is preesed:
 	if (pressed)
 	{
 		switch (key)
 		{
-		// Toggle Debug Mode
+			// Toggle Debug Mode
 		case sf::Keyboard::Tab:	toggleDebug();	break;
-		
-		// Player Speed
+			// Toggle Debug Grid Mode
+		case sf::Keyboard::G:	m_debugGridDraw = !m_debugGridDraw;	break;
+
+			// Player Speed
 		case sf::Keyboard::Q:	m_player->increaseSpeed(0.1f);		break;
 		case sf::Keyboard::E:	m_player->increaseSpeed(-0.1f);		break;
 
-		// misc
-		case Keyboard::P:	
-			m_player->getBody()->SetTransform(b2Vec2(0, 0), 0); 
-			m_player->getBody()->SetLinearVelocity(b2Vec2(0, 0)); 
-			m_player->getBody()->SetAngularVelocity(0);	
+			// misc
+		case Keyboard::P:
+			m_player->getBody()->SetTransform(b2Vec2(0, 0), 0);
+			m_player->getBody()->SetLinearVelocity(b2Vec2(0, 0));
+			m_player->getBody()->SetAngularVelocity(0);
+			break;
+
+		case Keyboard::Z:
+			m_player->getBody()->GetMassData(&massData);
+			massData.mass -= 0.25f;
+			m_player->getBody()->SetMassData(&massData);
+			break;
+
+		case Keyboard::X:
+			m_player->getBody()->GetMassData(&massData);
+			massData.mass += 0.25f;
+			m_player->getBody()->SetMassData(&massData);
 			break;
 		}
 	}
@@ -220,14 +250,6 @@ void Game::processKeyboardInput(sf::Keyboard::Key key, bool pressed)
 void Game::processMouseScroll(Event::MouseWheelScrollEvent scrollEvent)
 {
 	m_view.zoom((scrollEvent.delta > 0) ? zoomInFactor : zoomOutFactor);
-	return;
-
-	// Zoom in
-	if (scrollEvent.delta > 0)
-		m_view.zoom(zoomInFactor);
-	// Zoom out
-	else
-		m_view.zoom(zoomOutFactor);
 }
 
 void Game::processMousePress(Event::MouseButtonEvent mouseButtonEvent, Vector2f& viewPos)

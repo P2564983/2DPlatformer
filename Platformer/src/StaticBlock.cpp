@@ -39,9 +39,9 @@ StaticBlock::StaticBlock(b2World* world, const sf::Vector2f& position, const sf:
 	}
 	m_body->CreateFixture(&l_fixtureDef);
 
-	setPosition(position);
 	setSize(size);
 	setOrigin(size * 0.5f);
+	setPosition(position);
 	setRotation(orientation);
 	setFillColor(sf::Color::Green);
 	setOutlineThickness(0.f);

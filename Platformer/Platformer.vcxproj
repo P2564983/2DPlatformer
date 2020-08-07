@@ -98,10 +98,12 @@
     <ClInclude Include="include\BlockCircleContactListener.h" />
     <ClInclude Include="include\Coin.h" />
     <ClInclude Include="include\CoinPlayerContactListener.h" />
+    <ClInclude Include="include\DebugGrid.h" />
     <ClInclude Include="include\DynamicBlock.h" />
     <ClInclude Include="include\DynamicCircle.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\PhysicalThing.h" />
+    <ClInclude Include="include\Platform.h" />
     <ClInclude Include="include\Player.h" />
     <ClInclude Include="include\PlayerGroundContactListener.h" />
     <ClInclude Include="include\RotatingPlatform.h" />
@@ -112,15 +114,18 @@
     <ClInclude Include="include\StaticSensor.h" />
     <ClInclude Include="include\TextureManager.h" />
     <ClInclude Include="include\World.h" />
+    <ClInclude Include="include\WorldGenerator.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="include\PhysicalThing.cpp" />
+    <ClCompile Include="src\PhysicalThing.cpp" />
     <ClCompile Include="src\BlockCircleContactListener.cpp" />
     <ClCompile Include="src\Coin.cpp" />
     <ClCompile Include="src\CoinPlayerContactListener.cpp" />
+    <ClCompile Include="src\DebugGrid.cpp" />
     <ClCompile Include="src\DynamicBlock.cpp" />
     <ClCompile Include="src\DynamicCircle.cpp" />
     <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\Platform.cpp" />
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\PlayerGroundContactListener.cpp" />
     <ClCompile Include="src\RotatingPlatform.cpp" />
@@ -132,6 +137,7 @@
     <ClCompile Include="src\TextureManager.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\World.cpp" />
+    <ClCompile Include="src\WorldGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="SizeGuide.png" />

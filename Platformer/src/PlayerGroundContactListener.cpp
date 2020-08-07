@@ -19,20 +19,34 @@ void PlayerGroundContactListener::BeginContact(b2Contact* contact)
 			b2Body* body = fixtA->GetBody();
 			pair<string, void*> userData = *((pair<string, void*>*) body->GetUserData());
 			Player* player = static_cast<Player*>(userData.second);
-			player->registerGroundContact(1);
+			player->registerGroundContact(true, fixtB);
+		}
+
+		if (fixtType == FixtureType::Destructor || fixtType == FixtureType::Creator)
+		{
+			pair<string, void*> userData = *((pair<string, void*>*) fixtA->GetBody()->GetUserData());
+			WorldGenerator* worldGen = static_cast<WorldGenerator*>(userData.second);
+			worldGen->onAction(fixtA, fixtB);
 		}
 	}
 
 	if (userDataB)
 	{
-		FixtureType fixtType = static_cast<FixtureType>((int)userDataA);
+		FixtureType fixtType = static_cast<FixtureType>((int)userDataB);
 
 		if (fixtType == FixtureType::Sensor)
 		{
-			b2Body* body = fixtA->GetBody();
+			b2Body* body = fixtB->GetBody();
 			pair<string, void*> userData = *((pair<string, void*>*) body->GetUserData());
 			Player* player = static_cast<Player*>(userData.second);
-			player->registerGroundContact(1);
+			player->registerGroundContact(true, fixtA);
+		}
+
+		if (fixtType == FixtureType::Destructor || fixtType == FixtureType::Creator)
+		{
+			pair<string, void*> userData = *((pair<string, void*>*) fixtB->GetBody()->GetUserData());
+			WorldGenerator* worldGen = static_cast<WorldGenerator*>(userData.second);
+			worldGen->onAction(fixtB, fixtA);
 		}
 	}
 }
@@ -56,20 +70,34 @@ void PlayerGroundContactListener::EndContact(b2Contact* contact)
 			b2Body* body = fixtA->GetBody();
 			pair<string, void*> userData = *((pair<string, void*>*) body->GetUserData());
 			Player* player = static_cast<Player*>(userData.second);
-			player->registerGroundContact(-1);
+			player->registerGroundContact(false, fixtB);
+		}
+
+		if (fixtType == FixtureType::Destructor || fixtType == FixtureType::Creator)
+		{
+			pair<string, void*> userData = *((pair<string, void*>*) fixtA->GetBody()->GetUserData());
+			WorldGenerator* worldGen = static_cast<WorldGenerator*>(userData.second);
+			worldGen->offAction(fixtA, fixtB);
 		}
 	}
 
 	if (userDataB)
 	{
-		FixtureType fixtType = static_cast<FixtureType>((int)userDataA);
+		FixtureType fixtType = static_cast<FixtureType>((int)userDataB);
 
 		if (fixtType == FixtureType::Sensor)
 		{
-			b2Body* body = fixtA->GetBody();
+			b2Body* body = fixtB->GetBody();
 			pair<string, void*> userData = *((pair<string, void*>*) body->GetUserData());
 			Player* player = static_cast<Player*>(userData.second);
-			player->registerGroundContact(-1);
+			player->registerGroundContact(false, fixtA);
+		}
+
+		if (fixtType == FixtureType::Destructor || fixtType == FixtureType::Creator)
+		{
+			pair<string, void*> userData = *((pair<string, void*>*) fixtB->GetBody()->GetUserData());
+			WorldGenerator* worldGen = static_cast<WorldGenerator*>(userData.second);
+			worldGen->offAction(fixtB, fixtA);
 		}
 	}
 }

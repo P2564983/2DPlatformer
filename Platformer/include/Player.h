@@ -8,6 +8,7 @@
 
 #include <Box2D/Box2D.h>
 #include <SFML/Graphics.hpp>
+#include <set>
 
 #include "PhysicalThing.h"
 #include "World.h"
@@ -27,11 +28,12 @@ private:
 	float m_speed;			// Player movement speed
 	RectangleShape m_shape;	// The drawable object
 	b2Fixture* groundSensorFixture;
-	int numOfGroundContacts = 0;
 
 	float m_density = 1.0f;			// density * area = mass
 	float m_friction = 0.4f;		// 0 = completely frictionless ; 1 = max friction
 	float m_restitution = 0.0f;		// 0 = No Bounce; 1 = completely bouncy
+
+	set<b2Fixture*> platformBeneath;
 
 public:
 	Player(b2World* world, const sf::Vector2f& position, Color colour);
@@ -44,11 +46,19 @@ public:
 	void increaseSpeed(const float amount);
 
 	const Vector2f getPosition() const;
-	void registerGroundContact(const int change);
+	void registerGroundContact(const bool hasCollided, b2Fixture* fixture);
 
 	void update();
 	void draw(RenderTarget& target, RenderStates states) const;
 	void setUserData();
 
-	b2Body* getBody() const;	// DELETE THIS METHOD
+	// Debug Stuff = DELETE/REMOVE
+	b2Body* getBody() const;
+	b2Vec2 jumpStart;
+	b2Vec2 jumpHighest;
+	b2Vec2 velHigh;
+	int jumpCounter = 0;
+	int jumpVelCounter = 0;
+	int jumpPosCounter = 0;
+	int jumpDebug = 0;
 };

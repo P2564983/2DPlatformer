@@ -1,2 +1,15 @@
-﻿  RotatingPlatform.cpp
+﻿  Game.cpp
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\Game.cpp(246,3): warning C4060: switch statement contains no 'case' or 'default' labels
+  PlayerGroundContactListener.cpp
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\PlayerGroundContactListener.cpp(15,65): warning C4311: 'type cast': pointer truncation from 'void *' to 'int'
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\PlayerGroundContactListener.cpp(15,65): warning C4302: 'type cast': truncation from 'void *' to 'int'
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\PlayerGroundContactListener.cpp(35,65): warning C4311: 'type cast': pointer truncation from 'void *' to 'int'
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\PlayerGroundContactListener.cpp(35,65): warning C4302: 'type cast': truncation from 'void *' to 'int'
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\PlayerGroundContactListener.cpp(66,65): warning C4311: 'type cast': pointer truncation from 'void *' to 'int'
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\PlayerGroundContactListener.cpp(66,65): warning C4302: 'type cast': truncation from 'void *' to 'int'
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\PlayerGroundContactListener.cpp(86,65): warning C4311: 'type cast': pointer truncation from 'void *' to 'int'
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\PlayerGroundContactListener.cpp(86,65): warning C4302: 'type cast': truncation from 'void *' to 'int'
+  WorldGenerator.cpp
+  main.cpp
+  Generating Code...
   Platformer.vcxproj -> D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\..\bin\Platformer.exe

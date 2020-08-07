@@ -42,6 +42,9 @@
     <ClInclude Include="include\CoinPlayerContactListener.h" />
     <ClInclude Include="include\PlayerGroundContactListener.h" />
     <ClInclude Include="include\RotatingPlatform.h" />
+    <ClInclude Include="include\Platform.h" />
+    <ClInclude Include="include\DebugGrid.h" />
+    <ClInclude Include="include\WorldGenerator.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\DynamicBlock.cpp">
@@ -75,9 +78,12 @@
     <ClCompile Include="src\World.cpp" />
     <ClCompile Include="src\Coin.cpp" />
     <ClCompile Include="src\CoinPlayerContactListener.cpp" />
-    <ClCompile Include="include\PhysicalThing.cpp" />
     <ClCompile Include="src\PlayerGroundContactListener.cpp" />
     <ClCompile Include="src\RotatingPlatform.cpp" />
+    <ClCompile Include="src\Platform.cpp" />
+    <ClCompile Include="src\DebugGrid.cpp" />
+    <ClCompile Include="src\WorldGenerator.cpp" />
+    <ClCompile Include="src\PhysicalThing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="SizeGuide.png" />

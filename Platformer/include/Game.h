@@ -7,8 +7,8 @@
 #include <Box2D/Box2D.h>
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <set>
 
-#include "StaticBlock.h"
 #include "DynamicBlock.h"
 #include "DynamicCircle.h"
 #include "Player.h"
@@ -17,6 +17,9 @@
 #include "CoinPlayerContactListener.h"
 #include "PlayerGroundContactListener.h"
 #include "RotatingPlatform.h"
+#include "Platform.h"
+#include "DebugGrid.h"
+#include "WorldGenerator.h"
 
 #include "SFMLDebugDraw.h"
 #include "TextureManager.h"
@@ -38,16 +41,16 @@ private:
 	b2World* m_pWorld = nullptr; //!< Pointer to the Box2D world. Using pointers as BOX2D has it's own memory management.
 	const int mk_iVelIterations = 7; //!< On each update there will be 7 velocity iterations in the physics engine
 	const int mk_iPosIterations = 5; //!< On each update there will be 5 position iterations
-	const b2Vec2 mk_gravity = b2Vec2(0.f, 9.81f); //!< Standard earth gravity will be used
+	const b2Vec2 mk_gravity = b2Vec2(0.f, 9.81f); //!< Standard earth gravity will be used (+ is down, - is up)
 
 	// Objects within the world
 	sf::RectangleShape m_background; //!< Background of the world
 	Player* m_player; //!< The controllable actor in the world
-	vector<StaticBlock> m_staticBlocks; //!< A collection of fixed blocks. 
 	vector<DynamicBlock> m_dynamicBlocks; //!< A collection of moving blocks. 
 	vector<DynamicCircle> m_balls; //!< A collection of moving balls. 
 	vector<Coin*> m_coins; //!< A collection of collectible coins.
 	vector<RotatingPlatform*> m_rotPlatforms; //!< A collection of rotating platforms.
+	set<Platform*> m_platforms; //!< A set of platforms. (each entry is unique)
 
 	// Texture Manager
 	TextureManager textures;		//!< Manages all textures
@@ -57,11 +60,14 @@ private:
 	PlayerGroundContactListener playerGroundCL;
 
 	bool m_debug = false; //!< Toggle for debug drawing
+	bool m_debugGridDraw = false; //!< Toggle for debug grid drawing
 	SFMLDebugDraw m_debugDraw; //!< Box2D debug drawing
 
 	// Misc
 	RectangleShape clickedPointRect;
 	b2Vec2 playerMoveDirection;
+	DebugGrid* m_debugGrid;
+	WorldGenerator* m_worldGenerator;
 
 public:
 	Game(); //!< Constructor which sets up the game

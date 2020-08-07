@@ -23,6 +23,9 @@ const static float zoomOutFactor = 1.f / zoomInFactor;
 
 enum class FixtureType
 {
-	Sensor = 1,
-	Ground
+	Undefined = 0,
+	Sensor,
+	Platform,
+	Destructor,
+	Creator
 };
