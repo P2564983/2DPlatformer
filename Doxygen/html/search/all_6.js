@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['game_34',['Game',['../class_game.html',1,'Game'],['../class_game.html#ad59df6562a58a614fda24622d3715b65',1,'Game::Game()']]],
+  ['game_2ecpp_35',['Game.cpp',['../_game_8cpp.html',1,'']]],
+  ['game_2eh_36',['Game.h',['../_game_8h.html',1,'']]],
+  ['gametime_37',['gameTime',['../struct_score.html#a883dd379e4b900b8e49312b10f294816',1,'Score']]],
+  ['generateplatform_38',['generatePlatform',['../class_world_generator.html#a34ef9ba388984be6f1f6f644a094d9b8',1,'WorldGenerator']]],
+  ['getbottomleft_39',['getBottomLeft',['../struct_text_box.html#a8c1aa306321f18f7739ff0a70761d274',1,'TextBox']]],
+  ['getbottomright_40',['getBottomRight',['../struct_text_box.html#a0b94820c53c19c5e563b103e5b8f0f96',1,'TextBox']]],
+  ['getcurrentscore_41',['getCurrentScore',['../struct_score.html#a12804624ba19cc2515beb37293d70f6b',1,'Score']]],
+  ['getgametime_42',['getGameTime',['../struct_score.html#a333d80561eb7f27c60fda8f4a5f9f3b6',1,'Score']]],
+  ['getgametimeasseconds_43',['getGameTimeAsSeconds',['../struct_score.html#abad808864ece9b1edca92d8ebd78bb4a',1,'Score']]],
+  ['gethighscore_44',['getHighScore',['../struct_score.html#a1e1d0bd50b2221848e619eca9c3be948',1,'Score']]],
+  ['getplayer_45',['getPlayer',['../class_world_generator.html#a6a29592ac65bc28b1e58948be3394f24',1,'WorldGenerator']]],
+  ['getposition_46',['getPosition',['../struct_text_box.html#a7111d9f72247605606a84da91bcd8592',1,'TextBox']]],
+  ['getpositionb2_47',['getPositionB2',['../class_physical_thing.html#a7775a857b9d0985a2eb49ed2a5a9fa46',1,'PhysicalThing']]],
+  ['getpositionv2f_48',['getPositionV2F',['../class_physical_thing.html#a96ded5f926c5383b89de78520676c1e2',1,'PhysicalThing']]],
+  ['getsize_49',['getSize',['../struct_text_box.html#a64b35b3bea464230886c1f05294e6ed7',1,'TextBox']]],
+  ['gettext_50',['getText',['../struct_text_box.html#ab1d77656983ccdbef8470fb00b0d5ea4',1,'TextBox']]],
+  ['gettexture_51',['getTexture',['../class_texture_manager.html#a39f0db8131415f978f7acf68b48ffbea',1,'TextureManager']]],
+  ['gettopleft_52',['getTopLeft',['../struct_text_box.html#aaec51d95c42ab94778b35a95d04c5462',1,'TextBox']]],
+  ['gettopright_53',['getTopRight',['../struct_text_box.html#ae2461328d16a2324cd53d7d0fabda0a5',1,'TextBox']]]
+];

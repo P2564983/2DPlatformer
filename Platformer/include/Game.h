@@ -1,30 +1,17 @@
 #pragma once
 
 /*!
-\file game.h
+\file Game.h
 */
 
-#include <Box2D/Box2D.h>
-#include <SFML/Graphics.hpp>
-#include <vector>
-#include <set>
-
-#include "Player.h"
 #include "World.h"
-#include "Coin.h"
-#include "CoinPlayerContactListener.h"
-#include "PlayerGroundContactListener.h"
-#include "RotatingPlatform.h"
-#include "Platform.h"
+#include "Player.h"
+#include "ContactListener.h"
 #include "DebugGrid.h"
 #include "WorldGenerator.h"
-
 #include "SFMLDebugDraw.h"
 #include "TextureManager.h"
 #include "UserInterface.h"
-
-using namespace sf;
-using namespace std;
 
 /*! \class Game
 \brief Holds all information about the game, blocks, balls etc and allows updating and rendering.
@@ -48,31 +35,62 @@ private:
 
 	// Texture Manager and UI
 	TextureManager textures;		//!< Manages all textures
-	UserInterface* m_userInterface;
+	UserInterface* m_userInterface; //!< Draws a user interface
 
-	// Contact Listeners
-	CoinPlayerContactListener coinPlayerCL;
-	PlayerGroundContactListener playerGroundCL;
+	// Other properties
+	ContactListener m_contactListener; //!< A contact listener for all collisions
+	WorldGenerator* m_worldGenerator; //!< The class object that continuosly generates and cleans up the world
 
-	bool m_debug = false; //!< Toggle for debug drawing
-	bool m_debugGridDraw = false; //!< Toggle for debug grid drawing
+	// Debugging
 	SFMLDebugDraw m_debugDraw; //!< Box2D debug drawing
+	bool m_debug = false; //!< Toggle for debug drawing
+	DebugGrid* m_debugGrid;	//!< A grid drawn on top of the world
+	bool m_debugGridDraw = false; //!< Toggle for debug grid drawing
 
 	// Misc
-	RectangleShape clickedPointRect;
-	b2Vec2 playerMoveDirection;
-	DebugGrid* m_debugGrid;
-	WorldGenerator* m_worldGenerator;
+	bool allowCameraZoom = false; // enable to allow scrolling to see World Generator in action
 
 public:
-	Game(); //!< Constructor which sets up the game
-	~Game(); //!< Destructor which cleans all the pointer memory up
-	void update(float timestep); //!< Update the game with given timestep
-	void draw(sf::RenderTarget& target, sf::RenderStates states) const; //!< Draw the game to the render context
-	void toggleDebug() { m_debug = !m_debug; } //!< Toggle for debug drawing
+	/*!
+	  \brief Default Constructor used to setup the game
+	*/
+	Game();
 
-	void processPlayerMovement();
-	void processKeyboardInput(Keyboard::Key key, bool pressed); // pressed = true when pressed; false when released
+	/*!
+	  \brief Destructor which cleans all the pointer memory up
+	*/
+	~Game();
+
+	/*!
+	  \brief Update the game with given timestep 
+	  \param timestep the timestep to update the physics world by
+	*/
+	void update(float timestep);
+
+	/*!
+	  \brief Draw the game to the render context
+	  \param target the target to draw to (usually the window)
+	  \param states the states used for drawing to a RenderTarget
+	*/
+	void draw(RenderTarget& target, RenderStates states) const;
+
+	/*!
+	  \brief Processes user keyboard input
+	  \param key the physical key pressed/released
+	  \param pressed flag indicating whether the key was pressed (true) or released (false)
+	*/
+	void processKeyboardInput(Keyboard::Key key, bool pressed);
+
+	/*!
+	  \brief Processes user mouse scroll only if allowCameraZoom is true
+	  \param scrollEvent the SFML MouseWheelScrollEvent containing information about mouse scroll
+	*/
 	void processMouseScroll(Event::MouseWheelScrollEvent scrollEvent);
+
+	/*!
+	  \brief Processes user mouse click
+	  \param mouseButtonEvent the SFML MouseButtonEvent containing information about the mouse click
+	  \param viewPos where in the view the mouse was clicked
+	*/
 	void processMousePress(Event::MouseButtonEvent mouseButtonEvent, Vector2f& viewPos);
 };

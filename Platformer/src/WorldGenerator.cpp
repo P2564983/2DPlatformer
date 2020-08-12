@@ -44,7 +44,7 @@ WorldGenerator::WorldGenerator(b2World* world, View& view) : m_b2World(world)
 	m_groundSensor = m_body->CreateFixture(&l_fixtureDef);
 
 	// Generate a player into the world at centre position:
-	m_worldObjects.insert(m_player = new Player(m_b2World, viewPos, Color::Black));
+	m_worldObjects.insert(m_player = new Player(m_b2World, viewPos, Color::Black, Color::Yellow));
 
 	// Generate an initial platform 1.5x the view size placed under the player:
 	Vector2f platPos(viewPos.x, viewPos.y + m_viewSize.y * 0.25f);
@@ -89,7 +89,7 @@ void WorldGenerator::resetWorld()
 void WorldGenerator::update()
 {
 	if (m_player->isDead()) resetWorld();
-	else m_player->move(b2Vec2(1, 0));
+	else m_player->move(1); // Move right (-1 = left)
 
 	b2Vec2 targetVel = b2Vec2(m_player->getPositionB2().x - m_body->GetPosition().x, 0); // A vector going from WorldGenerator.x to Player.x 
 	targetVel.x += (m_viewSize.y * 0.5f);
@@ -100,7 +100,7 @@ void WorldGenerator::update()
 	{
 		PhysicalThing* destroyable = *it;
 		m_worldObjects.erase(destroyable);
-		delete destroyable; // This free's memory and deletes body of platform too
+		if(destroyable) delete destroyable; // This free's memory and deletes body of platform too
 	}
 	m_toDestroy.clear();
 

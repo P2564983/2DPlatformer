@@ -1,0 +1,94 @@
+\hypertarget{class_coin_platform}{}\doxysection{Coin\+Platform Class Reference}
+\label{class_coin_platform}\index{CoinPlatform@{CoinPlatform}}
+
+
+A platform with coins on it which cannot move or rotate but can collide with stuff (namely the player)  
+
+
+
+
+{\ttfamily \#include $<$Platformer/include/\+Coin\+Platform.\+h$>$}
+
+Inheritance diagram for Coin\+Platform\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_coin_platform}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_coin_platform_a0c73d7e9757100be817bdce0d078a431}{Coin\+Platform}} (b2\+World $\ast$world, Vector2f \&position=Vector2f(0, 0), Vector2f \&size=Vector2f(5.\+0f, 0.\+4f), const Color colour=Color\+::\+White)
+\begin{DoxyCompactList}\small\item\em Default constructor with some default values. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_coin_platform_ae089a092461bf8ed3ef5790bff6803d4}\label{class_coin_platform_ae089a092461bf8ed3ef5790bff6803d4}} 
+\mbox{\hyperlink{class_coin_platform_ae089a092461bf8ed3ef5790bff6803d4}{$\sim$\+Coin\+Platform}} ()
+\begin{DoxyCompactList}\small\item\em Destructor cleans up all the coins on this platform. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_coin_platform_aeb7e82e5a95fd89e932c6fd48515be02}\label{class_coin_platform_aeb7e82e5a95fd89e932c6fd48515be02}} 
+void \mbox{\hyperlink{class_coin_platform_aeb7e82e5a95fd89e932c6fd48515be02}{update}} ()
+\begin{DoxyCompactList}\small\item\em Update platform attributes, namely platform position and coins on this platform. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_coin_platform_a023986ab514710d380cd8d793a62ee8d}{draw}} (Render\+Target \&target, Render\+States states) const
+\begin{DoxyCompactList}\small\item\em Draws this coin platform. Calls parent draw function to draw the platform and then draws all the available coins. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_coin_platform_a1c31b3535bed206f67da686e899dffd3}\label{class_coin_platform_a1c31b3535bed206f67da686e899dffd3}} 
+set$<$ \mbox{\hyperlink{class_coin}{Coin}} $\ast$ $>$ \mbox{\hyperlink{class_coin_platform_a1c31b3535bed206f67da686e899dffd3}{m\+\_\+coins}}
+\begin{DoxyCompactList}\small\item\em A unique collection of coins placed on this platform. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A platform with coins on it which cannot move or rotate but can collide with stuff (namely the player) 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_coin_platform_a0c73d7e9757100be817bdce0d078a431}\label{class_coin_platform_a0c73d7e9757100be817bdce0d078a431}} 
+\index{CoinPlatform@{CoinPlatform}!CoinPlatform@{CoinPlatform}}
+\index{CoinPlatform@{CoinPlatform}!CoinPlatform@{CoinPlatform}}
+\doxysubsubsection{\texorpdfstring{CoinPlatform()}{CoinPlatform()}}
+{\footnotesize\ttfamily Coin\+Platform\+::\+Coin\+Platform (\begin{DoxyParamCaption}\item[{b2\+World $\ast$}]{world,  }\item[{Vector2f \&}]{position = {\ttfamily Vector2f(0,~0)},  }\item[{Vector2f \&}]{size = {\ttfamily Vector2f(5.0f,~0.4f)},  }\item[{const Color}]{colour = {\ttfamily Color\+:\+:White} }\end{DoxyParamCaption})}
+
+
+
+Default constructor with some default values. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em world} & The Box2D world that this platform is in \\
+\hline
+{\em position} & The position of this platform in the world \\
+\hline
+{\em size} & The size of this platfrom in the world \\
+\hline
+{\em colour} & The colour of this platform \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_coin_platform_a023986ab514710d380cd8d793a62ee8d}\label{class_coin_platform_a023986ab514710d380cd8d793a62ee8d}} 
+\index{CoinPlatform@{CoinPlatform}!draw@{draw}}
+\index{draw@{draw}!CoinPlatform@{CoinPlatform}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Coin\+Platform\+::draw (\begin{DoxyParamCaption}\item[{Render\+Target \&}]{target,  }\item[{Render\+States}]{states }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Draws this coin platform. Calls parent draw function to draw the platform and then draws all the available coins. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & the target to draw to (usually the window) \\
+\hline
+{\em states} & the states used for drawing to a Render\+Target Overide base function to allow drawing of \mbox{\hyperlink{class_platform}{Platform}} objects \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_platform_a7fd0ecb7768dfb7425580865f8db8ce3}{Platform}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_coin_platform_8h}{Coin\+Platform.\+h}}\item 
+Coin\+Platform.\+cpp\end{DoxyCompactItemize}

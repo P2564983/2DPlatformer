@@ -1,0 +1,94 @@
+\hypertarget{_world_8h}{}\doxysection{World.\+h File Reference}
+\label{_world_8h}\index{World.h@{World.h}}
+{\ttfamily \#include $<$Box2\+D/\+Box2\+D.\+h$>$}\newline
+{\ttfamily \#include $<$S\+F\+M\+L/\+Graphics.\+hpp$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_score}{Score}}
+\begin{DoxyCompactList}\small\item\em A (static) struct which maintains the current and high score as well as time elasped of the game being played. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_world_8h_abbfb1b8e88373781c6238d647110f5d2}\label{_world_8h_abbfb1b8e88373781c6238d647110f5d2}} 
+\#define {\bfseries D\+E\+G\+T\+O\+R\+AD}~0.\+0174532925199432957f
+\item 
+\mbox{\Hypertarget{_world_8h_a9fcbc53371e9a60b983c6b338537aa40}\label{_world_8h_a9fcbc53371e9a60b983c6b338537aa40}} 
+\#define {\bfseries R\+A\+D\+T\+O\+D\+EG}~57.\+295779513082320876f
+\item 
+\mbox{\Hypertarget{_world_8h_a598a3330b3c21701223ee0ca14316eca}\label{_world_8h_a598a3330b3c21701223ee0ca14316eca}} 
+\#define {\bfseries PI}~3.\+141592654
+\item 
+\mbox{\Hypertarget{_world_8h_aac298b7a8b25f1415021bbd7b5beb5e0}\label{_world_8h_aac298b7a8b25f1415021bbd7b5beb5e0}} 
+\#define {\bfseries B2\+UP}~b2\+Vec2(0.f, -\/1.f)
+\item 
+\mbox{\Hypertarget{_world_8h_a53e9b932ca6496338e863641f0c491f1}\label{_world_8h_a53e9b932ca6496338e863641f0c491f1}} 
+\#define {\bfseries B2\+D\+O\+WN}~b2\+Vec2(0.f, 1.f)
+\item 
+\mbox{\Hypertarget{_world_8h_ab62211da3d3d0a779023f296d337e169}\label{_world_8h_ab62211da3d3d0a779023f296d337e169}} 
+\#define {\bfseries B2\+L\+E\+FT}~b2\+Vec2(-\/1.f, 0.f)
+\item 
+\mbox{\Hypertarget{_world_8h_a37f0585f118d45658f6d32ec1491934a}\label{_world_8h_a37f0585f118d45658f6d32ec1491934a}} 
+\#define {\bfseries B2\+R\+I\+G\+HT}~b2\+Vec2(1.f, 0.f)
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_world_8h_a102620bdd81393095208483ee4a8f20a}\label{_world_8h_a102620bdd81393095208483ee4a8f20a}} 
+enum \mbox{\hyperlink{_world_8h_a102620bdd81393095208483ee4a8f20a}{Fixture\+Type}} \{ \newline
+{\bfseries Undefined} = 0, 
+{\bfseries Sensor}, 
+{\bfseries Player}, 
+{\bfseries Enemy}, 
+\newline
+{\bfseries Platform}, 
+{\bfseries Rotating\+Platform}, 
+{\bfseries Hinge}
+ \}
+\begin{DoxyCompactList}\small\item\em an enum representing fixture type -\/ usually assigned to a fixture\textquotesingle{}s user data \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_world_8h_a527bfd1a86584280ea4bb3f8a1f8d523}\label{_world_8h_a527bfd1a86584280ea4bb3f8a1f8d523}} 
+enum \mbox{\hyperlink{_world_8h_a527bfd1a86584280ea4bb3f8a1f8d523}{Platform\+Type}} \{ \newline
+{\bfseries Normal} = 0, 
+{\bfseries Coin}, 
+{\bfseries Enemy}, 
+{\bfseries Revolute}, 
+\newline
+{\bfseries Count}
+ \}
+\begin{DoxyCompactList}\small\item\em an enum representing platform type -\/ used for random platform generation \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_world_8h_a213c434cb928c4ca22513e2302632435}\label{_world_8h_a213c434cb928c4ca22513e2302632435}} 
+enum \mbox{\hyperlink{_world_8h_a213c434cb928c4ca22513e2302632435}{Sensor\+Type}} \{ \newline
+{\bfseries Undefined} = 0, 
+{\bfseries Platform\+Start}, 
+{\bfseries Platform\+End}, 
+{\bfseries Enemy\+Head}, 
+\newline
+{\bfseries World\+Creator}, 
+{\bfseries World\+Destructor}, 
+{\bfseries World\+Ground}
+ \}
+\begin{DoxyCompactList}\small\item\em an enum representing sensor type -\/ this is set as a fixtures user data when the fixture is a sensor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_world_8h_a167175923277a7b82bb8491058611206}\label{_world_8h_a167175923277a7b82bb8491058611206}} 
+enum \mbox{\hyperlink{_world_8h_a167175923277a7b82bb8491058611206}{Collision\+Filter}} \{ \newline
+{\bfseries Nothing} = 0, 
+{\bfseries Something} = 1$<$$<$0, 
+{\bfseries Player} = 1$<$$<$1, 
+{\bfseries Enemy} = 1$<$$<$2, 
+\newline
+{\bfseries Collectible} = 1$<$$<$3, 
+{\bfseries Platform} = 1$<$$<$4, 
+{\bfseries Everything} = 0x\+F\+F\+FF
+ \}
+\begin{DoxyCompactList}\small\item\em an enum representing different collision types -\/ this is used for both the filter and category \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_world_8h_a11184b8d486198ffc5f5da70a3253906}\label{_world_8h_a11184b8d486198ffc5f5da70a3253906}} 
+const static float \mbox{\hyperlink{_world_8h_a11184b8d486198ffc5f5da70a3253906}{zoom\+In\+Factor}} = 0.\+9f
+\begin{DoxyCompactList}\small\item\em Factor value used when the mouse scroll is zoomed in. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_world_8h_ac5360b4bdef454cc281dd98aa316efd1}\label{_world_8h_ac5360b4bdef454cc281dd98aa316efd1}} 
+const static float \mbox{\hyperlink{_world_8h_ac5360b4bdef454cc281dd98aa316efd1}{zoom\+Out\+Factor}} = 1.f / \mbox{\hyperlink{_world_8h_a11184b8d486198ffc5f5da70a3253906}{zoom\+In\+Factor}}
+\begin{DoxyCompactList}\small\item\em Factor value used when the mouse scroll is zoomed out. \end{DoxyCompactList}\end{DoxyCompactItemize}

@@ -1,0 +1,68 @@
+\hypertarget{class_revolute_platform}{}\doxysection{Revolute\+Platform Class Reference}
+\label{class_revolute_platform}\index{RevolutePlatform@{RevolutePlatform}}
+
+
+A platform with a revolute joint at its centre.  
+
+
+
+
+{\ttfamily \#include $<$Platformer/include/\+Revolute\+Platform.\+h$>$}
+
+Inheritance diagram for Revolute\+Platform\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_revolute_platform}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_revolute_platform_a62c4d8c3284e6190c605c1d2602b0289}{Revolute\+Platform}} (b2\+World $\ast$world, Vector2f \&position=Vector2f(0, 0), Vector2f \&size=Vector2f(5.\+0f, 0.\+4f), const Color colour=Color\+::\+Blue)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_revolute_platform_a2ff07ad55fa742ad7e3d572df4108490}\label{class_revolute_platform_a2ff07ad55fa742ad7e3d572df4108490}} 
+\mbox{\hyperlink{class_revolute_platform_a2ff07ad55fa742ad7e3d572df4108490}{$\sim$\+Revolute\+Platform}} ()
+\begin{DoxyCompactList}\small\item\em Destructor which destorys the anchor body (parent class destroys the platform body) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_revolute_platform_af805a45ae2a001a7a686e2cf9cc2090f}\label{class_revolute_platform_af805a45ae2a001a7a686e2cf9cc2090f}} 
+b2\+Body $\ast$ \mbox{\hyperlink{class_revolute_platform_af805a45ae2a001a7a686e2cf9cc2090f}{m\+\_\+anchor}}
+\begin{DoxyCompactList}\small\item\em The Anchor of the revolute joint. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_revolute_platform_ae7f9c307dac91fcf50241acefc613265}\label{class_revolute_platform_ae7f9c307dac91fcf50241acefc613265}} 
+b2\+Revolute\+Joint $\ast$ \mbox{\hyperlink{class_revolute_platform_ae7f9c307dac91fcf50241acefc613265}{m\+\_\+joint}}
+\begin{DoxyCompactList}\small\item\em A revolute joint connecting the platform with an anchor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A platform with a revolute joint at its centre. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_revolute_platform_a62c4d8c3284e6190c605c1d2602b0289}\label{class_revolute_platform_a62c4d8c3284e6190c605c1d2602b0289}} 
+\index{RevolutePlatform@{RevolutePlatform}!RevolutePlatform@{RevolutePlatform}}
+\index{RevolutePlatform@{RevolutePlatform}!RevolutePlatform@{RevolutePlatform}}
+\doxysubsubsection{\texorpdfstring{RevolutePlatform()}{RevolutePlatform()}}
+{\footnotesize\ttfamily Revolute\+Platform\+::\+Revolute\+Platform (\begin{DoxyParamCaption}\item[{b2\+World $\ast$}]{world,  }\item[{Vector2f \&}]{position = {\ttfamily Vector2f(0,~0)},  }\item[{Vector2f \&}]{size = {\ttfamily Vector2f(5.0f,~0.4f)},  }\item[{const Color}]{colour = {\ttfamily Color\+:\+:Blue} }\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em world} & The Box2D world that this platform is in \\
+\hline
+{\em position} & The position of the platform in the world (default value\+: (0, 0)) \\
+\hline
+{\em size} & the The size of the platform in the world (default value\+: (5, 0.\+4)) \\
+\hline
+{\em colour} & The colour of this platform (default value\+: Blue) \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_revolute_platform_8h}{Revolute\+Platform.\+h}}\item 
+Revolute\+Platform.\+cpp\end{DoxyCompactItemize}

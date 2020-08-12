@@ -97,7 +97,6 @@
   <ItemGroup>
     <ClInclude Include="include\Coin.h" />
     <ClInclude Include="include\CoinPlatform.h" />
-    <ClInclude Include="include\CoinPlayerContactListener.h" />
     <ClInclude Include="include\DebugGrid.h" />
     <ClInclude Include="include\Enemy.h" />
     <ClInclude Include="include\EnemyPlatform.h" />
@@ -105,12 +104,9 @@
     <ClInclude Include="include\PhysicalThing.h" />
     <ClInclude Include="include\Platform.h" />
     <ClInclude Include="include\Player.h" />
-    <ClInclude Include="include\PlayerGroundContactListener.h" />
+    <ClInclude Include="include\ContactListener.h" />
     <ClInclude Include="include\RevolutePlatform.h" />
-    <ClInclude Include="include\RotatingPlatform.h" />
-    <ClInclude Include="include\SensorContactListener.h" />
     <ClInclude Include="include\SFMLDebugDraw.h" />
-    <ClInclude Include="include\StaticSensor.h" />
     <ClInclude Include="include\TextureManager.h" />
     <ClInclude Include="include\UserInterface.h" />
     <ClInclude Include="include\World.h" />
@@ -122,17 +118,13 @@
     <ClCompile Include="src\EnemyPlatform.cpp" />
     <ClCompile Include="src\PhysicalThing.cpp" />
     <ClCompile Include="src\Coin.cpp" />
-    <ClCompile Include="src\CoinPlayerContactListener.cpp" />
     <ClCompile Include="src\DebugGrid.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Platform.cpp" />
     <ClCompile Include="src\Player.cpp" />
-    <ClCompile Include="src\PlayerGroundContactListener.cpp" />
+    <ClCompile Include="src\ContactListener.cpp" />
     <ClCompile Include="src\RevolutePlatform.cpp" />
-    <ClCompile Include="src\RotatingPlatform.cpp" />
-    <ClCompile Include="src\SensorContactListener.cpp" />
     <ClCompile Include="src\SFMLDebugDraw.cpp" />
-    <ClCompile Include="src\StaticSensor.cpp" />
     <ClCompile Include="src\TextureManager.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\UserInterface.cpp" />

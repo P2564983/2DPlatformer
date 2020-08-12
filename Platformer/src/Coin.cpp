@@ -1,5 +1,4 @@
 #include "..\include\Coin.h"
-#pragma once
 
 Coin::Coin(b2World* world, const sf::Vector2f& position)
 {
@@ -32,9 +31,22 @@ Coin::Coin(b2World* world, const sf::Vector2f& position)
 	setUserData();
 }
 
+void Coin::update()
+{
+	// The coins body may be deleted before it is properly removed from the world:
+	if (!m_body) return;
+
+	// Destroy the physics body if the coin has been collected:
+	if (m_collected)
+	{
+		m_body->GetWorld()->DestroyBody(m_body);
+		m_body = nullptr;
+	}
+}
+
 void Coin::draw(RenderTarget& target, RenderStates states) const
 {
-	// Coin does not have a body, it has been destroyed:
+	// Coin does not have a body, it has been collected/destroyed:
 	if (!m_body) return;
 
 	// Draw the coin shape
@@ -48,19 +60,6 @@ void Coin::draw(RenderTarget& target, RenderStates states) const
 	smallCircle.setPosition(m_shape.getPosition());
 	smallCircle.setFillColor(Color::Red);
 	target.draw(smallCircle);
-}
-
-void Coin::update()
-{
-	// The coins body may be deleted before it is properly removed from the world:
-	if (!m_body) return;
-
-	// Destroy the physics body if the coin has been collected:
-	if (m_collected)
-	{
-		m_body->GetWorld()->DestroyBody(m_body);
-		m_body = nullptr;
-	}
 }
 
 void Coin::startCollision(b2Fixture* thisFixture, b2Fixture* collidedWith)

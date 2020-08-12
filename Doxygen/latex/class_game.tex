@@ -1,0 +1,183 @@
+\hypertarget{class_game}{}\doxysection{Game Class Reference}
+\label{class_game}\index{Game@{Game}}
+
+
+Holds all information about the game, blocks, balls etc and allows updating and rendering.  
+
+
+
+
+{\ttfamily \#include $<$Platformer/include/\+Game.\+h$>$}
+
+Inheritance diagram for Game\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_game}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_ad59df6562a58a614fda24622d3715b65}\label{class_game_ad59df6562a58a614fda24622d3715b65}} 
+\mbox{\hyperlink{class_game_ad59df6562a58a614fda24622d3715b65}{Game}} ()
+\begin{DoxyCompactList}\small\item\em Default Constructor used to setup the game. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_ae3d112ca6e0e55150d2fdbc704474530}\label{class_game_ae3d112ca6e0e55150d2fdbc704474530}} 
+\mbox{\hyperlink{class_game_ae3d112ca6e0e55150d2fdbc704474530}{$\sim$\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Destructor which cleans all the pointer memory up. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_acc8519c7ced1cf9eb9bbb3a2f325f6a0}{update}} (float timestep)
+\begin{DoxyCompactList}\small\item\em Update the game with given timestep. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a3fa56d3d4dcf11e3084c1055dc4ac595}{draw}} (Render\+Target \&target, Render\+States states) const
+\begin{DoxyCompactList}\small\item\em Draw the game to the render context. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a0082b3f093f27d3efab0f0330601facc}{process\+Keyboard\+Input}} (Keyboard\+::\+Key key, bool pressed)
+\begin{DoxyCompactList}\small\item\em Processes user keyboard input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a1b440a2e90a8f01d22556b4f18d4f9e1}{process\+Mouse\+Scroll}} (Event\+::\+Mouse\+Wheel\+Scroll\+Event scroll\+Event)
+\begin{DoxyCompactList}\small\item\em Processes user mouse scroll only if allow\+Camera\+Zoom is true. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a6ad0a0a4e1b9b6aec96b83e88b9a9cc4}{process\+Mouse\+Press}} (Event\+::\+Mouse\+Button\+Event mouse\+Button\+Event, Vector2f \&view\+Pos)
+\begin{DoxyCompactList}\small\item\em Processes user mouse click. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_a419c1a255b5f2c2b40fec849599168ed}\label{class_game_a419c1a255b5f2c2b40fec849599168ed}} 
+Vector2f \mbox{\hyperlink{class_game_a419c1a255b5f2c2b40fec849599168ed}{m\+\_\+world\+Size}} = Vector2f(16.\+0f, 12.\+0f)
+\begin{DoxyCompactList}\small\item\em Size of the physical world in meters. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a34e8333b6b859e55456da3ad5343e5dc}\label{class_game_a34e8333b6b859e55456da3ad5343e5dc}} 
+View \mbox{\hyperlink{class_game_a34e8333b6b859e55456da3ad5343e5dc}{m\+\_\+view}}
+\begin{DoxyCompactList}\small\item\em The view used for rendering (maps physical co-\/ordinates $^\wedge$ to rendering (S\+F\+ML) co-\/ordinates) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_aece97c98f56f0ec078ff63893c4e093d}\label{class_game_aece97c98f56f0ec078ff63893c4e093d}} 
+b2\+World $\ast$ \mbox{\hyperlink{class_game_aece97c98f56f0ec078ff63893c4e093d}{m\+\_\+p\+World}} = nullptr
+\begin{DoxyCompactList}\small\item\em Pointer to the Box2D world. Using pointers as B\+O\+X2D has it\textquotesingle{}s own memory management. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a000890af67b5247ba66479eef37f837c}\label{class_game_a000890af67b5247ba66479eef37f837c}} 
+const int \mbox{\hyperlink{class_game_a000890af67b5247ba66479eef37f837c}{mk\+\_\+i\+Vel\+Iterations}} = 7
+\begin{DoxyCompactList}\small\item\em On each update there will be 7 velocity iterations in the physics engine. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a3a9e1c1ff454e4f1dd21e6398530fb30}\label{class_game_a3a9e1c1ff454e4f1dd21e6398530fb30}} 
+const int \mbox{\hyperlink{class_game_a3a9e1c1ff454e4f1dd21e6398530fb30}{mk\+\_\+i\+Pos\+Iterations}} = 5
+\begin{DoxyCompactList}\small\item\em On each update there will be 5 position iterations. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a4fd94489bec502630877a3a7fccbd596}\label{class_game_a4fd94489bec502630877a3a7fccbd596}} 
+const b2\+Vec2 \mbox{\hyperlink{class_game_a4fd94489bec502630877a3a7fccbd596}{mk\+\_\+gravity}} = b2\+Vec2(0.f, 9.\+81f)
+\begin{DoxyCompactList}\small\item\em Standard earth gravity will be used (+ is down, -\/ is up) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a5d01c4963a56b38efb4609e7965f4ca9}\label{class_game_a5d01c4963a56b38efb4609e7965f4ca9}} 
+sf\+::\+Rectangle\+Shape \mbox{\hyperlink{class_game_a5d01c4963a56b38efb4609e7965f4ca9}{m\+\_\+background}}
+\begin{DoxyCompactList}\small\item\em Background of the world. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a371bdca8d00e1837a11a06e59fa9f44a}\label{class_game_a371bdca8d00e1837a11a06e59fa9f44a}} 
+\mbox{\hyperlink{class_player}{Player}} $\ast$ \mbox{\hyperlink{class_game_a371bdca8d00e1837a11a06e59fa9f44a}{m\+\_\+player}}
+\begin{DoxyCompactList}\small\item\em The controllable actor in the world. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a31baeb101a94a07e4a15a44a65c41177}\label{class_game_a31baeb101a94a07e4a15a44a65c41177}} 
+\mbox{\hyperlink{class_texture_manager}{Texture\+Manager}} \mbox{\hyperlink{class_game_a31baeb101a94a07e4a15a44a65c41177}{textures}}
+\begin{DoxyCompactList}\small\item\em Manages all textures. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_abcab06ac37afc9f86c5de4b15585c80c}\label{class_game_abcab06ac37afc9f86c5de4b15585c80c}} 
+\mbox{\hyperlink{class_user_interface}{User\+Interface}} $\ast$ \mbox{\hyperlink{class_game_abcab06ac37afc9f86c5de4b15585c80c}{m\+\_\+user\+Interface}}
+\begin{DoxyCompactList}\small\item\em Draws a user interface. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a74c793e0e521d0eb3908c014e0afdb54}\label{class_game_a74c793e0e521d0eb3908c014e0afdb54}} 
+\mbox{\hyperlink{class_contact_listener}{Contact\+Listener}} \mbox{\hyperlink{class_game_a74c793e0e521d0eb3908c014e0afdb54}{m\+\_\+contact\+Listener}}
+\begin{DoxyCompactList}\small\item\em A contact listener for all collisions. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a411123aad014336b4bcca6052ee9b029}\label{class_game_a411123aad014336b4bcca6052ee9b029}} 
+\mbox{\hyperlink{class_world_generator}{World\+Generator}} $\ast$ \mbox{\hyperlink{class_game_a411123aad014336b4bcca6052ee9b029}{m\+\_\+world\+Generator}}
+\begin{DoxyCompactList}\small\item\em The class object that continuosly generates and cleans up the world. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a97864905251b06ce5c8ae7c6774e423d}\label{class_game_a97864905251b06ce5c8ae7c6774e423d}} 
+\mbox{\hyperlink{class_s_f_m_l_debug_draw}{S\+F\+M\+L\+Debug\+Draw}} \mbox{\hyperlink{class_game_a97864905251b06ce5c8ae7c6774e423d}{m\+\_\+debug\+Draw}}
+\begin{DoxyCompactList}\small\item\em Box2D debug drawing. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a8604ec6203f31ac5603bd597f49834d0}\label{class_game_a8604ec6203f31ac5603bd597f49834d0}} 
+bool \mbox{\hyperlink{class_game_a8604ec6203f31ac5603bd597f49834d0}{m\+\_\+debug}} = false
+\begin{DoxyCompactList}\small\item\em Toggle for debug drawing. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a3f9bc0881b5109e9863f6e88c36f0550}\label{class_game_a3f9bc0881b5109e9863f6e88c36f0550}} 
+\mbox{\hyperlink{class_debug_grid}{Debug\+Grid}} $\ast$ \mbox{\hyperlink{class_game_a3f9bc0881b5109e9863f6e88c36f0550}{m\+\_\+debug\+Grid}}
+\begin{DoxyCompactList}\small\item\em A grid drawn on top of the world. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_ad8e8c0d8e939712765e79f53a4059abb}\label{class_game_ad8e8c0d8e939712765e79f53a4059abb}} 
+bool \mbox{\hyperlink{class_game_ad8e8c0d8e939712765e79f53a4059abb}{m\+\_\+debug\+Grid\+Draw}} = false
+\begin{DoxyCompactList}\small\item\em Toggle for debug grid drawing. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a99e44694af4044534d79cce3bd6f1cd0}\label{class_game_a99e44694af4044534d79cce3bd6f1cd0}} 
+bool {\bfseries allow\+Camera\+Zoom} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Holds all information about the game, blocks, balls etc and allows updating and rendering. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_a3fa56d3d4dcf11e3084c1055dc4ac595}\label{class_game_a3fa56d3d4dcf11e3084c1055dc4ac595}} 
+\index{Game@{Game}!draw@{draw}}
+\index{draw@{draw}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Game\+::draw (\begin{DoxyParamCaption}\item[{Render\+Target \&}]{target,  }\item[{Render\+States}]{states }\end{DoxyParamCaption}) const}
+
+
+
+Draw the game to the render context. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & the target to draw to (usually the window) \\
+\hline
+{\em states} & the states used for drawing to a Render\+Target \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a0082b3f093f27d3efab0f0330601facc}\label{class_game_a0082b3f093f27d3efab0f0330601facc}} 
+\index{Game@{Game}!processKeyboardInput@{processKeyboardInput}}
+\index{processKeyboardInput@{processKeyboardInput}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{processKeyboardInput()}{processKeyboardInput()}}
+{\footnotesize\ttfamily void Game\+::process\+Keyboard\+Input (\begin{DoxyParamCaption}\item[{Keyboard\+::\+Key}]{key,  }\item[{bool}]{pressed }\end{DoxyParamCaption})}
+
+
+
+Processes user keyboard input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & the physical key pressed/released \\
+\hline
+{\em pressed} & flag indicating whether the key was pressed (true) or released (false) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a6ad0a0a4e1b9b6aec96b83e88b9a9cc4}\label{class_game_a6ad0a0a4e1b9b6aec96b83e88b9a9cc4}} 
+\index{Game@{Game}!processMousePress@{processMousePress}}
+\index{processMousePress@{processMousePress}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{processMousePress()}{processMousePress()}}
+{\footnotesize\ttfamily void Game\+::process\+Mouse\+Press (\begin{DoxyParamCaption}\item[{Event\+::\+Mouse\+Button\+Event}]{mouse\+Button\+Event,  }\item[{Vector2f \&}]{view\+Pos }\end{DoxyParamCaption})}
+
+
+
+Processes user mouse click. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mouse\+Button\+Event} & the S\+F\+ML Mouse\+Button\+Event containing information about the mouse click \\
+\hline
+{\em view\+Pos} & where in the view the mouse was clicked \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a1b440a2e90a8f01d22556b4f18d4f9e1}\label{class_game_a1b440a2e90a8f01d22556b4f18d4f9e1}} 
+\index{Game@{Game}!processMouseScroll@{processMouseScroll}}
+\index{processMouseScroll@{processMouseScroll}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{processMouseScroll()}{processMouseScroll()}}
+{\footnotesize\ttfamily void Game\+::process\+Mouse\+Scroll (\begin{DoxyParamCaption}\item[{Event\+::\+Mouse\+Wheel\+Scroll\+Event}]{scroll\+Event }\end{DoxyParamCaption})}
+
+
+
+Processes user mouse scroll only if allow\+Camera\+Zoom is true. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scroll\+Event} & the S\+F\+ML Mouse\+Wheel\+Scroll\+Event containing information about mouse scroll \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_acc8519c7ced1cf9eb9bbb3a2f325f6a0}\label{class_game_acc8519c7ced1cf9eb9bbb3a2f325f6a0}} 
+\index{Game@{Game}!update@{update}}
+\index{update@{update}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Game\+::update (\begin{DoxyParamCaption}\item[{float}]{timestep }\end{DoxyParamCaption})}
+
+
+
+Update the game with given timestep. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timestep} & the timestep to update the physics world by \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_game_8h}{Game.\+h}}\item 
+\mbox{\hyperlink{_game_8cpp}{Game.\+cpp}}\end{DoxyCompactItemize}

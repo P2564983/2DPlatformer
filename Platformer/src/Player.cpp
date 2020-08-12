@@ -1,6 +1,7 @@
 #include "..\include\Player.h"
 
-Player::Player(b2World* world, const sf::Vector2f& position, Color colour)
+Player::Player(b2World* world, const sf::Vector2f& position, Color airColour, Color groundColour) 
+	: m_airColour(airColour), m_groundColour(groundColour)
 {
 	//set up a dynamic body
 	b2BodyDef l_bodyDef;
@@ -16,9 +17,9 @@ Player::Player(b2World* world, const sf::Vector2f& position, Color colour)
 	// Main fixture attached to body represting player
 	b2FixtureDef l_fixtureDef;
 	l_fixtureDef.shape = &l_circShape;
-	l_fixtureDef.density = m_density;
-	l_fixtureDef.friction = m_friction;
-	l_fixtureDef.restitution = m_restitution;
+	l_fixtureDef.density = mk_fDensity;
+	l_fixtureDef.friction = mk_fFriction;
+	l_fixtureDef.restitution = mk_fRestitution;
 	l_fixtureDef.filter.categoryBits = (uint16)CollisionFilter::Player;
 	l_fixtureDef.filter.maskBits = (uint16)CollisionFilter::Everything;
 	l_fixtureDef.userData = (void*)((int)(FixtureType::Player));
@@ -29,25 +30,25 @@ Player::Player(b2World* world, const sf::Vector2f& position, Color colour)
 	m_shape.setOrigin(playerRadiusSize, playerRadiusSize); // origin is now centre of shape (instead of top left)
 	m_shape.setPosition(position);	// position set after origin changed
 	m_shape.setRotation(0);
-	m_shape.setFillColor(colour);
+	m_shape.setFillColor(airColour);
 	m_shape.setOutlineThickness(0.f);
 
 	// Other properties
 	m_speed = 1.0;
 }
 
-void Player::move(const b2Vec2& direction)
+void Player::move(const float direction)
 {
-	// Move in all directions
-	/*cout << "Moving: " << direction.x << ", " << direction.y << endl;
-	b2Vec2 impulse = m_body->GetMass() * ((m_speed * direction) - m_body->GetLinearVelocity());
-	m_body->ApplyLinearImpulseToCenter(impulse, true);*/
-
 	// Move only on x-axis
-	float desiredVel = direction.x * m_speed;
+	float desiredVel = direction * m_speed;
 	float velChange = desiredVel - m_body->GetLinearVelocity().x;
 	float impulse = m_body->GetMass() * velChange;
-	m_body->ApplyLinearImpulse(b2Vec2(impulse, 0), m_body->GetWorldCenter(), true);
+	m_body->ApplyLinearImpulseToCenter(b2Vec2(impulse, 0), true);
+	//m_body->ApplyLinearImpulse(b2Vec2(impulse, 0), m_body->GetWorldCenter() - b2Vec2(0.01f, 0.01f), true);
+
+	float desiredAngVel = direction * m_speed;
+	float andImpulse = desiredAngVel - m_body->GetAngularVelocity();
+	m_body->SetAngularVelocity(andImpulse);
 }
 
 void Player::jump()
@@ -55,29 +56,18 @@ void Player::jump()
 	// Determine if jump is possible
 	if (platformBeneath.size() <= 0) return; // player must be grounded
 
-	//// Setting velocity directly
-	//b2Vec2 vel = m_body->GetLinearVelocity();
-	//vel.y = -10;	// upwards - don't change x velocity (- is up; + is down)
-	//m_body->SetLinearVelocity(vel);
-
 	// Using An Impulse
-	float jumpHeight = 0.25f;
-	float impulse = -(m_body->GetMass() * m_body->GetWorld()->GetGravity().y * jumpHeight);
+	float desiredVel = -5.0f;
+	float velChange = desiredVel - m_body->GetLinearVelocity().y;
+	float impulse = m_body->GetMass() * velChange;
 	m_body->ApplyLinearImpulseToCenter(b2Vec2(0, impulse), true);
-
-}
-
-void Player::increaseSpeed(const float amount)
-{
-	m_speed = b2Clamp(m_speed + amount, 0.1f, 10.f);	// Clamp speed between param2 and param3
-	std::cout << "Player Speed = " << m_speed << endl;
 }
 
 void Player::update()
 {
-	// ToDo: implement root curve equation to gradually increase speed based on game time
+	// Root curve equation to gradually increase speed based on game time
 	float gameTime = Score::getGameTimeAsSeconds();
-	m_speed = b2Clamp(sqrtf(gameTime), 3.0f, 6.0f);	// Clamp speed between param2 and param3
+	m_speed = b2Clamp(sqrtf(gameTime), 4.0f, 7.0f);	// Clamp speed between param2 and param3
 
 	// Check if player has collided with enemy:
 	if (enemyCollisionCount > 0)
@@ -88,36 +78,26 @@ void Player::update()
 	}
 	enemyCollisionCount = 0;
 
+	// Update the renderable object
 	b2Vec2 pos = m_body->GetPosition();
 	m_shape.setPosition(pos.x, pos.y);
-
 	float angle = m_body->GetAngle() * RAD2DEG;
 	m_shape.setRotation(angle);
 
-	// Test Stuff - REMOVE/DELETE:
-	static bool runOnce = true;
-	static Color initialColour;
-	if (runOnce)
-	{
-		initialColour = m_shape.getFillColor();
-		runOnce = false;
-	}
-
-	if (platformBeneath.size() > 0)
-		m_shape.setFillColor(Color::Yellow);
-	else
-		m_shape.setFillColor(initialColour);
+	// Change player colour based on whether it is grounded or not
+	m_shape.setFillColor(platformBeneath.size() > 0 ? m_groundColour : m_airColour);
 }
 
 void Player::draw(RenderTarget& target, RenderStates states) const
 {
 	target.draw(m_shape);
+
 	// Add a line
 	RectangleShape line(Vector2f(playerRadiusSize, 0.01f));
 	line.setPosition(m_shape.getPosition());
 	line.setOrigin(0.f, 0.005f);
 	line.rotate(m_shape.getRotation());
-	line.setFillColor(Color::Black);
+	line.setFillColor(Color::Magenta);
 	target.draw(line);
 }
 
@@ -196,9 +176,4 @@ void Player::endCollision(b2Fixture* thisFixture, b2Fixture* collidedWith)
 
 	if (fixtType == FixtureType::Platform)
 		platformBeneath.erase(collidedWith);
-}
-
-const b2Vec2 Player::getLinearVelocity() const
-{
-	return m_body->GetLinearVelocity();
 }

@@ -1,0 +1,175 @@
+\hypertarget{class_platform}{}\doxysection{Platform Class Reference}
+\label{class_platform}\index{Platform@{Platform}}
+
+
+A platform which cannot move or rotate but can collide with stuff.  
+
+
+
+
+{\ttfamily \#include $<$Platformer/include/\+Platform.\+h$>$}
+
+Inheritance diagram for Platform\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_platform}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_platform_a95d0cb5b4187b84d68cc653e2b3ac1e4}{Platform}} (b2\+World $\ast$world, Vector2f \&position=Vector2f(0, 0), Vector2f \&size=Vector2f(4.\+0f, 0.\+4f), const Color colour=Color\+::\+Green)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_platform_a13b5e4ef946b8a2fe38d22014145ab68}\label{class_platform_a13b5e4ef946b8a2fe38d22014145ab68}} 
+virtual \mbox{\hyperlink{class_platform_a13b5e4ef946b8a2fe38d22014145ab68}{$\sim$\+Platform}} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor which calls base class destructor where applicable and then nullifies platform start and end fixtures. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_platform_aa601f00a3625669bb39252cfc932efa0}{update}} ()
+\begin{DoxyCompactList}\small\item\em Update the platform -\/ virtual function ensures derived class\textquotesingle{} update method is called if implemented. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_platform_a7fd0ecb7768dfb7425580865f8db8ce3}{draw}} (Render\+Target \&target, Render\+States states) const
+\begin{DoxyCompactList}\small\item\em Draw the platform to render context -\/ virtual function ensures derived class\textquotesingle{} draw method is called if implemented. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_platform_a6604a997d97e88c9a9feb78aa33e17f5}{start\+Collision}} (b2\+Fixture $\ast$this\+Fixture, b2\+Fixture $\ast$collided\+With)
+\begin{DoxyCompactList}\small\item\em Virtual inherited method called when this platform collides with another fixture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_platform_a5cc2f24d7db40f4b992d9ecbc80e5821}{end\+Collision}} (b2\+Fixture $\ast$this\+Fixture, b2\+Fixture $\ast$collided\+With)
+\begin{DoxyCompactList}\small\item\em Virtual inherited method called when this platform ends collision with another fixture. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_platform_acb5f195ca40897110b02a405682f2321}\label{class_platform_acb5f195ca40897110b02a405682f2321}} 
+Rectangle\+Shape \mbox{\hyperlink{class_platform_acb5f195ca40897110b02a405682f2321}{m\+\_\+shape}}
+\begin{DoxyCompactList}\small\item\em The renderable object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_platform_a8b164080fb119d5ecb632bb4d1f60dff}\label{class_platform_a8b164080fb119d5ecb632bb4d1f60dff}} 
+Vector2f \mbox{\hyperlink{class_platform_a8b164080fb119d5ecb632bb4d1f60dff}{m\+\_\+size}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_platform}{Platform}} dimensions. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_platform_a8e9a9c96e767b107fa611e286873186d}\label{class_platform_a8e9a9c96e767b107fa611e286873186d}} 
+b2\+Fixture $\ast$ \mbox{\hyperlink{class_platform_a8e9a9c96e767b107fa611e286873186d}{platform\+Start\+Sensor}}
+\begin{DoxyCompactList}\small\item\em A fixture sensor placed at the platform start. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_platform_a33f3d4dbe4de9fa602b7196103fa0ec8}\label{class_platform_a33f3d4dbe4de9fa602b7196103fa0ec8}} 
+b2\+Fixture $\ast$ \mbox{\hyperlink{class_platform_a33f3d4dbe4de9fa602b7196103fa0ec8}{platform\+End\+Sensor}}
+\begin{DoxyCompactList}\small\item\em A fixture sensor placed at the platform end. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A platform which cannot move or rotate but can collide with stuff. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_platform_a95d0cb5b4187b84d68cc653e2b3ac1e4}\label{class_platform_a95d0cb5b4187b84d68cc653e2b3ac1e4}} 
+\index{Platform@{Platform}!Platform@{Platform}}
+\index{Platform@{Platform}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{Platform()}{Platform()}}
+{\footnotesize\ttfamily Platform\+::\+Platform (\begin{DoxyParamCaption}\item[{b2\+World $\ast$}]{world,  }\item[{Vector2f \&}]{position = {\ttfamily Vector2f(0,~0)},  }\item[{Vector2f \&}]{size = {\ttfamily Vector2f(4.0f,~0.4f)},  }\item[{const Color}]{colour = {\ttfamily Color\+:\+:Green} }\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em world} & The Box2D world that this platform is in \\
+\hline
+{\em position} & The position of the platform in the world (default value\+: (0, 0)) \\
+\hline
+{\em size} & the The size of the platform in the world (default value\+: (4, 0.\+4)) \\
+\hline
+{\em colour} & The colour of this platform (default value\+: Green) \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_platform_a7fd0ecb7768dfb7425580865f8db8ce3}\label{class_platform_a7fd0ecb7768dfb7425580865f8db8ce3}} 
+\index{Platform@{Platform}!draw@{draw}}
+\index{draw@{draw}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Platform\+::draw (\begin{DoxyParamCaption}\item[{Render\+Target \&}]{target,  }\item[{Render\+States}]{states }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Draw the platform to render context -\/ virtual function ensures derived class\textquotesingle{} draw method is called if implemented. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & The target to draw to (usually the window) \\
+\hline
+{\em states} & The states used for drawing to a Render\+Target Overide base function to allow drawing of \mbox{\hyperlink{class_platform}{Platform}} objects \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_physical_thing_ae3bd48440dc3b49d38fc0d120d9c1795}{Physical\+Thing}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_coin_platform_a023986ab514710d380cd8d793a62ee8d}{Coin\+Platform}}, and \mbox{\hyperlink{class_enemy_platform_a82640ece839006c8c49c739977af3dd8}{Enemy\+Platform}}.
+
+\mbox{\Hypertarget{class_platform_a5cc2f24d7db40f4b992d9ecbc80e5821}\label{class_platform_a5cc2f24d7db40f4b992d9ecbc80e5821}} 
+\index{Platform@{Platform}!endCollision@{endCollision}}
+\index{endCollision@{endCollision}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{endCollision()}{endCollision()}}
+{\footnotesize\ttfamily void Platform\+::end\+Collision (\begin{DoxyParamCaption}\item[{b2\+Fixture $\ast$}]{this\+Fixture,  }\item[{b2\+Fixture $\ast$}]{collided\+With }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Virtual inherited method called when this platform ends collision with another fixture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this\+Fixture} & the platform fixture that was involved in the collision (there are three platform fixtures; the main body, start sensor and end sensor) \\
+\hline
+{\em collided\+With} & the fixture this enemy ended collision with \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_platform_a6604a997d97e88c9a9feb78aa33e17f5}{start\+Collision}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{class_physical_thing_af46f9ede88b660d39bb549b6670c121f}{Physical\+Thing}}.
+
+\mbox{\Hypertarget{class_platform_a6604a997d97e88c9a9feb78aa33e17f5}\label{class_platform_a6604a997d97e88c9a9feb78aa33e17f5}} 
+\index{Platform@{Platform}!startCollision@{startCollision}}
+\index{startCollision@{startCollision}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{startCollision()}{startCollision()}}
+{\footnotesize\ttfamily void Platform\+::start\+Collision (\begin{DoxyParamCaption}\item[{b2\+Fixture $\ast$}]{this\+Fixture,  }\item[{b2\+Fixture $\ast$}]{collided\+With }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Virtual inherited method called when this platform collides with another fixture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this\+Fixture} & the platform fixture that was involved in the collision (there are three platform fixtures; the main body, start sensor and end sensor) \\
+\hline
+{\em collided\+With} & the fixture this enemy collided with \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_platform_a5cc2f24d7db40f4b992d9ecbc80e5821}{end\+Collision}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{class_physical_thing_a8ebd0f4124bfd7bd717359aa86001a22}{Physical\+Thing}}.
+
+\mbox{\Hypertarget{class_platform_aa601f00a3625669bb39252cfc932efa0}\label{class_platform_aa601f00a3625669bb39252cfc932efa0}} 
+\index{Platform@{Platform}!update@{update}}
+\index{update@{update}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Platform\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Update the platform -\/ virtual function ensures derived class\textquotesingle{} update method is called if implemented. 
+
+Update platform attributes (e.\+g. Size, position, colour); 
+
+Reimplemented from \mbox{\hyperlink{class_physical_thing_a856d76c0a5a498026e992c574ee4032b}{Physical\+Thing}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_coin_platform_aeb7e82e5a95fd89e932c6fd48515be02}{Coin\+Platform}}, and \mbox{\hyperlink{class_enemy_platform_a115c76e233c750fb3bd66db1b34e4ceb}{Enemy\+Platform}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_platform_8h}{Platform.\+h}}\item 
+Platform.\+cpp\end{DoxyCompactItemize}

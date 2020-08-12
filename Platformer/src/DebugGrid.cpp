@@ -44,11 +44,13 @@ DebugGrid::DebugGrid(View& view, bool autoGridSize, Vector2i gridSize, Color col
 
 void DebugGrid::setGridSize(const Vector2i gridSize)
 {
+	m_autoGridSize = false;
 	m_gridSize = gridSize;
 }
 
 void DebugGrid::setGridSize(const int width, const int height)
 {
+	m_autoGridSize = false;
 	m_gridSize.x = width;
 	m_gridSize.y = height;
 }

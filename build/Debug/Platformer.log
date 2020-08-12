@@ -1,5 +1,23 @@
-﻿  Game.cpp
-D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\Game.cpp(172,3): warning C4060: switch statement contains no 'case' or 'default' labels
-  UserInterface.cpp
+﻿  Enemy.cpp
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\Enemy.cpp(104,65): warning C4311: 'type cast': pointer truncation from 'void *' to 'int'
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\Enemy.cpp(104,65): warning C4302: 'type cast': truncation from 'void *' to 'int'
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\Enemy.cpp(120,65): warning C4311: 'type cast': pointer truncation from 'void *' to 'int'
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\Enemy.cpp(120,65): warning C4302: 'type cast': truncation from 'void *' to 'int'
+  EnemyPlatform.cpp
+  Game.cpp
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\Game.cpp(122,3): warning C4060: switch statement contains no 'case' or 'default' labels
+  Player.cpp
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\Player.cpp(127,83): warning C4311: 'type cast': pointer truncation from 'void *' to 'int'
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\Player.cpp(127,83): warning C4302: 'type cast': truncation from 'void *' to 'int'
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\Player.cpp(144,83): warning C4311: 'type cast': pointer truncation from 'void *' to 'int'
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\Player.cpp(144,83): warning C4302: 'type cast': truncation from 'void *' to 'int'
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\Player.cpp(175,82): warning C4311: 'type cast': pointer truncation from 'void *' to 'int'
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\Player.cpp(175,82): warning C4302: 'type cast': truncation from 'void *' to 'int'
+  WorldGenerator.cpp
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\WorldGenerator.cpp(185,5): warning C4311: 'type cast': pointer truncation from 'void *' to 'int'
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\WorldGenerator.cpp(185,5): warning C4302: 'type cast': truncation from 'void *' to 'int'
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\WorldGenerator.cpp(196,5): warning C4311: 'type cast': pointer truncation from 'void *' to 'int'
+D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\src\WorldGenerator.cpp(196,5): warning C4302: 'type cast': truncation from 'void *' to 'int'
+  main.cpp
   Generating Code...
   Platformer.vcxproj -> D:\Users\p2564\OneDrive\AdvancedC++\assessment\2DPlatformer\Platformer\..\bin\Platformer.exe

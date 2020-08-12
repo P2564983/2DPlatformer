@@ -7,7 +7,8 @@ EnemyPlatform::EnemyPlatform(b2World* world, Vector2f& position, Vector2f& size,
 	Platform::setUserData();
 
 	// Create the enemy on the platform:
-	m_enemy = new Enemy(world, this);
+	Vector2f enemyPosition = position - Vector2f(0, size.y * 0.5f + 0.25f);
+	m_enemy = new Enemy(world, enemyPosition);
 	m_enemy->setUserData();
 }
 
@@ -15,6 +16,7 @@ EnemyPlatform::~EnemyPlatform()
 {
 	// Base Platform class handles platform cleanup
 	if(m_enemy) delete m_enemy;
+	m_enemy = nullptr;
 }
 
 void EnemyPlatform::update()

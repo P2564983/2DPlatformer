@@ -1,0 +1,158 @@
+\hypertarget{class_debug_grid}{}\doxysection{Debug\+Grid Class Reference}
+\label{class_debug_grid}\index{DebugGrid@{DebugGrid}}
+
+
+A drawable grid used for debugging purposes.  
+
+
+
+
+{\ttfamily \#include $<$Platformer/include/\+Debug\+Grid.\+h$>$}
+
+Inheritance diagram for Debug\+Grid\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_debug_grid}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_debug_grid_a83d5afec4f7a51d2c9c78035a5aae825}{Debug\+Grid}} (View \&view, bool auto\+Grid\+Size=true, const Vector2i grid\+Size=Vector2i(0, 0), Color colour=Color\+::\+Magenta)
+\begin{DoxyCompactList}\small\item\em Constructor to setup a debig grid. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_debug_grid_ab8ac44d15ea76bf27a794738483e4ba2}\label{class_debug_grid_ab8ac44d15ea76bf27a794738483e4ba2}} 
+void \mbox{\hyperlink{class_debug_grid_ab8ac44d15ea76bf27a794738483e4ba2}{set\+Grid\+Size}} (const Vector2i grid\+Size)
+\begin{DoxyCompactList}\small\item\em Set the grid size -\/ this method disables auto\+Grid\+Size; /param grid\+Size the new grid size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_debug_grid_a6c9de22b1544844fddfacaad33656d5f}{set\+Grid\+Size}} (const int width, const int height)
+\begin{DoxyCompactList}\small\item\em Set the grid size -\/ this method disables auto\+Grid\+Size; /param width the width of the new grid. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_debug_grid_aa439fec500a3e808516927c0005f1f48}{update}} (View \&view)
+\begin{DoxyCompactList}\small\item\em Updates the grids position (and size if auto\+Grid\+Size is true) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_debug_grid_ac2a951cf189f87b2f1898c5d79b8671d}{draw}} (Render\+Target \&target, Render\+States states) const
+\begin{DoxyCompactList}\small\item\em Draw the grid to render context. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_debug_grid_a28628edfbc547588f231ccafa310b3d6}\label{class_debug_grid_a28628edfbc547588f231ccafa310b3d6}} 
+bool \mbox{\hyperlink{class_debug_grid_a28628edfbc547588f231ccafa310b3d6}{m\+\_\+auto\+Grid\+Size}}
+\begin{DoxyCompactList}\small\item\em Flag determining whether the grid size and view size should be the same. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_debug_grid_a361fe7418c3eb35f26c2c110ee61a5b1}{update\+Grid}} (View \&view)
+\begin{DoxyCompactList}\small\item\em Updates the grids size and position depending on the view. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_debug_grid_a5957a46f038571318af03605b05f5c26}\label{class_debug_grid_a5957a46f038571318af03605b05f5c26}} 
+Color \mbox{\hyperlink{class_debug_grid_a5957a46f038571318af03605b05f5c26}{m\+\_\+colour}}
+\begin{DoxyCompactList}\small\item\em The grid colour. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_debug_grid_ad1a945e0db092b9e7a55bb485d66c8b6}\label{class_debug_grid_ad1a945e0db092b9e7a55bb485d66c8b6}} 
+Vertex\+Array \mbox{\hyperlink{class_debug_grid_ad1a945e0db092b9e7a55bb485d66c8b6}{m\+\_\+grid}}
+\begin{DoxyCompactList}\small\item\em The points that make up the grid. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_debug_grid_a19f6e8b72a1e16e983d15c0f5538f738}\label{class_debug_grid_a19f6e8b72a1e16e983d15c0f5538f738}} 
+Vector2i \mbox{\hyperlink{class_debug_grid_a19f6e8b72a1e16e983d15c0f5538f738}{m\+\_\+grid\+Size}}
+\begin{DoxyCompactList}\small\item\em The grid\textquotesingle{}s dimensions. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_debug_grid_adc7a4318f0084e35e89b286f8e72edca}\label{class_debug_grid_adc7a4318f0084e35e89b286f8e72edca}} 
+int \mbox{\hyperlink{class_debug_grid_adc7a4318f0084e35e89b286f8e72edca}{m\+\_\+grid\+Points}}
+\begin{DoxyCompactList}\small\item\em The number of grid points. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_debug_grid_a92c0867e975339ba7a902e9fe641cbb8}\label{class_debug_grid_a92c0867e975339ba7a902e9fe641cbb8}} 
+Vector2f \mbox{\hyperlink{class_debug_grid_a92c0867e975339ba7a902e9fe641cbb8}{m\+\_\+offset}}
+\begin{DoxyCompactList}\small\item\em An offset used when setting up and drawing the grid. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A drawable grid used for debugging purposes. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_debug_grid_a83d5afec4f7a51d2c9c78035a5aae825}\label{class_debug_grid_a83d5afec4f7a51d2c9c78035a5aae825}} 
+\index{DebugGrid@{DebugGrid}!DebugGrid@{DebugGrid}}
+\index{DebugGrid@{DebugGrid}!DebugGrid@{DebugGrid}}
+\doxysubsubsection{\texorpdfstring{DebugGrid()}{DebugGrid()}}
+{\footnotesize\ttfamily Debug\+Grid\+::\+Debug\+Grid (\begin{DoxyParamCaption}\item[{View \&}]{view,  }\item[{bool}]{auto\+Grid\+Size = {\ttfamily true},  }\item[{const Vector2i}]{grid\+Size = {\ttfamily Vector2i(0,~0)},  }\item[{Color}]{colour = {\ttfamily Color\+:\+:Magenta} }\end{DoxyParamCaption})}
+
+
+
+Constructor to setup a debig grid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & the view the debug grid is rendered to \\
+\hline
+{\em auto\+Grid\+Size} & flag determining whether the grid size should be the same as the view size \\
+\hline
+{\em grid\+Size} & the size of the gird -\/ this value is overeidden if auto\+Grid\+Size is set to true \\
+\hline
+{\em colour} & the grid colour \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_debug_grid_ac2a951cf189f87b2f1898c5d79b8671d}\label{class_debug_grid_ac2a951cf189f87b2f1898c5d79b8671d}} 
+\index{DebugGrid@{DebugGrid}!draw@{draw}}
+\index{draw@{draw}!DebugGrid@{DebugGrid}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Debug\+Grid\+::draw (\begin{DoxyParamCaption}\item[{Render\+Target \&}]{target,  }\item[{Render\+States}]{states }\end{DoxyParamCaption}) const}
+
+
+
+Draw the grid to render context. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & the target to draw to (usually the window) \\
+\hline
+{\em states} & the states used for drawing to a Render\+Target \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_debug_grid_a6c9de22b1544844fddfacaad33656d5f}\label{class_debug_grid_a6c9de22b1544844fddfacaad33656d5f}} 
+\index{DebugGrid@{DebugGrid}!setGridSize@{setGridSize}}
+\index{setGridSize@{setGridSize}!DebugGrid@{DebugGrid}}
+\doxysubsubsection{\texorpdfstring{setGridSize()}{setGridSize()}}
+{\footnotesize\ttfamily void Debug\+Grid\+::set\+Grid\+Size (\begin{DoxyParamCaption}\item[{const int}]{width,  }\item[{const int}]{height }\end{DoxyParamCaption})}
+
+
+
+Set the grid size -\/ this method disables auto\+Grid\+Size; /param width the width of the new grid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em height} & the height of the new grid \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_debug_grid_aa439fec500a3e808516927c0005f1f48}\label{class_debug_grid_aa439fec500a3e808516927c0005f1f48}} 
+\index{DebugGrid@{DebugGrid}!update@{update}}
+\index{update@{update}!DebugGrid@{DebugGrid}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Debug\+Grid\+::update (\begin{DoxyParamCaption}\item[{View \&}]{view }\end{DoxyParamCaption})}
+
+
+
+Updates the grids position (and size if auto\+Grid\+Size is true) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & the view used to base the updates on -\/ this is usually the view used to render the game world \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_debug_grid_a361fe7418c3eb35f26c2c110ee61a5b1}\label{class_debug_grid_a361fe7418c3eb35f26c2c110ee61a5b1}} 
+\index{DebugGrid@{DebugGrid}!updateGrid@{updateGrid}}
+\index{updateGrid@{updateGrid}!DebugGrid@{DebugGrid}}
+\doxysubsubsection{\texorpdfstring{updateGrid()}{updateGrid()}}
+{\footnotesize\ttfamily void Debug\+Grid\+::update\+Grid (\begin{DoxyParamCaption}\item[{View \&}]{view }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Updates the grids size and position depending on the view. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & the view used to base the updates on -\/ this is usually the view used to render the game world \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_debug_grid_8h}{Debug\+Grid.\+h}}\item 
+Debug\+Grid.\+cpp\end{DoxyCompactItemize}

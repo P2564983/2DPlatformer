@@ -1,0 +1,130 @@
+\hypertarget{struct_score}{}\doxysection{Score Struct Reference}
+\label{struct_score}\index{Score@{Score}}
+
+
+A (static) struct which maintains the current and high score as well as time elasped of the game being played.  
+
+
+
+
+{\ttfamily \#include $<$Platformer/include/\+World.\+h$>$}
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{struct_score_a57aa8aea782b65a427248bc8ba7a3e64}{add\+To\+Score}} (const unsigned int score\+Change)
+\begin{DoxyCompactList}\small\item\em Increment the current score counter -\/ this function also checks if the current score is now the high score. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_score_a01993717fb29afb1333bbaa08e3452a0}\label{struct_score_a01993717fb29afb1333bbaa08e3452a0}} 
+static void \mbox{\hyperlink{struct_score_a01993717fb29afb1333bbaa08e3452a0}{reset\+Current\+Score}} ()
+\begin{DoxyCompactList}\small\item\em Resets the current score and game time -\/ essentially starting a new game. \end{DoxyCompactList}\item 
+static unsigned int \mbox{\hyperlink{struct_score_a12804624ba19cc2515beb37293d70f6b}{get\+Current\+Score}} ()
+\begin{DoxyCompactList}\small\item\em Returns the current score. \end{DoxyCompactList}\item 
+static unsigned int \mbox{\hyperlink{struct_score_a1e1d0bd50b2221848e619eca9c3be948}{get\+High\+Score}} ()
+\begin{DoxyCompactList}\small\item\em Returns the highest score. \end{DoxyCompactList}\item 
+static Time \mbox{\hyperlink{struct_score_a333d80561eb7f27c60fda8f4a5f9f3b6}{get\+Game\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Returns the current game time. \end{DoxyCompactList}\item 
+static float \mbox{\hyperlink{struct_score_abad808864ece9b1edca92d8ebd78bb4a}{get\+Game\+Time\+As\+Seconds}} ()
+\begin{DoxyCompactList}\small\item\em Returns the current game time in seconds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_score_a039c99843551e5e4b512ecee99e46617}\label{struct_score_a039c99843551e5e4b512ecee99e46617}} 
+\mbox{\hyperlink{struct_score_a039c99843551e5e4b512ecee99e46617}{Score}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor made private to prevent initialisation of this struct (as this struct is static) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_score_a1dedfc2a6cc5e7d9b69968a534fbbee3}\label{struct_score_a1dedfc2a6cc5e7d9b69968a534fbbee3}} 
+static unsigned int {\bfseries current\+Score} = 0
+\item 
+\mbox{\Hypertarget{struct_score_a27f467e319cda764a7312c5d920c3150}\label{struct_score_a27f467e319cda764a7312c5d920c3150}} 
+static unsigned int {\bfseries high\+Score} = 0
+\item 
+\mbox{\Hypertarget{struct_score_a883dd379e4b900b8e49312b10f294816}\label{struct_score_a883dd379e4b900b8e49312b10f294816}} 
+static Clock \mbox{\hyperlink{struct_score_a883dd379e4b900b8e49312b10f294816}{game\+Time}}
+\begin{DoxyCompactList}\small\item\em A clock to determine how much time has elapsed since the game started. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A (static) struct which maintains the current and high score as well as time elasped of the game being played. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_score_a57aa8aea782b65a427248bc8ba7a3e64}\label{struct_score_a57aa8aea782b65a427248bc8ba7a3e64}} 
+\index{Score@{Score}!addToScore@{addToScore}}
+\index{addToScore@{addToScore}!Score@{Score}}
+\doxysubsubsection{\texorpdfstring{addToScore()}{addToScore()}}
+{\footnotesize\ttfamily void Score\+::add\+To\+Score (\begin{DoxyParamCaption}\item[{const unsigned int}]{score\+Change }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Increment the current score counter -\/ this function also checks if the current score is now the high score. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em score\+Change} & the value to increment the current score by \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{struct_score_a12804624ba19cc2515beb37293d70f6b}{get\+Current\+Score}}, \mbox{\hyperlink{struct_score_a1e1d0bd50b2221848e619eca9c3be948}{get\+High\+Score}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{struct_score_a12804624ba19cc2515beb37293d70f6b}\label{struct_score_a12804624ba19cc2515beb37293d70f6b}} 
+\index{Score@{Score}!getCurrentScore@{getCurrentScore}}
+\index{getCurrentScore@{getCurrentScore}!Score@{Score}}
+\doxysubsubsection{\texorpdfstring{getCurrentScore()}{getCurrentScore()}}
+{\footnotesize\ttfamily static unsigned int Score\+::get\+Current\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns the current score. 
+
+\begin{DoxyReturn}{Returns}
+the current score 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_score_a333d80561eb7f27c60fda8f4a5f9f3b6}\label{struct_score_a333d80561eb7f27c60fda8f4a5f9f3b6}} 
+\index{Score@{Score}!getGameTime@{getGameTime}}
+\index{getGameTime@{getGameTime}!Score@{Score}}
+\doxysubsubsection{\texorpdfstring{getGameTime()}{getGameTime()}}
+{\footnotesize\ttfamily static Time Score\+::get\+Game\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns the current game time. 
+
+\begin{DoxyReturn}{Returns}
+the highest score 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{struct_score_abad808864ece9b1edca92d8ebd78bb4a}{get\+Game\+Time\+As\+Seconds}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{struct_score_abad808864ece9b1edca92d8ebd78bb4a}\label{struct_score_abad808864ece9b1edca92d8ebd78bb4a}} 
+\index{Score@{Score}!getGameTimeAsSeconds@{getGameTimeAsSeconds}}
+\index{getGameTimeAsSeconds@{getGameTimeAsSeconds}!Score@{Score}}
+\doxysubsubsection{\texorpdfstring{getGameTimeAsSeconds()}{getGameTimeAsSeconds()}}
+{\footnotesize\ttfamily static float Score\+::get\+Game\+Time\+As\+Seconds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns the current game time in seconds. 
+
+\begin{DoxyReturn}{Returns}
+a floating point indicating how much time has passed since score reset 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_score_a1e1d0bd50b2221848e619eca9c3be948}\label{struct_score_a1e1d0bd50b2221848e619eca9c3be948}} 
+\index{Score@{Score}!getHighScore@{getHighScore}}
+\index{getHighScore@{getHighScore}!Score@{Score}}
+\doxysubsubsection{\texorpdfstring{getHighScore()}{getHighScore()}}
+{\footnotesize\ttfamily static unsigned int Score\+::get\+High\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns the highest score. 
+
+\begin{DoxyReturn}{Returns}
+the highest score 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_world_8h}{World.\+h}}\item 
+World.\+cpp\end{DoxyCompactItemize}

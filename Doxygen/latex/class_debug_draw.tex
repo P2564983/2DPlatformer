@@ -1,0 +1,50 @@
+\hypertarget{class_debug_draw}{}\doxysection{Debug\+Draw Class Reference}
+\label{class_debug_draw}\index{DebugDraw@{DebugDraw}}
+Inheritance diagram for Debug\+Draw\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_debug_draw}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_debug_draw_a1f9c99b818e21078a53d11a5ca6e2c79}\label{class_debug_draw_a1f9c99b818e21078a53d11a5ca6e2c79}} 
+void \mbox{\hyperlink{class_debug_draw_a1f9c99b818e21078a53d11a5ca6e2c79}{Draw\+Point}} (const b2\+Vec2 \&p, float32 size, const b2\+Color \&color)
+\begin{DoxyCompactList}\small\item\em Draw a point (dot) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_debug_draw_a1562ce91df605efef3cdf300be267cc2}\label{class_debug_draw_a1562ce91df605efef3cdf300be267cc2}} 
+void \mbox{\hyperlink{class_debug_draw_a1562ce91df605efef3cdf300be267cc2}{Draw\+Solid\+Polygon}} (const b2\+Vec2 $\ast$vertices, int32 vertex\+Count, const b2\+Color \&color)
+\begin{DoxyCompactList}\small\item\em Draw a filled polygon. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_debug_draw_a14ab8cf80799e57df5414db216552962}\label{class_debug_draw_a14ab8cf80799e57df5414db216552962}} 
+void \mbox{\hyperlink{class_debug_draw_a14ab8cf80799e57df5414db216552962}{Draw\+Polygon}} (const b2\+Vec2 $\ast$vertices, int32 vertex\+Count, const b2\+Color \&color)
+\begin{DoxyCompactList}\small\item\em Draw the outline of a polygon. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_debug_draw_a5adb064981a67fefe7064820006b673e}\label{class_debug_draw_a5adb064981a67fefe7064820006b673e}} 
+void \mbox{\hyperlink{class_debug_draw_a5adb064981a67fefe7064820006b673e}{Draw\+Circle}} (const b2\+Vec2 \&center, float32 radius, const b2\+Color \&color)
+\begin{DoxyCompactList}\small\item\em Draw a circle outline. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_debug_draw_a82428519034f36a01941dd19d6108bee}\label{class_debug_draw_a82428519034f36a01941dd19d6108bee}} 
+void \mbox{\hyperlink{class_debug_draw_a82428519034f36a01941dd19d6108bee}{Draw\+Solid\+Circle}} (const b2\+Vec2 \&center, float32 radius, const b2\+Vec2 \&axis, const b2\+Color \&color)
+\begin{DoxyCompactList}\small\item\em Draw a filled circle with axis. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_debug_draw_a69927caae41d26f23dea336a1269ee4e}\label{class_debug_draw_a69927caae41d26f23dea336a1269ee4e}} 
+void \mbox{\hyperlink{class_debug_draw_a69927caae41d26f23dea336a1269ee4e}{Draw\+Segment}} (const b2\+Vec2 \&p1, const b2\+Vec2 \&p2, const b2\+Color \&color)
+\begin{DoxyCompactList}\small\item\em Draw line segment. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_debug_draw_a6f61d333e6e76865ec4a6099ab31ae75}\label{class_debug_draw_a6f61d333e6e76865ec4a6099ab31ae75}} 
+void \mbox{\hyperlink{class_debug_draw_a6f61d333e6e76865ec4a6099ab31ae75}{Draw\+Transform}} (const b2\+Transform \&xf)
+\begin{DoxyCompactList}\small\item\em Draw a transform -\/ not implemented. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_debug_draw_a8f99d75a83b314b079ae06f2d2a18f04}\label{class_debug_draw_a8f99d75a83b314b079ae06f2d2a18f04}} 
+std\+::vector$<$ sf\+::\+Vertex\+Array $>$ {\bfseries get\+Shapes} () const
+\item 
+\mbox{\Hypertarget{class_debug_draw_a2f6d919a63311ccac04b9ecf04041e79}\label{class_debug_draw_a2f6d919a63311ccac04b9ecf04041e79}} 
+void \mbox{\hyperlink{class_debug_draw_a2f6d919a63311ccac04b9ecf04041e79}{clear\+Shapes}} ()
+\begin{DoxyCompactList}\small\item\em Return the shapes to be drawn. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_debug_draw_a03194802d159f2de1d24fb62defd5d1c}\label{class_debug_draw_a03194802d159f2de1d24fb62defd5d1c}} 
+std\+::vector$<$ sf\+::\+Vertex\+Array $>$ \mbox{\hyperlink{class_debug_draw_a03194802d159f2de1d24fb62defd5d1c}{m\+\_\+shapes}}
+\begin{DoxyCompactList}\small\item\em S\+F\+ML shapes (made from vertexarrays) to be drawn to the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+F\+M\+L\+Debug\+Draw.\+h\item 
+S\+F\+M\+L\+Debug\+Draw.\+cpp\end{DoxyCompactItemize}

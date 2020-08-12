@@ -1,0 +1,254 @@
+\hypertarget{class_world_generator}{}\doxysection{World\+Generator Class Reference}
+\label{class_world_generator}\index{WorldGenerator@{WorldGenerator}}
+
+
+A class that handles the game world. This class can create and destory objects as well as render the world.  
+
+
+
+
+{\ttfamily \#include $<$Platformer/include/\+World\+Generator.\+h$>$}
+
+Inheritance diagram for World\+Generator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_world_generator}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_world_generator_aeda433152fb8f073ad5b5629be2de724}{World\+Generator}} (b2\+World $\ast$world, View \&view)
+\begin{DoxyCompactList}\small\item\em Default constructor -\/ Creates a world generator. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_generator_afed7aa2e501ab283bb41bbaa6fbdf24a}\label{class_world_generator_afed7aa2e501ab283bb41bbaa6fbdf24a}} 
+\mbox{\hyperlink{class_world_generator_afed7aa2e501ab283bb41bbaa6fbdf24a}{$\sim$\+World\+Generator}} ()
+\begin{DoxyCompactList}\small\item\em Destructor to delete the player and platforms this class generates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_generator_ad27eeb1ca01f2984b63c32f4b42f592b}{update}} ()
+\begin{DoxyCompactList}\small\item\em Update the generated world This method will 1. Check of the player is still alive and reset the world if it has dies,. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_generator_a2c1fc92093f0254a983dcd1bd1c3b4fa}{draw}} (Render\+Target \&target, Render\+States states) const
+\begin{DoxyCompactList}\small\item\em Draw the World to render context. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_generator_a987b1129e18bbf1d5432d5d7db8a9592}{start\+Collision}} (b2\+Fixture $\ast$what\+Fixture, b2\+Fixture $\ast$collision\+Started\+With)
+\begin{DoxyCompactList}\small\item\em Virtual inherited method called when the World Generator collides with another fixture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_world_generator_ac46d5b371f6e3a05234d391329a5a5e3}{end\+Collision}} (b2\+Fixture $\ast$what\+Fixture, b2\+Fixture $\ast$collision\+Ended\+With)
+\begin{DoxyCompactList}\small\item\em Virtual inherited method called when the World Generator ends collision with another fixture. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_player}{Player}} $\ast$ \mbox{\hyperlink{class_world_generator_a6a29592ac65bc28b1e58948be3394f24}{get\+Player}} ()
+\begin{DoxyCompactList}\small\item\em Returns a reference to the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_world_generator_a34ef9ba388984be6f1f6f644a094d9b8}{generate\+Platform}} (\mbox{\hyperlink{_world_8h_a527bfd1a86584280ea4bb3f8a1f8d523}{Platform\+Type}} plat\+Type)
+\begin{DoxyCompactList}\small\item\em Helper method to generate a platform. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_generator_a27eba188dbb0a9bc4236f192e3db81dd}\label{class_world_generator_a27eba188dbb0a9bc4236f192e3db81dd}} 
+void \mbox{\hyperlink{class_world_generator_a27eba188dbb0a9bc4236f192e3db81dd}{reset\+World}} ()
+\begin{DoxyCompactList}\small\item\em Helper method to reset the world (called when a player dies) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_world_generator_a043459288aa7ce7bc1e12ae76197881c}\label{class_world_generator_a043459288aa7ce7bc1e12ae76197881c}} 
+b2\+World $\ast$ \mbox{\hyperlink{class_world_generator_a043459288aa7ce7bc1e12ae76197881c}{m\+\_\+b2\+World}}
+\begin{DoxyCompactList}\small\item\em A reference to the Box2D Physics world used to add and remove things from the world. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_generator_a110052ed8397e8fd064ce9f55ecfe184}\label{class_world_generator_a110052ed8397e8fd064ce9f55ecfe184}} 
+b2\+Fixture $\ast$ \mbox{\hyperlink{class_world_generator_a110052ed8397e8fd064ce9f55ecfe184}{m\+\_\+creator\+Sensor}}
+\begin{DoxyCompactList}\small\item\em The sensor fixture used to detect when to create. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_generator_a2199239d0d0ef94c6af22e6006ed1a53}\label{class_world_generator_a2199239d0d0ef94c6af22e6006ed1a53}} 
+b2\+Fixture $\ast$ \mbox{\hyperlink{class_world_generator_a2199239d0d0ef94c6af22e6006ed1a53}{m\+\_\+destructor\+Sensor}}
+\begin{DoxyCompactList}\small\item\em The sensor fixture used to detect when to destroy. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_generator_accb2d4b32bf01ab7c81a19d0664b2058}\label{class_world_generator_accb2d4b32bf01ab7c81a19d0664b2058}} 
+b2\+Fixture $\ast$ \mbox{\hyperlink{class_world_generator_accb2d4b32bf01ab7c81a19d0664b2058}{m\+\_\+ground\+Sensor}}
+\begin{DoxyCompactList}\small\item\em The sensor fixture used to detect when the player falls. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_generator_a16e1d576b3d7c9358f814e31d6521848}\label{class_world_generator_a16e1d576b3d7c9358f814e31d6521848}} 
+Vector2f \mbox{\hyperlink{class_world_generator_a16e1d576b3d7c9358f814e31d6521848}{m\+\_\+view\+Size}}
+\begin{DoxyCompactList}\small\item\em The size of the view used to determine where objects can be created. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_generator_a1d73226699dec7bb49a165fd960b4dcc}\label{class_world_generator_a1d73226699dec7bb49a165fd960b4dcc}} 
+float \mbox{\hyperlink{class_world_generator_a1d73226699dec7bb49a165fd960b4dcc}{min\+Y\+Position}}
+\begin{DoxyCompactList}\small\item\em Min y position for platforms to be generated at. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_generator_ac20daa8fc5b1e93ed613e08bf6839fc7}\label{class_world_generator_ac20daa8fc5b1e93ed613e08bf6839fc7}} 
+float \mbox{\hyperlink{class_world_generator_ac20daa8fc5b1e93ed613e08bf6839fc7}{max\+Y\+Position}}
+\begin{DoxyCompactList}\small\item\em Max y position for platforms to be generated at. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_generator_ac54d01b00d39ac7f0e6a729aefd04030}\label{class_world_generator_ac54d01b00d39ac7f0e6a729aefd04030}} 
+float \mbox{\hyperlink{class_world_generator_ac54d01b00d39ac7f0e6a729aefd04030}{centre\+Y\+Position}}
+\begin{DoxyCompactList}\small\item\em Center y position of the view. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_generator_a2f9e081c561e047a64408e23813eeae0}\label{class_world_generator_a2f9e081c561e047a64408e23813eeae0}} 
+\mbox{\hyperlink{class_player}{Player}} $\ast$ \mbox{\hyperlink{class_world_generator_a2f9e081c561e047a64408e23813eeae0}{m\+\_\+player}}
+\begin{DoxyCompactList}\small\item\em A reference to the player required to know player state. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_generator_ade662ba6fd6a615b5b00ebb1b5c92cdf}\label{class_world_generator_ade662ba6fd6a615b5b00ebb1b5c92cdf}} 
+set$<$ \mbox{\hyperlink{class_physical_thing}{Physical\+Thing}} $\ast$ $>$ \mbox{\hyperlink{class_world_generator_ade662ba6fd6a615b5b00ebb1b5c92cdf}{m\+\_\+world\+Objects}}
+\begin{DoxyCompactList}\small\item\em A unique list of everything in the world -\/ this set is updated as objects are created and destroyed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_generator_a360e028869d4619eaffba25ee58d3c78}\label{class_world_generator_a360e028869d4619eaffba25ee58d3c78}} 
+set$<$ \mbox{\hyperlink{class_physical_thing}{Physical\+Thing}} $\ast$ $>$ \mbox{\hyperlink{class_world_generator_a360e028869d4619eaffba25ee58d3c78}{m\+\_\+to\+Destroy}}
+\begin{DoxyCompactList}\small\item\em A queue of items that need to be destroyed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_generator_ad29ccbc3fb17a4de106516fe587ceb5b}\label{class_world_generator_ad29ccbc3fb17a4de106516fe587ceb5b}} 
+Vector2f \mbox{\hyperlink{class_world_generator_ad29ccbc3fb17a4de106516fe587ceb5b}{last\+Plat\+Pos}}
+\begin{DoxyCompactList}\small\item\em The position of the last generated platform used to determine the position of the next platform to be generated. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_generator_a8c4e7de2f33ab54efc8d9d0e1d1104df}\label{class_world_generator_a8c4e7de2f33ab54efc8d9d0e1d1104df}} 
+bool \mbox{\hyperlink{class_world_generator_a8c4e7de2f33ab54efc8d9d0e1d1104df}{need\+To\+Generate}} = false
+\begin{DoxyCompactList}\small\item\em flag to determine wheter a platform needs be generated \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_generator_a1ede46a55bd982747cb6e3d4406bcade}\label{class_world_generator_a1ede46a55bd982747cb6e3d4406bcade}} 
+float \mbox{\hyperlink{class_world_generator_a1ede46a55bd982747cb6e3d4406bcade}{m\+\_\+speed}} = 2.\+0f
+\begin{DoxyCompactList}\small\item\em speed the view chases the player for an inertia style effect \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_generator_a6eda25f3fcced2385fdc0b48f71e53c4}\label{class_world_generator_a6eda25f3fcced2385fdc0b48f71e53c4}} 
+float \mbox{\hyperlink{class_world_generator_a6eda25f3fcced2385fdc0b48f71e53c4}{min\+Plat\+Width}} = 4.\+0f
+\begin{DoxyCompactList}\small\item\em The minimum width of a platform to be generated. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_generator_aeb03dcc062362c2bac841909d60564e4}\label{class_world_generator_aeb03dcc062362c2bac841909d60564e4}} 
+float \mbox{\hyperlink{class_world_generator_aeb03dcc062362c2bac841909d60564e4}{max\+Plat\+Width}} = 8.\+0f
+\begin{DoxyCompactList}\small\item\em The maximum width of a platform to be generated. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_generator_a43dbd762fcfadc228ea085b1a5f56e2f}\label{class_world_generator_a43dbd762fcfadc228ea085b1a5f56e2f}} 
+float \mbox{\hyperlink{class_world_generator_a43dbd762fcfadc228ea085b1a5f56e2f}{min\+Plat\+Height}} = 0.\+4f
+\begin{DoxyCompactList}\small\item\em The minimum height of a platform to be generated. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_generator_a394139bbd7b110370d802afaee5281c3}\label{class_world_generator_a394139bbd7b110370d802afaee5281c3}} 
+float \mbox{\hyperlink{class_world_generator_a394139bbd7b110370d802afaee5281c3}{max\+Plat\+Height}} = 0.\+6f
+\begin{DoxyCompactList}\small\item\em The maximum height of a platform to be generated. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_generator_a251e0dd1f9cf326df0dd0a44bd52eaac}\label{class_world_generator_a251e0dd1f9cf326df0dd0a44bd52eaac}} 
+float \mbox{\hyperlink{class_world_generator_a251e0dd1f9cf326df0dd0a44bd52eaac}{min\+PaddingX}} = 1.\+0f
+\begin{DoxyCompactList}\small\item\em The minimum space between a generated platform and the previous platform. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_generator_a3aba855b280b946108771beaed86772f}\label{class_world_generator_a3aba855b280b946108771beaed86772f}} 
+float \mbox{\hyperlink{class_world_generator_a3aba855b280b946108771beaed86772f}{max\+PaddingX}} = 2.\+0f
+\begin{DoxyCompactList}\small\item\em The maximum space between a generated platform and the previous platform. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A class that handles the game world. This class can create and destory objects as well as render the world. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_world_generator_aeda433152fb8f073ad5b5629be2de724}\label{class_world_generator_aeda433152fb8f073ad5b5629be2de724}} 
+\index{WorldGenerator@{WorldGenerator}!WorldGenerator@{WorldGenerator}}
+\index{WorldGenerator@{WorldGenerator}!WorldGenerator@{WorldGenerator}}
+\doxysubsubsection{\texorpdfstring{WorldGenerator()}{WorldGenerator()}}
+{\footnotesize\ttfamily World\+Generator\+::\+World\+Generator (\begin{DoxyParamCaption}\item[{b2\+World $\ast$}]{world,  }\item[{View \&}]{view }\end{DoxyParamCaption})}
+
+
+
+Default constructor -\/ Creates a world generator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em world} & A reference to the Box2D world \\
+\hline
+{\em view} & A Reference to the view used to render the world \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_world_generator_a2c1fc92093f0254a983dcd1bd1c3b4fa}\label{class_world_generator_a2c1fc92093f0254a983dcd1bd1c3b4fa}} 
+\index{WorldGenerator@{WorldGenerator}!draw@{draw}}
+\index{draw@{draw}!WorldGenerator@{WorldGenerator}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void World\+Generator\+::draw (\begin{DoxyParamCaption}\item[{Render\+Target \&}]{target,  }\item[{Render\+States}]{states }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Draw the World to render context. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & The target to draw to (usually the window) \\
+\hline
+{\em states} & The states used for drawing to a Render\+Target Overide base function to allow drawing of World \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_physical_thing_ae3bd48440dc3b49d38fc0d120d9c1795}{Physical\+Thing}}.
+
+\mbox{\Hypertarget{class_world_generator_ac46d5b371f6e3a05234d391329a5a5e3}\label{class_world_generator_ac46d5b371f6e3a05234d391329a5a5e3}} 
+\index{WorldGenerator@{WorldGenerator}!endCollision@{endCollision}}
+\index{endCollision@{endCollision}!WorldGenerator@{WorldGenerator}}
+\doxysubsubsection{\texorpdfstring{endCollision()}{endCollision()}}
+{\footnotesize\ttfamily void World\+Generator\+::end\+Collision (\begin{DoxyParamCaption}\item[{b2\+Fixture $\ast$}]{what\+Fixture,  }\item[{b2\+Fixture $\ast$}]{collision\+Ended\+With }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Virtual inherited method called when the World Generator ends collision with another fixture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this\+Fixture} & the fixture that was involved in the collision (there are three World Generator fixtures\+: creator, destory and ground) \\
+\hline
+{\em collided\+With} & the fixture this World Generator ended collision with \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_world_generator_a987b1129e18bbf1d5432d5d7db8a9592}{start\+Collision}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{class_physical_thing_af46f9ede88b660d39bb549b6670c121f}{Physical\+Thing}}.
+
+\mbox{\Hypertarget{class_world_generator_a34ef9ba388984be6f1f6f644a094d9b8}\label{class_world_generator_a34ef9ba388984be6f1f6f644a094d9b8}} 
+\index{WorldGenerator@{WorldGenerator}!generatePlatform@{generatePlatform}}
+\index{generatePlatform@{generatePlatform}!WorldGenerator@{WorldGenerator}}
+\doxysubsubsection{\texorpdfstring{generatePlatform()}{generatePlatform()}}
+{\footnotesize\ttfamily void World\+Generator\+::generate\+Platform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_world_8h_a527bfd1a86584280ea4bb3f8a1f8d523}{Platform\+Type}}}]{plat\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Helper method to generate a platform. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em plat\+Type} & The type of platform to generate \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_world_generator_a6a29592ac65bc28b1e58948be3394f24}\label{class_world_generator_a6a29592ac65bc28b1e58948be3394f24}} 
+\index{WorldGenerator@{WorldGenerator}!getPlayer@{getPlayer}}
+\index{getPlayer@{getPlayer}!WorldGenerator@{WorldGenerator}}
+\doxysubsubsection{\texorpdfstring{getPlayer()}{getPlayer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player}{Player}}$\ast$ World\+Generator\+::get\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns a reference to the player. 
+
+\begin{DoxyReturn}{Returns}
+A reference pointer to the player 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_world_generator_a987b1129e18bbf1d5432d5d7db8a9592}\label{class_world_generator_a987b1129e18bbf1d5432d5d7db8a9592}} 
+\index{WorldGenerator@{WorldGenerator}!startCollision@{startCollision}}
+\index{startCollision@{startCollision}!WorldGenerator@{WorldGenerator}}
+\doxysubsubsection{\texorpdfstring{startCollision()}{startCollision()}}
+{\footnotesize\ttfamily void World\+Generator\+::start\+Collision (\begin{DoxyParamCaption}\item[{b2\+Fixture $\ast$}]{what\+Fixture,  }\item[{b2\+Fixture $\ast$}]{collision\+Started\+With }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Virtual inherited method called when the World Generator collides with another fixture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this\+Fixture} & the fixture that was involved in the collision (there are three World Generator fixtures\+: creator, destory and ground) \\
+\hline
+{\em collided\+With} & the fixture this World Generator collided with \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_world_generator_ac46d5b371f6e3a05234d391329a5a5e3}{end\+Collision}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{class_physical_thing_a8ebd0f4124bfd7bd717359aa86001a22}{Physical\+Thing}}.
+
+\mbox{\Hypertarget{class_world_generator_ad27eeb1ca01f2984b63c32f4b42f592b}\label{class_world_generator_ad27eeb1ca01f2984b63c32f4b42f592b}} 
+\index{WorldGenerator@{WorldGenerator}!update@{update}}
+\index{update@{update}!WorldGenerator@{WorldGenerator}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void World\+Generator\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Update the generated world This method will 1. Check of the player is still alive and reset the world if it has dies,. 
+
+
+\begin{DoxyEnumerate}
+\item Destroy and objects that have gone out of view,
+\item Generate platforms just outside of the view so the player always has a platform to move to 
+\end{DoxyEnumerate}
+
+Reimplemented from \mbox{\hyperlink{class_physical_thing_a856d76c0a5a498026e992c574ee4032b}{Physical\+Thing}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_world_generator_8h}{World\+Generator.\+h}}\item 
+World\+Generator.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,72 @@
+\hypertarget{class_contact_listener}{}\doxysection{Contact\+Listener Class Reference}
+\label{class_contact_listener}\index{ContactListener@{ContactListener}}
+
+
+A listener which listens for contacts between all fixtures.  
+
+
+
+
+{\ttfamily \#include $<$Platformer/include/\+Contact\+Listener.\+h$>$}
+
+Inheritance diagram for Contact\+Listener\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_contact_listener}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_contact_listener_af83946c54271cbf9d8ee273587ed1791}{Begin\+Contact}} (b2\+Contact $\ast$contact)
+\begin{DoxyCompactList}\small\item\em A callback function triggered when two fixtures collides. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_contact_listener_a92df01f2f60983f4f1dd74b5e845188d}{End\+Contact}} (b2\+Contact $\ast$contact)
+\begin{DoxyCompactList}\small\item\em A callback function triggered when two fixtures end collision. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A listener which listens for contacts between all fixtures. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_contact_listener_af83946c54271cbf9d8ee273587ed1791}\label{class_contact_listener_af83946c54271cbf9d8ee273587ed1791}} 
+\index{ContactListener@{ContactListener}!BeginContact@{BeginContact}}
+\index{BeginContact@{BeginContact}!ContactListener@{ContactListener}}
+\doxysubsubsection{\texorpdfstring{BeginContact()}{BeginContact()}}
+{\footnotesize\ttfamily void Contact\+Listener\+::\+Begin\+Contact (\begin{DoxyParamCaption}\item[{b2\+Contact $\ast$}]{contact }\end{DoxyParamCaption})}
+
+
+
+A callback function triggered when two fixtures collides. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em contact} & the Box2D contact information regarding the collision -\/ this contains useful information such as what fixtures were involved and where the collision occured \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_contact_listener_a92df01f2f60983f4f1dd74b5e845188d}{End\+Contact}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_contact_listener_a92df01f2f60983f4f1dd74b5e845188d}\label{class_contact_listener_a92df01f2f60983f4f1dd74b5e845188d}} 
+\index{ContactListener@{ContactListener}!EndContact@{EndContact}}
+\index{EndContact@{EndContact}!ContactListener@{ContactListener}}
+\doxysubsubsection{\texorpdfstring{EndContact()}{EndContact()}}
+{\footnotesize\ttfamily void Contact\+Listener\+::\+End\+Contact (\begin{DoxyParamCaption}\item[{b2\+Contact $\ast$}]{contact }\end{DoxyParamCaption})}
+
+
+
+A callback function triggered when two fixtures end collision. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em contact} & the Box2D contact information regarding the collision -\/ this contains useful information such as what fixtures were involved and where the collision occured \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_contact_listener_af83946c54271cbf9d8ee273587ed1791}{Begin\+Contact}} Called when two fixtures cease to touch 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_contact_listener_8h}{Contact\+Listener.\+h}}\item 
+Contact\+Listener.\+cpp\end{DoxyCompactItemize}

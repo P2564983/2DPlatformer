@@ -1,0 +1,177 @@
+\hypertarget{class_enemy}{}\doxysection{Enemy Class Reference}
+\label{class_enemy}\index{Enemy@{Enemy}}
+
+
+An enemy that patrols a platform.  
+
+
+
+
+{\ttfamily \#include $<$Platformer/include/\+Enemy.\+h$>$}
+
+Inheritance diagram for Enemy\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_enemy}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_enemy_a5525934c0944de7245700f64e3a13784}{Enemy}} (b2\+World $\ast$world, Vector2f position=Vector2f(0, 0), Color colour=Color\+::\+Red)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_enemy_ac0eec4755e28c02688065f9657150ac3}\label{class_enemy_ac0eec4755e28c02688065f9657150ac3}} 
+\mbox{\hyperlink{class_enemy_ac0eec4755e28c02688065f9657150ac3}{$\sim$\+Enemy}} ()
+\begin{DoxyCompactList}\small\item\em Destructor cleans up pointer values. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_enemy_a9a398f8d12234f02563b27440aff7891}\label{class_enemy_a9a398f8d12234f02563b27440aff7891}} 
+void \mbox{\hyperlink{class_enemy_a9a398f8d12234f02563b27440aff7891}{move}} ()
+\begin{DoxyCompactList}\small\item\em Move the enemy based on its velocity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_enemy_ad55ee71b5a8c23fbd00b3c368b90cc64}\label{class_enemy_ad55ee71b5a8c23fbd00b3c368b90cc64}} 
+void \mbox{\hyperlink{class_enemy_ad55ee71b5a8c23fbd00b3c368b90cc64}{update}} ()
+\begin{DoxyCompactList}\small\item\em Update the players position and check if it has been killed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_enemy_ad4f1a4fa0cd27b2061b7aa98d86cb4e2}{draw}} (Render\+Target \&target, Render\+States states) const
+\begin{DoxyCompactList}\small\item\em Draw the enemy to render context. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_enemy_a518a8371304a2b678a65d56ac830eafa}{is\+Dead}} () const
+\begin{DoxyCompactList}\small\item\em Returns the state of the player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_enemy_aa4da901c7789e7cd90946f399b5293cd}{start\+Collision}} (b2\+Fixture $\ast$this\+Fixture, b2\+Fixture $\ast$collided\+With)
+\begin{DoxyCompactList}\small\item\em Virtual inherited method called when this enemy collides with another fixture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_enemy_ad1e96bf629e39c862caca46c609a8bb2}{end\+Collision}} (b2\+Fixture $\ast$this\+Fixture, b2\+Fixture $\ast$collided\+With)
+\begin{DoxyCompactList}\small\item\em Virtual inherited method called when this enemy ends collision with another fixture. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_enemy_a1736500000a16be765dfcc0d78d8279a}\label{class_enemy_a1736500000a16be765dfcc0d78d8279a}} 
+const b2\+Vec2 \mbox{\hyperlink{class_enemy_a1736500000a16be765dfcc0d78d8279a}{enemy\+Half\+Size}} = b2\+Vec2(0.\+25f, 0.\+25f)
+\begin{DoxyCompactList}\small\item\em The half size of the enemy used to construct its body shape. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_enemy_a9aaf5f3fd151e301cbadd363c856134e}\label{class_enemy_a9aaf5f3fd151e301cbadd363c856134e}} 
+const b2\+Vec2 \mbox{\hyperlink{class_enemy_a9aaf5f3fd151e301cbadd363c856134e}{sensor\+Half\+Size}} = b2\+Vec2(enemy\+Half\+Size.\+x, enemy\+Half\+Size.\+y $\ast$ 0.\+1f)
+\begin{DoxyCompactList}\small\item\em The size of its head sensor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_enemy_aaf0e79c7a51023eb2f0d18d1d4ca53a6}\label{class_enemy_aaf0e79c7a51023eb2f0d18d1d4ca53a6}} 
+float \mbox{\hyperlink{class_enemy_aaf0e79c7a51023eb2f0d18d1d4ca53a6}{m\+\_\+velocity}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_enemy}{Enemy}} velocity used to determine its speed and direction (+ value means moving right; -\/ left) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_enemy_a5d400fb4718d06df8075790e6bea33f6}\label{class_enemy_a5d400fb4718d06df8075790e6bea33f6}} 
+Rectangle\+Shape \mbox{\hyperlink{class_enemy_a5d400fb4718d06df8075790e6bea33f6}{m\+\_\+enemy\+Shape}}
+\begin{DoxyCompactList}\small\item\em The renderable object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_enemy_a99c5a5a10e3dc3c09c2d5ae1a3b22d44}\label{class_enemy_a99c5a5a10e3dc3c09c2d5ae1a3b22d44}} 
+b2\+Fixture $\ast$ \mbox{\hyperlink{class_enemy_a99c5a5a10e3dc3c09c2d5ae1a3b22d44}{m\+\_\+head\+Sensor\+Fixture}}
+\begin{DoxyCompactList}\small\item\em A sensor attached to the enemy head used to detect player collision. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_enemy_ad487c4b620ebd32d2ed414e005c61eba}\label{class_enemy_ad487c4b620ebd32d2ed414e005c61eba}} 
+bool \mbox{\hyperlink{class_enemy_ad487c4b620ebd32d2ed414e005c61eba}{m\+\_\+is\+Dead}} = false
+\begin{DoxyCompactList}\small\item\em Flag indicating whether the player has killed this enemy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+An enemy that patrols a platform. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_enemy_a5525934c0944de7245700f64e3a13784}\label{class_enemy_a5525934c0944de7245700f64e3a13784}} 
+\index{Enemy@{Enemy}!Enemy@{Enemy}}
+\index{Enemy@{Enemy}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{Enemy()}{Enemy()}}
+{\footnotesize\ttfamily Enemy\+::\+Enemy (\begin{DoxyParamCaption}\item[{b2\+World $\ast$}]{world,  }\item[{Vector2f}]{position = {\ttfamily Vector2f(0,~0)},  }\item[{Color}]{colour = {\ttfamily Color\+:\+:Red} }\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em world} & The Box2D world that this enemy is in \\
+\hline
+{\em position} & The position of this enemy in the world (default value\+: (0, 0)) \\
+\hline
+{\em colour} & The colour of this enemy (default value\+: Red) \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_enemy_ad4f1a4fa0cd27b2061b7aa98d86cb4e2}\label{class_enemy_ad4f1a4fa0cd27b2061b7aa98d86cb4e2}} 
+\index{Enemy@{Enemy}!draw@{draw}}
+\index{draw@{draw}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Enemy\+::draw (\begin{DoxyParamCaption}\item[{Render\+Target \&}]{target,  }\item[{Render\+States}]{states }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Draw the enemy to render context. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & the target to draw to (usually the window) \\
+\hline
+{\em states} & the states used for drawing to a Render\+Target \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_physical_thing_ae3bd48440dc3b49d38fc0d120d9c1795}{Physical\+Thing}}.
+
+\mbox{\Hypertarget{class_enemy_ad1e96bf629e39c862caca46c609a8bb2}\label{class_enemy_ad1e96bf629e39c862caca46c609a8bb2}} 
+\index{Enemy@{Enemy}!endCollision@{endCollision}}
+\index{endCollision@{endCollision}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{endCollision()}{endCollision()}}
+{\footnotesize\ttfamily void Enemy\+::end\+Collision (\begin{DoxyParamCaption}\item[{b2\+Fixture $\ast$}]{this\+Fixture,  }\item[{b2\+Fixture $\ast$}]{collided\+With }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Virtual inherited method called when this enemy ends collision with another fixture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this\+Fixture} & the enemy fixture that was involved in the collision (there are two enemy fixtures; the main body and the head sensor) \\
+\hline
+{\em collided\+With} & the fixture this enemy ended collision with \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_enemy_aa4da901c7789e7cd90946f399b5293cd}{start\+Collision}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{class_physical_thing_af46f9ede88b660d39bb549b6670c121f}{Physical\+Thing}}.
+
+\mbox{\Hypertarget{class_enemy_a518a8371304a2b678a65d56ac830eafa}\label{class_enemy_a518a8371304a2b678a65d56ac830eafa}} 
+\index{Enemy@{Enemy}!isDead@{isDead}}
+\index{isDead@{isDead}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{isDead()}{isDead()}}
+{\footnotesize\ttfamily bool Enemy\+::is\+Dead (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the state of the player. 
+
+\begin{DoxyReturn}{Returns}
+boolean indicating whether the player is alive (true) or dead (false) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_enemy_aa4da901c7789e7cd90946f399b5293cd}\label{class_enemy_aa4da901c7789e7cd90946f399b5293cd}} 
+\index{Enemy@{Enemy}!startCollision@{startCollision}}
+\index{startCollision@{startCollision}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{startCollision()}{startCollision()}}
+{\footnotesize\ttfamily void Enemy\+::start\+Collision (\begin{DoxyParamCaption}\item[{b2\+Fixture $\ast$}]{this\+Fixture,  }\item[{b2\+Fixture $\ast$}]{collided\+With }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Virtual inherited method called when this enemy collides with another fixture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this\+Fixture} & the enemy fixture that was involved in the collision (there are two enemy fixtures; the main body and the head sensor) \\
+\hline
+{\em collided\+With} & the fixture this enemy collided with \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_enemy_ad1e96bf629e39c862caca46c609a8bb2}{end\+Collision}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{class_physical_thing_a8ebd0f4124bfd7bd717359aa86001a22}{Physical\+Thing}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_enemy_8h}{Enemy.\+h}}\item 
+Enemy.\+cpp\end{DoxyCompactItemize}

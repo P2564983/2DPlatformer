@@ -1,0 +1,78 @@
+\hypertarget{class_user_interface}{}\doxysection{User\+Interface Class Reference}
+\label{class_user_interface}\index{UserInterface@{UserInterface}}
+
+
+Handles the user interface by drawing texts and graphics.  
+
+
+
+
+{\ttfamily \#include $<$Platformer/include/\+User\+Interface.\+h$>$}
+
+Inheritance diagram for User\+Interface\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_user_interface}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_user_interface_ae6fb70370701b3bd6120e923df9705b0}\label{class_user_interface_ae6fb70370701b3bd6120e923df9705b0}} 
+\mbox{\hyperlink{class_user_interface_ae6fb70370701b3bd6120e923df9705b0}{User\+Interface}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor -\/ Creates \mbox{\hyperlink{struct_text_box}{Text\+Box}}\textquotesingle{}s and places them in the corners of the screen. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_user_interface_a7c9acd9ad089bbd6d0ca371a14cd82fa}\label{class_user_interface_a7c9acd9ad089bbd6d0ca371a14cd82fa}} 
+void \mbox{\hyperlink{class_user_interface_a7c9acd9ad089bbd6d0ca371a14cd82fa}{update}} ()
+\begin{DoxyCompactList}\small\item\em Updates the text values of the \mbox{\hyperlink{struct_text_box}{Text\+Box}}\textquotesingle{}s and resets the position where required. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_user_interface_a4b5d0a4d346d9b78b5b5d0aa3b35f854}{draw}} (Render\+Target \&target, Render\+States states) const
+\begin{DoxyCompactList}\small\item\em Draw the User Interface to render context. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_user_interface_acc92f5b0297c044654a29a436b1c5a58}\label{class_user_interface_acc92f5b0297c044654a29a436b1c5a58}} 
+Font \mbox{\hyperlink{class_user_interface_acc92f5b0297c044654a29a436b1c5a58}{m\+\_\+font}}
+\begin{DoxyCompactList}\small\item\em The font used for the user interfave. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_user_interface_a0b5e9e8da8ab7a6afbc615e84f98f5d4}\label{class_user_interface_a0b5e9e8da8ab7a6afbc615e84f98f5d4}} 
+\mbox{\hyperlink{struct_text_box}{Text\+Box}} \mbox{\hyperlink{class_user_interface_a0b5e9e8da8ab7a6afbc615e84f98f5d4}{m\+\_\+high\+Score}}
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{struct_text_box}{Text\+Box}} that will display the high score. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_user_interface_a8092baf5dcd5f46e2403060413ee7073}\label{class_user_interface_a8092baf5dcd5f46e2403060413ee7073}} 
+\mbox{\hyperlink{struct_text_box}{Text\+Box}} \mbox{\hyperlink{class_user_interface_a8092baf5dcd5f46e2403060413ee7073}{m\+\_\+current\+Score}}
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{struct_text_box}{Text\+Box}} that will display the current score. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_user_interface_a1f4c4620e82c0b43ff61368091a65762}\label{class_user_interface_a1f4c4620e82c0b43ff61368091a65762}} 
+\mbox{\hyperlink{struct_text_box}{Text\+Box}} \mbox{\hyperlink{class_user_interface_a1f4c4620e82c0b43ff61368091a65762}{m\+\_\+game\+Time}}
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{struct_text_box}{Text\+Box}} that will display the running game time. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_user_interface_a3ebfb45ce0886be0315ac9eaea7483d4}\label{class_user_interface_a3ebfb45ce0886be0315ac9eaea7483d4}} 
+\mbox{\hyperlink{struct_text_box}{Text\+Box}} \mbox{\hyperlink{class_user_interface_a3ebfb45ce0886be0315ac9eaea7483d4}{m\+\_\+game\+Won}}
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{struct_text_box}{Text\+Box}} that will display when the player has won. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_user_interface_a5fb0b06e039ed9948d0edd0974840197}\label{class_user_interface_a5fb0b06e039ed9948d0edd0974840197}} 
+View \mbox{\hyperlink{class_user_interface_a5fb0b06e039ed9948d0edd0974840197}{m\+\_\+ui\+View}}
+\begin{DoxyCompactList}\small\item\em The renderable view used to draw the User Interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles the user interface by drawing texts and graphics. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_user_interface_a4b5d0a4d346d9b78b5b5d0aa3b35f854}\label{class_user_interface_a4b5d0a4d346d9b78b5b5d0aa3b35f854}} 
+\index{UserInterface@{UserInterface}!draw@{draw}}
+\index{draw@{draw}!UserInterface@{UserInterface}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void User\+Interface\+::draw (\begin{DoxyParamCaption}\item[{Render\+Target \&}]{target,  }\item[{Render\+States}]{states }\end{DoxyParamCaption}) const}
+
+
+
+Draw the User Interface to render context. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & The target to draw to (usually the window) \\
+\hline
+{\em states} & The states used for drawing to a Render\+Target \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_user_interface_8h}{User\+Interface.\+h}}\item 
+User\+Interface.\+cpp\end{DoxyCompactItemize}

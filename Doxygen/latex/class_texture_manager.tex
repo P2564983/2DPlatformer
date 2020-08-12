@@ -1,0 +1,83 @@
+\hypertarget{class_texture_manager}{}\doxysection{Texture\+Manager Class Reference}
+\label{class_texture_manager}\index{TextureManager@{TextureManager}}
+
+
+A texture storage container allowing for easy access to textures.  
+
+
+
+
+{\ttfamily \#include $<$Platformer/include/\+Texture\+Manager.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_texture_manager_a001d6d74674961db79987e3222682576}\label{class_texture_manager_a001d6d74674961db79987e3222682576}} 
+\mbox{\hyperlink{class_texture_manager_a001d6d74674961db79987e3222682576}{$\sim$\+Texture\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Destructor which deletes all the textures and empties the texture container. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_texture_manager_a576d749f60092c839206763c4b0d7264}{add\+Texture}} (string key, string filename)
+\begin{DoxyCompactList}\small\item\em Heloer method to insert a new texture into the manager. \end{DoxyCompactList}\item 
+Texture $\ast$ \mbox{\hyperlink{class_texture_manager_a39f0db8131415f978f7acf68b48ffbea}{get\+Texture}} (string key) const
+\begin{DoxyCompactList}\small\item\em Returns a texture from the texture container. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_texture_manager_a57029896a196f1133d4de4ee60c6b39e}\label{class_texture_manager_a57029896a196f1133d4de4ee60c6b39e}} 
+map$<$ string, Texture $\ast$ $>$ \mbox{\hyperlink{class_texture_manager_a57029896a196f1133d4de4ee60c6b39e}{m\+\_\+textures}}
+\begin{DoxyCompactList}\small\item\em Texture container of all possible tetxures. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A texture storage container allowing for easy access to textures. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_texture_manager_a576d749f60092c839206763c4b0d7264}\label{class_texture_manager_a576d749f60092c839206763c4b0d7264}} 
+\index{TextureManager@{TextureManager}!addTexture@{addTexture}}
+\index{addTexture@{addTexture}!TextureManager@{TextureManager}}
+\doxysubsubsection{\texorpdfstring{addTexture()}{addTexture()}}
+{\footnotesize\ttfamily bool Texture\+Manager\+::add\+Texture (\begin{DoxyParamCaption}\item[{string}]{key,  }\item[{string}]{filename }\end{DoxyParamCaption})}
+
+
+
+Heloer method to insert a new texture into the manager. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & A unique string identifying the texture \\
+\hline
+{\em filename} & The directory path to the texture \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A boolean indicating whether the texture was succesfully added 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_texture_manager_a39f0db8131415f978f7acf68b48ffbea}{get\+Texture}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_texture_manager_a39f0db8131415f978f7acf68b48ffbea}\label{class_texture_manager_a39f0db8131415f978f7acf68b48ffbea}} 
+\index{TextureManager@{TextureManager}!getTexture@{getTexture}}
+\index{getTexture@{getTexture}!TextureManager@{TextureManager}}
+\doxysubsubsection{\texorpdfstring{getTexture()}{getTexture()}}
+{\footnotesize\ttfamily Texture $\ast$ Texture\+Manager\+::get\+Texture (\begin{DoxyParamCaption}\item[{string}]{key }\end{DoxyParamCaption}) const}
+
+
+
+Returns a texture from the texture container. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & A unique string identifying the texture that was set in call to add\+Texture \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A texture pointer to the texture requested or a nullptr if the texture could not be found (or does not exist) 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_texture_manager_a576d749f60092c839206763c4b0d7264}{add\+Texture}} Retrieve a texture in the manager based on key value 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_texture_manager_8h}{Texture\+Manager.\+h}}\item 
+Texture\+Manager.\+cpp\end{DoxyCompactItemize}

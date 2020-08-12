@@ -1,15 +1,11 @@
 #include "..\include\Enemy.h"
 
-Enemy::Enemy(b2World* world, Platform* platformOn, Color colour) : m_platform(platformOn)
+Enemy::Enemy(b2World* world, Vector2f position, Color colour)
 {
-	b2Vec2 platPos = platformOn->getPositionB2();
-	Vector2f platSize = platformOn->getSize();
-	Vector2f enemyPos = Vector2f(platPos.x, platPos.y - (platSize.y * 0.5f) - enemyHalfSize.y);
-
 	//set up a dynamic body
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
-	bodyDef.position.Set(enemyPos.x, enemyPos.y);
+	bodyDef.position.Set(position.x, position.y);
 	m_body = world->CreateBody(&bodyDef);
 	m_body->SetFixedRotation(true); // prevent rotation
 
@@ -41,7 +37,7 @@ Enemy::Enemy(b2World* world, Platform* platformOn, Color colour) : m_platform(pl
 	// SFML shape representing enemy
 	m_enemyShape.setSize(Vector2f(enemyHalfSize.x * 2, enemyHalfSize.y * 2));
 	m_enemyShape.setOrigin(enemyHalfSize.x, enemyHalfSize.y); // origin is now centre of shape (instead of top left)
-	m_enemyShape.setPosition(enemyPos);	// position set after origin changed
+	m_enemyShape.setPosition(position);	// position set after origin changed
 	m_enemyShape.setRotation(0);
 	m_enemyShape.setFillColor(colour);
 	m_enemyShape.setOutlineThickness(0.f);
@@ -54,7 +50,6 @@ Enemy::~Enemy()
 {
 	// PhysicalThing destructor will destroy the body (if it has not already been)
 	m_headSensorFixture = nullptr;
-	m_platform = nullptr;
 }
 
 void Enemy::move()
@@ -118,12 +113,6 @@ void Enemy::startCollision(b2Fixture* thisFixture, b2Fixture* collidedWith)
 		case SensorType::PlatformEnd:
 			m_velocity *= -1; // changes direction but maintains same speed
 			break;
-
-		// Collision with player base
-		//case SensorType::PlayerFoot:
-		//	// Collision from above
-		//	if (thisFixture == m_headSensorFixture) m_isDead = true;
-		//	break;
 		}
 	}
 	else

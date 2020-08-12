@@ -1,0 +1,217 @@
+\hypertarget{class_player}{}\doxysection{Player Class Reference}
+\label{class_player}\index{Player@{Player}}
+
+
+A controllable character in the world.  
+
+
+
+
+{\ttfamily \#include $<$Platformer/include/\+Player.\+h$>$}
+
+Inheritance diagram for Player\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_player}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_player_a02f6d542c39964ac16ccec5fe18a7866}{Player}} (b2\+World $\ast$world, const sf\+::\+Vector2f \&position, Color air\+Colour, Color ground\+Colour)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_aa68204fae87fdc7a9f63a87a505db179}{move}} (const float direction)
+\begin{DoxyCompactList}\small\item\em Move the player in a given x-\/direction. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_a70e21ca98281b7d72f105f2693113d7e}\label{class_player_a70e21ca98281b7d72f105f2693113d7e}} 
+void \mbox{\hyperlink{class_player_a70e21ca98281b7d72f105f2693113d7e}{jump}} ()
+\begin{DoxyCompactList}\small\item\em Function to make the player jump (jump is only possible when the player is grounded)\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_a82c3476f3e65a4e2ac6bcd040771bdd4}\label{class_player_a82c3476f3e65a4e2ac6bcd040771bdd4}} 
+void \mbox{\hyperlink{class_player_a82c3476f3e65a4e2ac6bcd040771bdd4}{update}} ()
+\begin{DoxyCompactList}\small\item\em Update the players speed based on game time and check if whether the player is dead. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a28962effc86afd20e5072bb6c090665e}{draw}} (Render\+Target \&target, Render\+States states) const
+\begin{DoxyCompactList}\small\item\em Draw the player to render context. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_player_a20665e4647baa8f898a62021e6204450}{is\+Dead}} () const
+\begin{DoxyCompactList}\small\item\em Returns the state of the player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a2c7f3eba2b0a2afa4fc2634cac3fed98}{reset\+Position}} (b2\+Vec2 \&position)
+\begin{DoxyCompactList}\small\item\em Reset the player to a given position -\/ this method only executes completely when the player is dead. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a273d5bd5b5c1a69a9a49f5956d039f7a}{start\+Collision}} (b2\+Fixture $\ast$this\+Fixture, b2\+Fixture $\ast$collided\+With)
+\begin{DoxyCompactList}\small\item\em Virtual inherited method called when this player collides with another fixture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a703f137953845ac301f695145a0f0550}{end\+Collision}} (b2\+Fixture $\ast$this\+Fixture, b2\+Fixture $\ast$collided\+With)
+\begin{DoxyCompactList}\small\item\em Virtual inherited method called when this player ends collision with another fixture. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_player_ac1942c591f4b296ba5f8ab8404a3ceea}\label{class_player_ac1942c591f4b296ba5f8ab8404a3ceea}} 
+const float \mbox{\hyperlink{class_player_ac1942c591f4b296ba5f8ab8404a3ceea}{player\+Radius\+Size}} = 0.\+25f
+\begin{DoxyCompactList}\small\item\em The players size. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_ac872b310930295033b218f1551a27e34}\label{class_player_ac872b310930295033b218f1551a27e34}} 
+float \mbox{\hyperlink{class_player_ac872b310930295033b218f1551a27e34}{m\+\_\+speed}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_player}{Player}} movement speed -\/ this gradually increases as the game progress\textquotesingle{}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_a6e0a067020bc7faaadc32ba3e78b59ed}\label{class_player_a6e0a067020bc7faaadc32ba3e78b59ed}} 
+Circle\+Shape \mbox{\hyperlink{class_player_a6e0a067020bc7faaadc32ba3e78b59ed}{m\+\_\+shape}}
+\begin{DoxyCompactList}\small\item\em The drawable player. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_a25d3e488c700e99dc5ffdd52b00cf6e2}\label{class_player_a25d3e488c700e99dc5ffdd52b00cf6e2}} 
+bool \mbox{\hyperlink{class_player_a25d3e488c700e99dc5ffdd52b00cf6e2}{m\+\_\+is\+Dead}} = false
+\begin{DoxyCompactList}\small\item\em Flag indicating the state of player. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_ad9405dea1a97e35316197130c50320fd}\label{class_player_ad9405dea1a97e35316197130c50320fd}} 
+set$<$ b2\+Fixture $\ast$ $>$ \mbox{\hyperlink{class_player_ad9405dea1a97e35316197130c50320fd}{platform\+Beneath}}
+\begin{DoxyCompactList}\small\item\em A list of platforms beneath the player. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_a752c7153faa1d07b25abbf9baa11d604}\label{class_player_a752c7153faa1d07b25abbf9baa11d604}} 
+b2\+Fixture $\ast$ \mbox{\hyperlink{class_player_a752c7153faa1d07b25abbf9baa11d604}{m\+\_\+last\+Platform}}
+\begin{DoxyCompactList}\small\item\em The last platform the player collided with (used to determine when the player lands on a new platform) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_a8582fa971d2bd0f46febe1ab278dd433}\label{class_player_a8582fa971d2bd0f46febe1ab278dd433}} 
+int \mbox{\hyperlink{class_player_a8582fa971d2bd0f46febe1ab278dd433}{enemy\+Collision\+Count}} = 0
+\begin{DoxyCompactList}\small\item\em Used to detect when the player dies by its collision count with an enemy. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_a1548192dfd22e71fe19ab469f9f71671}\label{class_player_a1548192dfd22e71fe19ab469f9f71671}} 
+Color {\bfseries m\+\_\+air\+Colour}
+\item 
+\mbox{\Hypertarget{class_player_a0cfa9d4a213728a587b26552f3ce1fd8}\label{class_player_a0cfa9d4a213728a587b26552f3ce1fd8}} 
+Color {\bfseries m\+\_\+ground\+Colour}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A controllable character in the world. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_player_a02f6d542c39964ac16ccec5fe18a7866}\label{class_player_a02f6d542c39964ac16ccec5fe18a7866}} 
+\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}}
+{\footnotesize\ttfamily Player\+::\+Player (\begin{DoxyParamCaption}\item[{b2\+World $\ast$}]{world,  }\item[{const sf\+::\+Vector2f \&}]{position,  }\item[{Color}]{air\+Colour,  }\item[{Color}]{ground\+Colour }\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em world} & The Box2D world that this player is in \\
+\hline
+{\em position} & The position of the player in the world \\
+\hline
+{\em air\+Colour} & The colour of this player when it is in the air \\
+\hline
+{\em ground\+Colour} & The colour of this player when it is grounded \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_player_a28962effc86afd20e5072bb6c090665e}\label{class_player_a28962effc86afd20e5072bb6c090665e}} 
+\index{Player@{Player}!draw@{draw}}
+\index{draw@{draw}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Player\+::draw (\begin{DoxyParamCaption}\item[{Render\+Target \&}]{target,  }\item[{Render\+States}]{states }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Draw the player to render context. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & The target to draw to (usually the window) \\
+\hline
+{\em states} & The states used for drawing to a Render\+Target \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_physical_thing_ae3bd48440dc3b49d38fc0d120d9c1795}{Physical\+Thing}}.
+
+\mbox{\Hypertarget{class_player_a703f137953845ac301f695145a0f0550}\label{class_player_a703f137953845ac301f695145a0f0550}} 
+\index{Player@{Player}!endCollision@{endCollision}}
+\index{endCollision@{endCollision}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{endCollision()}{endCollision()}}
+{\footnotesize\ttfamily void Player\+::end\+Collision (\begin{DoxyParamCaption}\item[{b2\+Fixture $\ast$}]{this\+Fixture,  }\item[{b2\+Fixture $\ast$}]{collided\+With }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Virtual inherited method called when this player ends collision with another fixture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this\+Fixture} & the player fixture that was involved in the collision (there is only one player fixture) \\
+\hline
+{\em collided\+With} & the fixture this enemy ended collision with \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_player_a273d5bd5b5c1a69a9a49f5956d039f7a}{start\+Collision}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{class_physical_thing_af46f9ede88b660d39bb549b6670c121f}{Physical\+Thing}}.
+
+\mbox{\Hypertarget{class_player_a20665e4647baa8f898a62021e6204450}\label{class_player_a20665e4647baa8f898a62021e6204450}} 
+\index{Player@{Player}!isDead@{isDead}}
+\index{isDead@{isDead}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{isDead()}{isDead()}}
+{\footnotesize\ttfamily bool Player\+::is\+Dead (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the state of the player. 
+
+\begin{DoxyReturn}{Returns}
+A boolean indicating whether the player is alive (true) or dead (false) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_player_aa68204fae87fdc7a9f63a87a505db179}\label{class_player_aa68204fae87fdc7a9f63a87a505db179}} 
+\index{Player@{Player}!move@{move}}
+\index{move@{move}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void Player\+::move (\begin{DoxyParamCaption}\item[{const float}]{direction }\end{DoxyParamCaption})}
+
+
+
+Move the player in a given x-\/direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & the direction to move the player in \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_player_a2c7f3eba2b0a2afa4fc2634cac3fed98}\label{class_player_a2c7f3eba2b0a2afa4fc2634cac3fed98}} 
+\index{Player@{Player}!resetPosition@{resetPosition}}
+\index{resetPosition@{resetPosition}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{resetPosition()}{resetPosition()}}
+{\footnotesize\ttfamily void Player\+::reset\+Position (\begin{DoxyParamCaption}\item[{b2\+Vec2 \&}]{position }\end{DoxyParamCaption})}
+
+
+
+Reset the player to a given position -\/ this method only executes completely when the player is dead. 
+
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_player_a20665e4647baa8f898a62021e6204450}{is\+Dead}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_player_a273d5bd5b5c1a69a9a49f5956d039f7a}\label{class_player_a273d5bd5b5c1a69a9a49f5956d039f7a}} 
+\index{Player@{Player}!startCollision@{startCollision}}
+\index{startCollision@{startCollision}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{startCollision()}{startCollision()}}
+{\footnotesize\ttfamily void Player\+::start\+Collision (\begin{DoxyParamCaption}\item[{b2\+Fixture $\ast$}]{this\+Fixture,  }\item[{b2\+Fixture $\ast$}]{collided\+With }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Virtual inherited method called when this player collides with another fixture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this\+Fixture} & the platform fixture that was involved in the collision (there is only one player fixture) \\
+\hline
+{\em collided\+With} & the fixture this enemy collided with \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_player_a703f137953845ac301f695145a0f0550}{end\+Collision}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{class_physical_thing_a8ebd0f4124bfd7bd717359aa86001a22}{Physical\+Thing}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_player_8h}{Player.\+h}}\item 
+Player.\+cpp\end{DoxyCompactItemize}

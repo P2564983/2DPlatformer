@@ -79,8 +79,3 @@ void Platform::draw(RenderTarget& target, RenderStates states) const
 {
 	if (m_body)	target.draw(m_shape);
 }
-
-Vector2f Platform::getSize() const
-{
-	return m_size;
-}

@@ -1,0 +1,175 @@
+\hypertarget{class_physical_thing}{}\doxysection{Physical\+Thing Class Reference}
+\label{class_physical_thing}\index{PhysicalThing@{PhysicalThing}}
+
+
+A simple class with common attributes and a few const values used in a few places.  
+
+
+
+
+{\ttfamily \#include $<$Platformer/include/\+Physical\+Thing.\+h$>$}
+
+Inheritance diagram for Physical\+Thing\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.895652cm]{class_physical_thing}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_physical_thing_ae4f05b7f978f5a71ea32a00b280397ba}\label{class_physical_thing_ae4f05b7f978f5a71ea32a00b280397ba}} 
+virtual \mbox{\hyperlink{class_physical_thing_ae4f05b7f978f5a71ea32a00b280397ba}{$\sim$\+Physical\+Thing}} ()
+\begin{DoxyCompactList}\small\item\em Virtual Destructor that destorys the body attached to this object. Virtual destructor first calls base class destructor where applicable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_physical_thing_a8de38759ce3a687501bfaf927d09fda8}{set\+User\+Data}} (void $\ast$data=nullptr)
+\begin{DoxyCompactList}\small\item\em Sets the Box2D bodies user data. \end{DoxyCompactList}\item 
+b2\+Vec2 \mbox{\hyperlink{class_physical_thing_a7775a857b9d0985a2eb49ed2a5a9fa46}{get\+Position\+B2}} () const
+\begin{DoxyCompactList}\small\item\em Returns the position of the body as a b2\+Vec2. \end{DoxyCompactList}\item 
+Vector2f \mbox{\hyperlink{class_physical_thing_a96ded5f926c5383b89de78520676c1e2}{get\+Position\+V2F}} () const
+\begin{DoxyCompactList}\small\item\em Returns the position of the body as a Vector2f. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_physical_thing_a856d76c0a5a498026e992c574ee4032b}\label{class_physical_thing_a856d76c0a5a498026e992c574ee4032b}} 
+virtual void \mbox{\hyperlink{class_physical_thing_a856d76c0a5a498026e992c574ee4032b}{update}} ()
+\begin{DoxyCompactList}\small\item\em A physical thing may be updated and drawn -\/ virtual method means derived class function is called. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_physical_thing_ae3bd48440dc3b49d38fc0d120d9c1795}{draw}} (Render\+Target \&target, Render\+States states) const =0
+\begin{DoxyCompactList}\small\item\em A physical object must be drawable (pass on Pure Virtual Function to derived clases) \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_physical_thing_a8ebd0f4124bfd7bd717359aa86001a22}{start\+Collision}} (b2\+Fixture $\ast$this\+Fixture, b2\+Fixture $\ast$collided\+With)
+\begin{DoxyCompactList}\small\item\em A physical object may be invloved in a collision (but does not have to be) \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_physical_thing_af46f9ede88b660d39bb549b6670c121f}{end\+Collision}} (b2\+Fixture $\ast$this\+Fixture, b2\+Fixture $\ast$collided\+With)
+\begin{DoxyCompactList}\small\item\em A physical object may be invloved in a collision (but does not have to be) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_physical_thing_abe8104571d70d92609f154d522ce9880}\label{class_physical_thing_abe8104571d70d92609f154d522ce9880}} 
+b2\+Body $\ast$ \mbox{\hyperlink{class_physical_thing_abe8104571d70d92609f154d522ce9880}{m\+\_\+body}} = nullptr
+\begin{DoxyCompactList}\small\item\em Box2D body, no need to delete this as B\+O\+X2D will look after it. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_physical_thing_a5b0b4b44595cd34d733d7bcb2d7de434}\label{class_physical_thing_a5b0b4b44595cd34d733d7bcb2d7de434}} 
+const float \mbox{\hyperlink{class_physical_thing_a5b0b4b44595cd34d733d7bcb2d7de434}{mk\+\_\+f\+Density}} = 1.\+0f
+\begin{DoxyCompactList}\small\item\em Density of the material -\/ used to give mass (how heavy it is in relation to its area) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_physical_thing_aae36caaac4d6624dc88422a35decdb75}\label{class_physical_thing_aae36caaac4d6624dc88422a35decdb75}} 
+const float \mbox{\hyperlink{class_physical_thing_aae36caaac4d6624dc88422a35decdb75}{mk\+\_\+f\+Friction}} = 0.\+0f
+\begin{DoxyCompactList}\small\item\em Friction -\/ I guess this is only friction from movement, not when static (how slippery it is) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_physical_thing_addc1c2eff99b8e2a2a89bc25bf70b6e9}\label{class_physical_thing_addc1c2eff99b8e2a2a89bc25bf70b6e9}} 
+const float {\bfseries mk\+\_\+f\+Restitution} = 0.\+0f
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A simple class with common attributes and a few const values used in a few places. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_physical_thing_ae3bd48440dc3b49d38fc0d120d9c1795}\label{class_physical_thing_ae3bd48440dc3b49d38fc0d120d9c1795}} 
+\index{PhysicalThing@{PhysicalThing}!draw@{draw}}
+\index{draw@{draw}!PhysicalThing@{PhysicalThing}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily virtual void Physical\+Thing\+::draw (\begin{DoxyParamCaption}\item[{Render\+Target \&}]{target,  }\item[{Render\+States}]{states }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+A physical object must be drawable (pass on Pure Virtual Function to derived clases) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & the target to draw to (usually the window) \\
+\hline
+{\em states} & the states used for drawing to a Render\+Target \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_world_generator_a2c1fc92093f0254a983dcd1bd1c3b4fa}{World\+Generator}}, \mbox{\hyperlink{class_player_a28962effc86afd20e5072bb6c090665e}{Player}}, \mbox{\hyperlink{class_enemy_ad4f1a4fa0cd27b2061b7aa98d86cb4e2}{Enemy}}, \mbox{\hyperlink{class_platform_a7fd0ecb7768dfb7425580865f8db8ce3}{Platform}}, \mbox{\hyperlink{class_coin_platform_a023986ab514710d380cd8d793a62ee8d}{Coin\+Platform}}, \mbox{\hyperlink{class_enemy_platform_a82640ece839006c8c49c739977af3dd8}{Enemy\+Platform}}, and \mbox{\hyperlink{class_coin_af3a36f5a5ff3c0075fab1603278a826f}{Coin}}.
+
+\mbox{\Hypertarget{class_physical_thing_af46f9ede88b660d39bb549b6670c121f}\label{class_physical_thing_af46f9ede88b660d39bb549b6670c121f}} 
+\index{PhysicalThing@{PhysicalThing}!endCollision@{endCollision}}
+\index{endCollision@{endCollision}!PhysicalThing@{PhysicalThing}}
+\doxysubsubsection{\texorpdfstring{endCollision()}{endCollision()}}
+{\footnotesize\ttfamily virtual void Physical\+Thing\+::end\+Collision (\begin{DoxyParamCaption}\item[{b2\+Fixture $\ast$}]{this\+Fixture,  }\item[{b2\+Fixture $\ast$}]{collided\+With }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+A physical object may be invloved in a collision (but does not have to be) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this\+Fixture} & the fixture that was involved in the collision \\
+\hline
+{\em collided\+With} & the fixture this object collided with \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_physical_thing_a8ebd0f4124bfd7bd717359aa86001a22}{start\+Collision}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented in \mbox{\hyperlink{class_world_generator_ac46d5b371f6e3a05234d391329a5a5e3}{World\+Generator}}, \mbox{\hyperlink{class_player_a703f137953845ac301f695145a0f0550}{Player}}, \mbox{\hyperlink{class_enemy_ad1e96bf629e39c862caca46c609a8bb2}{Enemy}}, \mbox{\hyperlink{class_platform_a5cc2f24d7db40f4b992d9ecbc80e5821}{Platform}}, and \mbox{\hyperlink{class_coin_acda312a3a57e0e4196f8cf44b222deb2}{Coin}}.
+
+\mbox{\Hypertarget{class_physical_thing_a7775a857b9d0985a2eb49ed2a5a9fa46}\label{class_physical_thing_a7775a857b9d0985a2eb49ed2a5a9fa46}} 
+\index{PhysicalThing@{PhysicalThing}!getPositionB2@{getPositionB2}}
+\index{getPositionB2@{getPositionB2}!PhysicalThing@{PhysicalThing}}
+\doxysubsubsection{\texorpdfstring{getPositionB2()}{getPositionB2()}}
+{\footnotesize\ttfamily b2\+Vec2 Physical\+Thing\+::get\+Position\+B2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the position of the body as a b2\+Vec2. 
+
+\begin{DoxyReturn}{Returns}
+Returns the position of the body as a b2\+Vec2 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_physical_thing_a96ded5f926c5383b89de78520676c1e2}\label{class_physical_thing_a96ded5f926c5383b89de78520676c1e2}} 
+\index{PhysicalThing@{PhysicalThing}!getPositionV2F@{getPositionV2F}}
+\index{getPositionV2F@{getPositionV2F}!PhysicalThing@{PhysicalThing}}
+\doxysubsubsection{\texorpdfstring{getPositionV2F()}{getPositionV2F()}}
+{\footnotesize\ttfamily Vector2f Physical\+Thing\+::get\+Position\+V2F (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the position of the body as a Vector2f. 
+
+\begin{DoxyReturn}{Returns}
+Returns the position of the body as a Vector2f 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_physical_thing_a8de38759ce3a687501bfaf927d09fda8}\label{class_physical_thing_a8de38759ce3a687501bfaf927d09fda8}} 
+\index{PhysicalThing@{PhysicalThing}!setUserData@{setUserData}}
+\index{setUserData@{setUserData}!PhysicalThing@{PhysicalThing}}
+\doxysubsubsection{\texorpdfstring{setUserData()}{setUserData()}}
+{\footnotesize\ttfamily void Physical\+Thing\+::set\+User\+Data (\begin{DoxyParamCaption}\item[{void $\ast$}]{data = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Sets the Box2D bodies user data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & the value to assign to the user data, if null this method will set a suitable value. Set the userdata of the body \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_physical_thing_a8ebd0f4124bfd7bd717359aa86001a22}\label{class_physical_thing_a8ebd0f4124bfd7bd717359aa86001a22}} 
+\index{PhysicalThing@{PhysicalThing}!startCollision@{startCollision}}
+\index{startCollision@{startCollision}!PhysicalThing@{PhysicalThing}}
+\doxysubsubsection{\texorpdfstring{startCollision()}{startCollision()}}
+{\footnotesize\ttfamily virtual void Physical\+Thing\+::start\+Collision (\begin{DoxyParamCaption}\item[{b2\+Fixture $\ast$}]{this\+Fixture,  }\item[{b2\+Fixture $\ast$}]{collided\+With }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+A physical object may be invloved in a collision (but does not have to be) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em this\+Fixture} & the fixture that was involved in the collision \\
+\hline
+{\em collided\+With} & the fixture this object collided with \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_physical_thing_af46f9ede88b660d39bb549b6670c121f}{end\+Collision}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented in \mbox{\hyperlink{class_world_generator_a987b1129e18bbf1d5432d5d7db8a9592}{World\+Generator}}, \mbox{\hyperlink{class_player_a273d5bd5b5c1a69a9a49f5956d039f7a}{Player}}, \mbox{\hyperlink{class_enemy_aa4da901c7789e7cd90946f399b5293cd}{Enemy}}, \mbox{\hyperlink{class_platform_a6604a997d97e88c9a9feb78aa33e17f5}{Platform}}, and \mbox{\hyperlink{class_coin_ae61a2e82924363ea9c520e4be2c3ebda}{Coin}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_physical_thing_8h}{Physical\+Thing.\+h}}\item 
+Physical\+Thing.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,247 @@
+\hypertarget{struct_text_box}{}\doxysection{Text\+Box Struct Reference}
+\label{struct_text_box}\index{TextBox@{TextBox}}
+
+
+A Textbox containing text and a box that surrounds the text.  
+
+
+
+
+{\ttfamily \#include $<$Platformer/include/\+User\+Interface.\+h$>$}
+
+Inheritance diagram for Text\+Box\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{struct_text_box}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_text_box_a352d53136732434b840bf2fe1520d693}{Text\+Box}} (Text \+\_\+text=Text(), Rectangle\+Shape \+\_\+rect\+Shape=Rectangle\+Shape(), Vector2f \+\_\+position=Vector2f(0, 0), Vector2f \+\_\+padding=Vector2f(15, 15))
+\begin{DoxyCompactList}\small\item\em Default constructor -\/ it is a good idea to setup a Text and Rextangle\+Shape ahead of creating a \mbox{\hyperlink{struct_text_box}{Text\+Box}} with the properties you want (e.\+g. colour, font...) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_text_box_a80bd4110cef9862de4de5ac510834724}{set\+Text}} (const String \&string)
+\begin{DoxyCompactList}\small\item\em Set the text string and then resize the \mbox{\hyperlink{struct_text_box}{Text\+Box}} based on the new text value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_text_box_a09319a18f9a13703d6357f9afc40d008}{set\+Position}} (const Vector2f \&pos)
+\begin{DoxyCompactList}\small\item\em Set the position of the \mbox{\hyperlink{struct_text_box}{Text\+Box}} -\/ this also moves the position of the text. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_text_box_a38a1758a5a421101aa28983e96a4fe49}{set\+Position}} (const float x, const float y)
+\begin{DoxyCompactList}\small\item\em Set the position of the \mbox{\hyperlink{struct_text_box}{Text\+Box}} -\/ this also moves the position of the text. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{struct_text_box_ab1d77656983ccdbef8470fb00b0d5ea4}{get\+Text}} ()
+\begin{DoxyCompactList}\small\item\em Returns the text string. \end{DoxyCompactList}\item 
+Vector2f \mbox{\hyperlink{struct_text_box_a7111d9f72247605606a84da91bcd8592}{get\+Position}} ()
+\begin{DoxyCompactList}\small\item\em Returns the position of the \mbox{\hyperlink{struct_text_box}{Text\+Box}}. \end{DoxyCompactList}\item 
+Vector2f \mbox{\hyperlink{struct_text_box_a64b35b3bea464230886c1f05294e6ed7}{get\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Returns the size of the \mbox{\hyperlink{struct_text_box}{Text\+Box}}. \end{DoxyCompactList}\item 
+Vector2f \mbox{\hyperlink{struct_text_box_aaec51d95c42ab94778b35a95d04c5462}{get\+Top\+Left}} ()
+\begin{DoxyCompactList}\small\item\em Returns the top left position of the \mbox{\hyperlink{struct_text_box}{Text\+Box}}. \end{DoxyCompactList}\item 
+Vector2f \mbox{\hyperlink{struct_text_box_ae2461328d16a2324cd53d7d0fabda0a5}{get\+Top\+Right}} ()
+\begin{DoxyCompactList}\small\item\em Returns the top right position of the \mbox{\hyperlink{struct_text_box}{Text\+Box}}. \end{DoxyCompactList}\item 
+Vector2f \mbox{\hyperlink{struct_text_box_a8c1aa306321f18f7739ff0a70761d274}{get\+Bottom\+Left}} ()
+\begin{DoxyCompactList}\small\item\em Returns the bottom left position of the \mbox{\hyperlink{struct_text_box}{Text\+Box}}. \end{DoxyCompactList}\item 
+Vector2f \mbox{\hyperlink{struct_text_box_a0b94820c53c19c5e563b103e5b8f0f96}{get\+Bottom\+Right}} ()
+\begin{DoxyCompactList}\small\item\em Returns the bottom right position of the \mbox{\hyperlink{struct_text_box}{Text\+Box}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_text_box_a94f8b1fa218dabaaf892388cbf8df1fa}{draw}} (Render\+Target \&target, Render\+States states) const
+\begin{DoxyCompactList}\small\item\em Draw the \mbox{\hyperlink{struct_text_box}{Text\+Box}} and Text to render context. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_text_box_ae2e457e260b46fd41ceb200e62b2b312}\label{struct_text_box_ae2e457e260b46fd41ceb200e62b2b312}} 
+Text \mbox{\hyperlink{struct_text_box_ae2e457e260b46fd41ceb200e62b2b312}{text}}
+\begin{DoxyCompactList}\small\item\em The text to be shown. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_text_box_afb25377c66e4823b2f51c12942335029}\label{struct_text_box_afb25377c66e4823b2f51c12942335029}} 
+Rectangle\+Shape \mbox{\hyperlink{struct_text_box_afb25377c66e4823b2f51c12942335029}{text\+Box}}
+\begin{DoxyCompactList}\small\item\em A rectangle box surrounding the text. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_text_box_a00f3772b99c731efa527b79dc4dd62d2}\label{struct_text_box_a00f3772b99c731efa527b79dc4dd62d2}} 
+Vector2f \mbox{\hyperlink{struct_text_box_a00f3772b99c731efa527b79dc4dd62d2}{padding}}
+\begin{DoxyCompactList}\small\item\em Some padding/margin around the text. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A Textbox containing text and a box that surrounds the text. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_text_box_a352d53136732434b840bf2fe1520d693}\label{struct_text_box_a352d53136732434b840bf2fe1520d693}} 
+\index{TextBox@{TextBox}!TextBox@{TextBox}}
+\index{TextBox@{TextBox}!TextBox@{TextBox}}
+\doxysubsubsection{\texorpdfstring{TextBox()}{TextBox()}}
+{\footnotesize\ttfamily Text\+Box\+::\+Text\+Box (\begin{DoxyParamCaption}\item[{Text}]{\+\_\+text = {\ttfamily Text()},  }\item[{Rectangle\+Shape}]{\+\_\+rect\+Shape = {\ttfamily RectangleShape()},  }\item[{Vector2f}]{\+\_\+position = {\ttfamily Vector2f(0,~0)},  }\item[{Vector2f}]{\+\_\+padding = {\ttfamily Vector2f(15,~15)} }\end{DoxyParamCaption})}
+
+
+
+Default constructor -\/ it is a good idea to setup a Text and Rextangle\+Shape ahead of creating a \mbox{\hyperlink{struct_text_box}{Text\+Box}} with the properties you want (e.\+g. colour, font...) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+text} & The text inside this textbox (default value\+: empty Text() object) \\
+\hline
+{\em \+\_\+rect\+Shape} & The rectangle shape around the text (default value\+: empty Rectangle\+Shape() object) -\/ this rectangle shapes size is overridden but other properties are maintained (e.\+g. Fill Colour) \\
+\hline
+{\em \+\_\+position} & The top left position of the \mbox{\hyperlink{struct_text_box}{Text\+Box}} (default value\+: (0, 0)) \\
+\hline
+{\em \+\_\+padding} & Some space around the text (default value (15, 15)) \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_text_box_a94f8b1fa218dabaaf892388cbf8df1fa}\label{struct_text_box_a94f8b1fa218dabaaf892388cbf8df1fa}} 
+\index{TextBox@{TextBox}!draw@{draw}}
+\index{draw@{draw}!TextBox@{TextBox}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Text\+Box\+::draw (\begin{DoxyParamCaption}\item[{Render\+Target \&}]{target,  }\item[{Render\+States}]{states }\end{DoxyParamCaption}) const}
+
+
+
+Draw the \mbox{\hyperlink{struct_text_box}{Text\+Box}} and Text to render context. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & The target to draw to (usually the window) \\
+\hline
+{\em states} & The states used for drawing to a Render\+Target \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_text_box_a8c1aa306321f18f7739ff0a70761d274}\label{struct_text_box_a8c1aa306321f18f7739ff0a70761d274}} 
+\index{TextBox@{TextBox}!getBottomLeft@{getBottomLeft}}
+\index{getBottomLeft@{getBottomLeft}!TextBox@{TextBox}}
+\doxysubsubsection{\texorpdfstring{getBottomLeft()}{getBottomLeft()}}
+{\footnotesize\ttfamily Vector2f Text\+Box\+::get\+Bottom\+Left (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the bottom left position of the \mbox{\hyperlink{struct_text_box}{Text\+Box}}. 
+
+\begin{DoxyReturn}{Returns}
+A Vector2f containing the bottom left position of the \mbox{\hyperlink{struct_text_box}{Text\+Box}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_text_box_a0b94820c53c19c5e563b103e5b8f0f96}\label{struct_text_box_a0b94820c53c19c5e563b103e5b8f0f96}} 
+\index{TextBox@{TextBox}!getBottomRight@{getBottomRight}}
+\index{getBottomRight@{getBottomRight}!TextBox@{TextBox}}
+\doxysubsubsection{\texorpdfstring{getBottomRight()}{getBottomRight()}}
+{\footnotesize\ttfamily Vector2f Text\+Box\+::get\+Bottom\+Right (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the bottom right position of the \mbox{\hyperlink{struct_text_box}{Text\+Box}}. 
+
+\begin{DoxyReturn}{Returns}
+A Vector2f containing the bottom right position of the \mbox{\hyperlink{struct_text_box}{Text\+Box}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_text_box_a7111d9f72247605606a84da91bcd8592}\label{struct_text_box_a7111d9f72247605606a84da91bcd8592}} 
+\index{TextBox@{TextBox}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!TextBox@{TextBox}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily Vector2f Text\+Box\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the position of the \mbox{\hyperlink{struct_text_box}{Text\+Box}}. 
+
+\begin{DoxyReturn}{Returns}
+A Vector2f containing the position of the \mbox{\hyperlink{struct_text_box}{Text\+Box}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_text_box_a64b35b3bea464230886c1f05294e6ed7}\label{struct_text_box_a64b35b3bea464230886c1f05294e6ed7}} 
+\index{TextBox@{TextBox}!getSize@{getSize}}
+\index{getSize@{getSize}!TextBox@{TextBox}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily Vector2f Text\+Box\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the size of the \mbox{\hyperlink{struct_text_box}{Text\+Box}}. 
+
+\begin{DoxyReturn}{Returns}
+A Vector2f containing the size of the \mbox{\hyperlink{struct_text_box}{Text\+Box}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_text_box_ab1d77656983ccdbef8470fb00b0d5ea4}\label{struct_text_box_ab1d77656983ccdbef8470fb00b0d5ea4}} 
+\index{TextBox@{TextBox}!getText@{getText}}
+\index{getText@{getText}!TextBox@{TextBox}}
+\doxysubsubsection{\texorpdfstring{getText()}{getText()}}
+{\footnotesize\ttfamily String Text\+Box\+::get\+Text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the text string. 
+
+\begin{DoxyReturn}{Returns}
+A copy of the string contained in the text 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_text_box_aaec51d95c42ab94778b35a95d04c5462}\label{struct_text_box_aaec51d95c42ab94778b35a95d04c5462}} 
+\index{TextBox@{TextBox}!getTopLeft@{getTopLeft}}
+\index{getTopLeft@{getTopLeft}!TextBox@{TextBox}}
+\doxysubsubsection{\texorpdfstring{getTopLeft()}{getTopLeft()}}
+{\footnotesize\ttfamily Vector2f Text\+Box\+::get\+Top\+Left (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the top left position of the \mbox{\hyperlink{struct_text_box}{Text\+Box}}. 
+
+\begin{DoxyReturn}{Returns}
+A Vector2f containing the top left position of the \mbox{\hyperlink{struct_text_box}{Text\+Box}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_text_box_ae2461328d16a2324cd53d7d0fabda0a5}\label{struct_text_box_ae2461328d16a2324cd53d7d0fabda0a5}} 
+\index{TextBox@{TextBox}!getTopRight@{getTopRight}}
+\index{getTopRight@{getTopRight}!TextBox@{TextBox}}
+\doxysubsubsection{\texorpdfstring{getTopRight()}{getTopRight()}}
+{\footnotesize\ttfamily Vector2f Text\+Box\+::get\+Top\+Right (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the top right position of the \mbox{\hyperlink{struct_text_box}{Text\+Box}}. 
+
+\begin{DoxyReturn}{Returns}
+A Vector2f containing the top right position of the \mbox{\hyperlink{struct_text_box}{Text\+Box}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_text_box_a38a1758a5a421101aa28983e96a4fe49}\label{struct_text_box_a38a1758a5a421101aa28983e96a4fe49}} 
+\index{TextBox@{TextBox}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!TextBox@{TextBox}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Text\+Box\+::set\+Position (\begin{DoxyParamCaption}\item[{const float}]{x,  }\item[{const float}]{y }\end{DoxyParamCaption})}
+
+
+
+Set the position of the \mbox{\hyperlink{struct_text_box}{Text\+Box}} -\/ this also moves the position of the text. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The new x position of the \mbox{\hyperlink{struct_text_box}{Text\+Box}} \\
+\hline
+{\em y} & The new y position of the \mbox{\hyperlink{struct_text_box}{Text\+Box}} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_text_box_a09319a18f9a13703d6357f9afc40d008}\label{struct_text_box_a09319a18f9a13703d6357f9afc40d008}} 
+\index{TextBox@{TextBox}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!TextBox@{TextBox}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Text\+Box\+::set\+Position (\begin{DoxyParamCaption}\item[{const Vector2f \&}]{pos }\end{DoxyParamCaption})}
+
+
+
+Set the position of the \mbox{\hyperlink{struct_text_box}{Text\+Box}} -\/ this also moves the position of the text. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The new position of the \mbox{\hyperlink{struct_text_box}{Text\+Box}} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_text_box_a80bd4110cef9862de4de5ac510834724}\label{struct_text_box_a80bd4110cef9862de4de5ac510834724}} 
+\index{TextBox@{TextBox}!setText@{setText}}
+\index{setText@{setText}!TextBox@{TextBox}}
+\doxysubsubsection{\texorpdfstring{setText()}{setText()}}
+{\footnotesize\ttfamily void Text\+Box\+::set\+Text (\begin{DoxyParamCaption}\item[{const String \&}]{string }\end{DoxyParamCaption})}
+
+
+
+Set the text string and then resize the \mbox{\hyperlink{struct_text_box}{Text\+Box}} based on the new text value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & The new string to set the text to \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_user_interface_8h}{User\+Interface.\+h}}\item 
+User\+Interface.\+cpp\end{DoxyCompactItemize}
