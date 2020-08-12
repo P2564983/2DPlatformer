@@ -16,11 +16,11 @@ Coin::Coin(b2World* world, const sf::Vector2f& position)
 
 	// Box2D Fixture
 	b2FixtureDef l_fixtureDef;
-	l_fixtureDef.density = mk_fDensity;
-	l_fixtureDef.friction = mk_fFriction;
-	l_fixtureDef.restitution = mk_fRestitution; 
-	l_fixtureDef.isSensor = true; // Make it a sensor to become aware of collision
 	l_fixtureDef.shape = &l_shape;
+	l_fixtureDef.isSensor = true; // Make it a sensor to become aware of collision
+	// Setup collision filtering - A coin can only collide with a player:
+	l_fixtureDef.filter.categoryBits = (uint16)CollisionFilter::Collectible;
+	l_fixtureDef.filter.maskBits = (uint16)CollisionFilter::Player;
 	m_body->CreateFixture(&l_fixtureDef);
 
 	m_shape.setRadius(m_radius);
@@ -29,19 +29,16 @@ Coin::Coin(b2World* world, const sf::Vector2f& position)
 	m_shape.setRotation(0);
 	m_shape.setFillColor(Color(255, 223, 0)); // Goldish colour
 
-	// misc
-	collisionContacts = 0;
-}
-
-Coin::~Coin()
-{
-	//cout << "Coin Destructor Called" << endl;
-	//m_body->GetWorld()->DestroyBody(m_body);
+	setUserData();
 }
 
 void Coin::draw(RenderTarget& target, RenderStates states) const
 {
-	target.draw(m_shape);	// Draw the coin shape
+	// Coin does not have a body, it has been destroyed:
+	if (!m_body) return;
+
+	// Draw the coin shape
+	target.draw(m_shape);
 
 	// Draw a smaller circle within
 	float smallRadius = m_radius * 0.6f;
@@ -53,29 +50,22 @@ void Coin::draw(RenderTarget& target, RenderStates states) const
 	target.draw(smallCircle);
 }
 
-void Coin::setUserData()
+void Coin::update()
 {
-	m_body->SetUserData(new pair<string, void*>(typeid(Coin).name(), this));
+	// The coins body may be deleted before it is properly removed from the world:
+	if (!m_body) return;
+
+	// Destroy the physics body if the coin has been collected:
+	if (m_collected)
+	{
+		m_body->GetWorld()->DestroyBody(m_body);
+		m_body = nullptr;
+	}
 }
 
-bool Coin::destroy()
+void Coin::startCollision(b2Fixture* thisFixture, b2Fixture* collidedWith)
 {
-	if (!toDestroy) return false;
-
-	m_body->GetWorld()->DestroyBody(m_body);
-	return true;
-}
-
-void Coin::onContact()
-{
-	collisionContacts++;
-	//m_shape.setFillColor(Color::Blue);
-	toDestroy = true;
-}
-
-void Coin::onSeperation()
-{
-	return;
-	if (collisionContacts = max(0, collisionContacts - 1));
-		m_shape.setFillColor(Color(255, 223, 0)); // Goldish colour
+	// Collision filter ensures only a player collides with coin
+	m_collected = true;
+	Score::addToScore(1);
 }

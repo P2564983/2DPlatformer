@@ -22,7 +22,8 @@ RotatingPlatform::RotatingPlatform(b2World* world, Vector2f position, Color colo
 	l_fixtureDef.density = mk_fDensity;
 	l_fixtureDef.friction = mk_fFriction;
 	l_fixtureDef.restitution = mk_fRestitution;
-	m_body->CreateFixture(&l_fixtureDef);
+	l_fixtureDef.restitution = 0;
+	m_body->CreateFixture(&l_fixtureDef)->SetUserData((void*)(int)FixtureType::RotatingPlatform);;
 	m_body->SetAngularDamping(0.1f);
 
 	// Now create the anchor body:
@@ -32,7 +33,7 @@ RotatingPlatform::RotatingPlatform(b2World* world, Vector2f position, Color colo
 	b2CircleShape l_circ;
 	l_circ.m_radius = radius;
 	l_fixtureDef.shape = &l_circ;
-	m_anchor->CreateFixture(&l_fixtureDef);
+	m_anchor->CreateFixture(&l_fixtureDef)->SetUserData((void*)(int)FixtureType::Platform);
 
 	// Now create the revolute joint:
 	b2RevoluteJointDef revoluteJointDef;
@@ -47,8 +48,8 @@ RotatingPlatform::RotatingPlatform(b2World* world, Vector2f position, Color colo
 	//revoluteJointDef.upperAngle = +60 * DEG2RAD;
 	// Enable motor
 	revoluteJointDef.enableMotor = true;
-	revoluteJointDef.maxMotorTorque = 1000;
-	revoluteJointDef.motorSpeed = 180 * DEG2RAD; // rotate 180deg per/second
+	revoluteJointDef.maxMotorTorque = 180;
+	revoluteJointDef.motorSpeed = -90 * DEG2RAD; // rotate xdeg per/second
 	// Create the joint
 	m_joint = (b2RevoluteJoint*)world->CreateJoint(&revoluteJointDef);
 
@@ -66,6 +67,16 @@ RotatingPlatform::RotatingPlatform(b2World* world, Vector2f position, Color colo
 	m_circle.setPosition(position);	// at centre of platform
 	m_circle.setRotation(0);
 	m_circle.setFillColor(Color::Red);
+}
+
+void RotatingPlatform::setUserData(void* userData)
+{
+	if (!userData)
+	{
+		m_body->SetUserData(new pair<string, void*>(typeid(RotatingPlatform).name(), this));
+	}
+	else
+		m_body->SetUserData(userData);
 }
 
 void RotatingPlatform::draw(sf::RenderTarget& target, sf::RenderStates states) const

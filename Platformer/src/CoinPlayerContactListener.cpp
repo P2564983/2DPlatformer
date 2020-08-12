@@ -27,7 +27,7 @@ void CoinPlayerContactListener::BeginContact(b2Contact* contact)
 		if (userDataB.first == coinName)
 		{
 			Coin* coin = static_cast<Coin*>(userDataB.second);
-			if (coin) coin->onContact();
+			//if (coin) coin->onContact();
 		}
 	}
 
@@ -38,7 +38,7 @@ void CoinPlayerContactListener::BeginContact(b2Contact* contact)
 		if (userDataA.first == coinName)
 		{
 			Coin* coin = static_cast<Coin*>(userDataA.second);
-			if (coin) coin->onContact();
+			//if (coin) coin->onContact();
 		}
 	}
 }
@@ -70,7 +70,7 @@ void CoinPlayerContactListener::EndContact(b2Contact* contact)
 		if (userDataB.first == coinName)
 		{
 			Coin* coin = static_cast<Coin*>(userDataB.second);
-			if (coin) coin->onContact();
+			//if (coin) coin->onContact();
 		}
 	}
 
@@ -81,7 +81,7 @@ void CoinPlayerContactListener::EndContact(b2Contact* contact)
 		if (userDataA.first == coinName)
 		{
 			Coin* coin = static_cast<Coin*>(userDataA.second);
-			if (coin) coin->onContact();
+			//if (coin) coin->onContact();
 		}
 	}
 }

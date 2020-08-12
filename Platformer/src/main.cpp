@@ -8,7 +8,6 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Game.h"
-#include "Scene.h"
 
 using namespace std;
 using namespace sf;

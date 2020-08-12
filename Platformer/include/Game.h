@@ -9,8 +9,6 @@
 #include <vector>
 #include <set>
 
-#include "DynamicBlock.h"
-#include "DynamicCircle.h"
 #include "Player.h"
 #include "World.h"
 #include "Coin.h"
@@ -23,6 +21,7 @@
 
 #include "SFMLDebugDraw.h"
 #include "TextureManager.h"
+#include "UserInterface.h"
 
 using namespace sf;
 using namespace std;
@@ -34,7 +33,7 @@ using namespace std;
 class Game : public Drawable
 {
 private:
-	Vector2f m_worldSize = Vector2f(8.0f, 6.0f); //!< Size of the physical world in meters (8x6)
+	Vector2f m_worldSize = Vector2f(16.0f, 12.0f); //!< Size of the physical world in meters
 	View m_view; //!< The view used for rendering (maps physical co-ordinates ^ to rendering (SFML) co-ordinates)
 
 	// Box2D:
@@ -46,14 +45,10 @@ private:
 	// Objects within the world
 	sf::RectangleShape m_background; //!< Background of the world
 	Player* m_player; //!< The controllable actor in the world
-	vector<DynamicBlock> m_dynamicBlocks; //!< A collection of moving blocks. 
-	vector<DynamicCircle> m_balls; //!< A collection of moving balls. 
-	vector<Coin*> m_coins; //!< A collection of collectible coins.
-	vector<RotatingPlatform*> m_rotPlatforms; //!< A collection of rotating platforms.
-	set<Platform*> m_platforms; //!< A set of platforms. (each entry is unique)
 
-	// Texture Manager
+	// Texture Manager and UI
 	TextureManager textures;		//!< Manages all textures
+	UserInterface* m_userInterface;
 
 	// Contact Listeners
 	CoinPlayerContactListener coinPlayerCL;

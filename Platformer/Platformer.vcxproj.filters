@@ -9,12 +9,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\DynamicBlock.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\DynamicCircle.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="include\Game.h">
       <Filter>include</Filter>
     </ClInclude>
@@ -24,16 +18,9 @@
     <ClInclude Include="include\SFMLDebugDraw.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\Scene.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\StaticBlock.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="include\TextureManager.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\BlockCircleContactListener.h" />
     <ClInclude Include="include\StaticSensor.h" />
     <ClInclude Include="include\SensorContactListener.h" />
     <ClInclude Include="include\Player.h" />
@@ -45,24 +32,17 @@
     <ClInclude Include="include\Platform.h" />
     <ClInclude Include="include\DebugGrid.h" />
     <ClInclude Include="include\WorldGenerator.h" />
+    <ClInclude Include="include\CoinPlatform.h" />
+    <ClInclude Include="include\EnemyPlatform.h" />
+    <ClInclude Include="include\Enemy.h" />
+    <ClInclude Include="include\RevolutePlatform.h" />
+    <ClInclude Include="include\UserInterface.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\DynamicBlock.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DynamicCircle.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\SFMLDebugDraw.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Scene.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\StaticBlock.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\TextureManager.cpp">
@@ -71,7 +51,6 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\BlockCircleContactListener.cpp" />
     <ClCompile Include="src\StaticSensor.cpp" />
     <ClCompile Include="src\SensorContactListener.cpp" />
     <ClCompile Include="src\Player.cpp" />
@@ -84,6 +63,11 @@
     <ClCompile Include="src\DebugGrid.cpp" />
     <ClCompile Include="src\WorldGenerator.cpp" />
     <ClCompile Include="src\PhysicalThing.cpp" />
+    <ClCompile Include="src\CoinPlatform.cpp" />
+    <ClCompile Include="src\EnemyPlatform.cpp" />
+    <ClCompile Include="src\Enemy.cpp" />
+    <ClCompile Include="src\RevolutePlatform.cpp" />
+    <ClCompile Include="src\UserInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="SizeGuide.png" />

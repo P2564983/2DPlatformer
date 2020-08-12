@@ -3,49 +3,37 @@
 Player::Player(b2World* world, const sf::Vector2f& position, Color colour)
 {
 	//set up a dynamic body
-	b2BodyDef bodyDef;
-	bodyDef.type = b2_dynamicBody;
-	bodyDef.position.Set(position.x, position.y);
-	m_body = world->CreateBody(&bodyDef);
-	//m_body->SetGravityScale(0);	// REMOVE: cancels gravity (use -1 to reverse gravity, etc)
-	m_body->SetFixedRotation(true);
+	b2BodyDef l_bodyDef;
+	l_bodyDef.type = b2_dynamicBody;
+	l_bodyDef.position.Set(position.x, position.y);
+	l_bodyDef.fixedRotation = false; // allow rotation
+	m_body = world->CreateBody(&l_bodyDef);
 
 	//prepare a shape definition
-	b2PolygonShape shape;
-	//shape.SetAsBox(0.25f, 0.25f);
-	shape.SetAsBox(playerHalfSize.x, playerHalfSize.y);
-	shape.m_radius = 0;
+	b2CircleShape l_circShape;
+	l_circShape.m_radius = playerRadiusSize;
 
 	// Main fixture attached to body represting player
-	b2FixtureDef fixtureDef;
-	fixtureDef.shape = &shape;
-	fixtureDef.density = m_density;
-	fixtureDef.friction = m_friction;
-	fixtureDef.restitution = m_restitution;
-	m_body->CreateFixture(&fixtureDef);	//add a fixture to the body
-
-	// Smaller fixture attached to body base used to determine jump
-	shape.SetAsBox(sensorHalfSize.x, sensorHalfSize.y, b2Vec2(0, playerHalfSize.y), 0);
-	fixtureDef.isSensor = true;
-	fixtureDef.density = 0;
-	groundSensorFixture = m_body->CreateFixture(&fixtureDef);
-	groundSensorFixture->SetUserData((void*)(int)FixtureType::Sensor);
+	b2FixtureDef l_fixtureDef;
+	l_fixtureDef.shape = &l_circShape;
+	l_fixtureDef.density = m_density;
+	l_fixtureDef.friction = m_friction;
+	l_fixtureDef.restitution = m_restitution;
+	l_fixtureDef.filter.categoryBits = (uint16)CollisionFilter::Player;
+	l_fixtureDef.filter.maskBits = (uint16)CollisionFilter::Everything;
+	l_fixtureDef.userData = (void*)((int)(FixtureType::Player));
+	m_body->CreateFixture(&l_fixtureDef);	//add a fixture to the body
 
 	// SFML shape
-	m_shape.setSize(Vector2f(playerHalfSize.x * 2, playerHalfSize.y * 2));
-	m_shape.setOrigin(playerHalfSize.x, playerHalfSize.y); // origin is now centre of shape (instead of top left)
+	m_shape.setRadius(playerRadiusSize);
+	m_shape.setOrigin(playerRadiusSize, playerRadiusSize); // origin is now centre of shape (instead of top left)
 	m_shape.setPosition(position);	// position set after origin changed
 	m_shape.setRotation(0);
 	m_shape.setFillColor(colour);
 	m_shape.setOutlineThickness(0.f);
 
 	// Other properties
-	m_speed = 3.0f;
-	jump(); // get the clock running
-
-	// Debug
-	cout << "Player Mass = " << m_body->GetMass() << endl;
-	jumpStart = jumpHighest = m_body->GetPosition();
+	m_speed = 1.0;
 }
 
 void Player::move(const b2Vec2& direction)
@@ -60,136 +48,45 @@ void Player::move(const b2Vec2& direction)
 	float velChange = desiredVel - m_body->GetLinearVelocity().x;
 	float impulse = m_body->GetMass() * velChange;
 	m_body->ApplyLinearImpulse(b2Vec2(impulse, 0), m_body->GetWorldCenter(), true);
-
-
-	
 }
 
 void Player::jump()
 {
-	static Clock clock;
-
 	// Determine if jump is possible
 	if (platformBeneath.size() <= 0) return; // player must be grounded
-
-	// Prevent jumps for x milliseconds
-	if (clock.getElapsedTime().asMilliseconds() < 1000) return;
-	clock.restart();
 
 	//// Setting velocity directly
 	//b2Vec2 vel = m_body->GetLinearVelocity();
 	//vel.y = -10;	// upwards - don't change x velocity (- is up; + is down)
 	//m_body->SetLinearVelocity(vel);
 
-	//// Using A Force
-	//m_body->ApplyForceToCenter(b2Vec2(0, -100), true);
-	//// ToDo: Add 'int remainingJumpSteps = 0;' to game.h and then keep calling jump() in game::update()
-
-	// Test Stuff - REMOVE/DELETE:
-	if (jumpDebug == 0)
-	{
-		jumpStart = jumpHighest = m_body->GetPosition();
-		cout << "Current Position: \t" << jumpStart.x << ", " << jumpStart.y << endl;
-		velHigh = m_body->GetLinearVelocity();
-		cout << "Current Velocity: \t" << velHigh.x << ", " << velHigh.y << endl;
-		jumpDebug = 1;
-	}
-	// End TEST STUFF _ REMOVE/DELETE
-
 	// Using An Impulse
-	float impulse = -(m_body->GetMass() * m_speed); // - as up is negative
-	impulse = -(m_body->GetMass() * m_body->GetWorld()->GetGravity().y); //*m_speed
-	impulse = -(m_body->GetMass() * 5); //*m_speed
-	cout << "Impulse applied = \t" << impulse << endl;
-	cout << "Current Mass = \t\t" << m_body->GetMass() << endl;
+	float jumpHeight = 0.25f;
+	float impulse = -(m_body->GetMass() * m_body->GetWorld()->GetGravity().y * jumpHeight);
 	m_body->ApplyLinearImpulseToCenter(b2Vec2(0, impulse), true);
 
-}
-
-void Player::rotateTowards(b2Vec2 target)
-{
-	m_body->ApplyAngularImpulse(1.0f, true);
-	return;
-
-	float currentAngle = m_body->GetAngle();
-
-	b2Vec2 toTarget = target - m_body->GetPosition();
-	float desiredAngle = atan2f(toTarget.y, toTarget.x);
-
-	float nextAngle = currentAngle + m_body->GetAngularVelocity() / 60.0; // peak ahead
-
-	float totalRotation = desiredAngle - nextAngle;
-	while (totalRotation < -180 * DEGTORAD) totalRotation += 360 * DEGTORAD;
-	while (totalRotation > 180 * DEGTORAD) totalRotation -= 360 * DEGTORAD;
-
-	float desiredAngularVelocity = totalRotation * 60;
-	float impulse = m_body->GetInertia() * desiredAngularVelocity;
-	m_body->ApplyAngularImpulse(impulse, true);
-}
-
-bool Player::rotateTowards(b2Vec2 target, float changeRadians)
-{
-	float currentAngle = m_body->GetAngle();
-
-	b2Vec2 toTarget = target - m_body->GetPosition();
-	float desiredAngle = atan2f(toTarget.y, toTarget.x);	// in radians
-	float totalRotation = desiredAngle - currentAngle;
-
-	if (totalRotation == 0) return true;
-	while (totalRotation < -180 * DEGTORAD) totalRotation += (360 * DEGTORAD);
-	while (totalRotation > 180 * DEGTORAD) totalRotation -= (360 * DEGTORAD);
-
-	//// Setting Angle Directly
-	//float newAngle = currentAngle + b2Min(changeRadians, b2Max(-changeRadians, totalRotation));
-	//m_body->SetTransform(m_body->GetPosition(), newAngle);
-
-	// Using Torque
-	float nextAngle = currentAngle + m_body->GetAngularVelocity() / 3.0;
-	totalRotation = desiredAngle - nextAngle;
-	m_body->ApplyTorque(totalRotation < 0 ? -1 : 1, true);
-
-	return false;
 }
 
 void Player::increaseSpeed(const float amount)
 {
 	m_speed = b2Clamp(m_speed + amount, 0.1f, 10.f);	// Clamp speed between param2 and param3
 	std::cout << "Player Speed = " << m_speed << endl;
-	b2Vec2 b2 = m_body->GetPosition();
-}
-
-void Player::registerGroundContact(const bool hasCollided, b2Fixture* fixture)
-{
-	FixtureType fixtType = static_cast<FixtureType>((int)fixture->GetUserData());
-	if (fixtType != FixtureType::Platform)	return;
-
-	if (hasCollided)
-	{
-		platformBeneath.insert(fixture);
-	}
-	else
-	{
-		platformBeneath.erase(fixture);
-	}
-
-	// TEST STUFF - REMOVE:
-	if (platformBeneath.size() > 0 && jumpDebug == 1)
-	{
-		cout << "Highest Position: \t" << jumpHighest.x << ", " << jumpHighest.y << endl;
-		cout << "Highest Velocity: \t" << velHigh.x << ", " << velHigh.y << endl;
-		b2Vec2 diff = jumpHighest - jumpStart;
-		cout << "Difference: \t\t" << diff.x << ", " << diff.y << endl;
-		cout << "Counter: \tJumps: " << jumpCounter << "\tPosHigh: " << jumpPosCounter << "\tVelHigh: " << jumpVelCounter << endl;
-		cout << "---------------------------------" << endl << endl;
-		jumpDebug = 0;
-		jumpCounter = jumpVelCounter = jumpPosCounter = 0;
-	}
 }
 
 void Player::update()
 {
-	// Constantly move right:
-	//move(b2Vec2(1, 0));
+	// ToDo: implement root curve equation to gradually increase speed based on game time
+	float gameTime = Score::getGameTimeAsSeconds();
+	m_speed = b2Clamp(sqrtf(gameTime), 3.0f, 6.0f);	// Clamp speed between param2 and param3
+
+	// Check if player has collided with enemy:
+	if (enemyCollisionCount > 0)
+	{
+		m_isDead = true;
+		enemyCollisionCount = 0;
+		return;
+	}
+	enemyCollisionCount = 0;
 
 	b2Vec2 pos = m_body->GetPosition();
 	m_shape.setPosition(pos.x, pos.y);
@@ -207,67 +104,101 @@ void Player::update()
 	}
 
 	if (platformBeneath.size() > 0)
-		m_shape.setFillColor(Color::Red);
+		m_shape.setFillColor(Color::Yellow);
 	else
 		m_shape.setFillColor(initialColour);
-
-	// Jumping Info
-	if (jumpDebug == 1)
-	{
-		jumpCounter++;
-		b2Vec2 currentPos = m_body->GetPosition();
-		b2Vec2 currentVel = m_body->GetLinearVelocity();
-		// - is higher
-		if (currentPos.y < jumpHighest.y)
-		{
-			jumpHighest = currentPos;
-			jumpPosCounter = jumpCounter;
-		}
-		if (currentVel.y < velHigh.y)
-		{
-			velHigh = currentVel;
-			jumpVelCounter = jumpCounter;
-		}
-	}
 }
 
 void Player::draw(RenderTarget& target, RenderStates states) const
 {
-	target.draw(m_shape); // Draw the Circle Shape
-
-	// Draw sensor fixture
-	return;
-	RectangleShape sensorShape;
-	sensorShape.setSize(Vector2f(sensorHalfSize.x * 2, sensorHalfSize.y * 2));
-	sensorShape.setOrigin(sensorHalfSize.x, sensorHalfSize.y); // origin at centre
-	sensorShape.setFillColor(Color::Yellow);
-	sensorShape.setRotation(0);
-	Vector2f playerPosition = m_shape.getPosition();
-	sensorShape.setPosition(playerPosition.x, playerPosition.y + playerHalfSize.y);
-	target.draw(sensorShape);
-	return;
-
-
+	target.draw(m_shape);
 	// Add a line
-	RectangleShape line(Vector2f(0.25f, 0.01f));
+	RectangleShape line(Vector2f(playerRadiusSize, 0.01f));
 	line.setPosition(m_shape.getPosition());
 	line.setOrigin(0.f, 0.005f);
 	line.rotate(m_shape.getRotation());
+	line.setFillColor(Color::Black);
 	target.draw(line);
 }
 
-void Player::setUserData()
+void Player::resetPosition(b2Vec2& position)
 {
-	m_body->SetUserData(new pair<string, void*>(typeid(Player).name(), this));
+	// The player can only be reset when it dies
+	if (!m_isDead) return;
+
+	// Set new property values for player body
+	m_body->SetLinearVelocity(b2Vec2(0, 0.1f));
+	m_body->SetTransform(position, 0);
+
+	// Reset variables and score
+	platformBeneath.clear();
+	Score::resetCurrentScore();
+	m_isDead = false;
 }
 
-b2Body* Player::getBody() const
+void Player::startCollision(b2Fixture* thisFixture, b2Fixture* collidedWith)
 {
-	return m_body;
+	void* fixtureUserData = collidedWith->GetUserData();
+	if (!collidedWith) return; // no user data for collision resolution
+
+	// Collision with sensor - Determine which one
+	if (collidedWith->IsSensor())
+	{
+		SensorType sensorType = static_cast<SensorType>((int)collidedWith->GetUserData());
+
+		switch (sensorType)
+		{
+		case SensorType::WorldGround:
+			m_isDead = true;
+			break;
+
+		case SensorType::EnemyHead:
+			enemyCollisionCount -= 1;
+			break;
+		}
+	}
+	// Collision with a non-sensor fixture
+	else
+	{
+		// Check for platform collision
+		FixtureType fixtType = static_cast<FixtureType>((int)collidedWith->GetUserData());
+
+		switch (fixtType)
+		{
+		case FixtureType::Platform:
+			m_isDead = false;
+
+			// Apply a small impulse downwards
+			m_body->ApplyLinearImpulseToCenter(b2Vec2(0, 1), true);
+
+			// This is a collision with a new platform
+			if (m_lastPlatform != collidedWith)
+			{
+				m_lastPlatform = collidedWith;
+				Score::addToScore(1);
+			}
+
+			platformBeneath.insert(collidedWith);
+			break;
+
+		case FixtureType::Enemy:
+			enemyCollisionCount += 1;
+			break;
+		}
+	}
 }
 
-const Vector2f Player::getPosition() const
+void Player::endCollision(b2Fixture* thisFixture, b2Fixture* collidedWith)
 {
-	b2Vec2 pos = m_body->GetPosition();
-	return Vector2f(pos.x, pos.y);
+	if (collidedWith->IsSensor()) return; // Not interested in collision with sensors
+
+	FixtureType fixtType = static_cast<FixtureType>((int)collidedWith->GetUserData());
+
+	if (fixtType == FixtureType::Platform)
+		platformBeneath.erase(collidedWith);
+}
+
+const b2Vec2 Player::getLinearVelocity() const
+{
+	return m_body->GetLinearVelocity();
 }
